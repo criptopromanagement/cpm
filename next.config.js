@@ -19,11 +19,11 @@ module.exports = withTM({
   },
   async redirects() {
     return [
-      {
-        source: '/',
-        destination: '/',
-        permanent: true
-      }
+      // {
+      //   source: '/',
+      //   destination: '/',
+      //   permanent: true
+      // }
     ];
   }
 });
