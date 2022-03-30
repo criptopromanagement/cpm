@@ -33,7 +33,7 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
             passHref
           >
             <a>
-              <Logo
+              <Logo fill= "#0f3"
                 sx={{
                   display: {
                     md: 'inline',
@@ -67,7 +67,7 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
             }}
           >
             <NextLink
-              href="/dashboard"
+              href="/packs"
               passHref
             >
               <Link
@@ -75,11 +75,11 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
                 underline="none"
                 variant="subtitle2"
               >
-                Live Demo
+                Packs
               </Link>
             </NextLink>
             <NextLink
-              href="/browse"
+              href="/blog"
               passHref
             >
               <Link
@@ -88,11 +88,11 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
                 underline="none"
                 variant="subtitle2"
               >
-                Components
+                Blog
               </Link>
             </NextLink>
             <NextLink
-              href="/docs/welcome"
+              href="/contacto"
               passHref
             >
               <Link
@@ -102,18 +102,18 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
                 underline="none"
                 variant="subtitle2"
               >
-                Documentation
+                Contacto
               </Link>
             </NextLink>
             <Button
               component="a"
-              href="https://material-ui.com/store/items/devias-kit-pro"
+              href="/ingresar"
               size="medium"
               sx={{ ml: 2 }}
               target="_blank"
               variant="contained"
             >
-              Buy Now
+              Ingresar
             </Button>
           </Box>
         </Toolbar>
