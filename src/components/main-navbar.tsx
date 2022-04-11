@@ -33,7 +33,7 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
             passHref
           >
             <a>
-              <Logo fill= "#0f3"
+              <Logo
                 sx={{
                   display: {
                     md: 'inline',
