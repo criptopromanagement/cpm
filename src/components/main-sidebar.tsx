@@ -53,7 +53,7 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
     >
       <Box sx={{ p: 2 }}>
         <NextLink
-          href="/dashboard"
+          href="/packs"
           passHref
         >
           <MainSidebarLink
@@ -61,11 +61,11 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
             underline="none"
             variant="subtitle2"
           >
-            Live Demo
+            Packs
           </MainSidebarLink>
         </NextLink>
         <NextLink
-          href="/browse"
+          href="/blog"
           passHref
         >
           <MainSidebarLink
@@ -73,11 +73,11 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
             underline="none"
             variant="subtitle2"
           >
-            Components
+            Blog
           </MainSidebarLink>
         </NextLink>
         <NextLink
-          href="/docs/welcome"
+          href="/contacto"
           passHref
         >
           <MainSidebarLink
@@ -85,7 +85,7 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
             underline="none"
             variant="subtitle2"
           >
-            Documentation
+            Contacto
           </MainSidebarLink>
         </NextLink>
         <Button
@@ -96,7 +96,7 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
           target="_blank"
           variant="contained"
         >
-          Buy Now
+          Ingresar
         </Button>
       </Box>
     </Drawer>

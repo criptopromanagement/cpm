@@ -80,9 +80,14 @@ export const Footer: FC = (props) => (
           // }}
           xs={8}
         >
-          <Grid 
+          <Grid
             item
-            xs={4}>
+            md={4}
+            lg={4}
+            xl={4}
+            sm={4}
+            xs={4}
+            >
             <Logo variant="light" />
           </Grid>
           <Typography
@@ -93,74 +98,73 @@ export const Footer: FC = (props) => (
             Nos apasiona difundir y brindar herramientas para invertir en tecnologías blockchain
           </Typography>
         </Grid>
-        <Grid 
+        <Grid
           container
           direction="column"
-  justifyContent="flex-end"
-  alignItems="flex-end"
-
+          justifyContent="flex-end"
+          alignItems="flex-end"
           item
           md={8}
           sm={8}
           xs={4}>
-        {sections.map((section, index) => (
-          <Grid
-            item
-            key={section.title}
-            md={3}
-            sm={4}
-            sx={{
-              order: {
-                md: index + 2,
-                xs: index + 1
-              }
-            }}
-            xs={4}
-          >
-            {/* <Typography
+          {sections.map((section, index) => (
+            <Grid
+              item
+              key={section.title}
+              md={3}
+              sm={4}
+              sx={{
+                order: {
+                  md: index + 2,
+                  xs: index + 1
+                }
+              }}
+              xs={4}
+            >
+              {/* <Typography
               color="textSecondary"
               variant="overline"
             >
               {section.title}
             </Typography> */}
-            <List disablePadding>
-              {section.links.map((link) => (
-                <ListItem
-                  disableGutters
-                  key={link.title}
-                  sx={{
-                    pb: 0,
-                    pt: 0
-                  }}
-                >
-                  <ListItemAvatar
+              <List disablePadding>
+                {section.links.map((link) => (
+                  <ListItem
+                    disableGutters
+                    key={link.title}
                     sx={{
-                      alignItems: 'center',
-                      display: 'flex',
-                      minWidth: 0,
-                      spacing: 10,
-                      mr: 0.5
+                      pb: 0,
+                      pt: 0
                     }}
                   >
-                    {/* <MinusOutlinedIcon color="primary" /> */}
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary={(
-                      <Link
-                        href={link.href}
-                        color="textPrimary"
-                        variant="subtitle2"
-                      >
-                        {link.title}
-                      </Link>
-                    )}
-                  />
-                </ListItem>
-              ))}
-            </List>
-          </Grid>
-        ))}
-      </Grid>
+                    <ListItemAvatar
+                      sx={{
+                        alignItems: 'center',
+                        display: 'flex',
+                        minWidth: 0,
+                        spacing: 10,
+                        mr: 0.5
+                      }}
+                    >
+                      {/* <MinusOutlinedIcon color="primary" /> */}
+                    </ListItemAvatar>
+                    <ListItemText
+                      primary={(
+                        <Link
+                          href={link.href}
+                          color="textPrimary"
+                          variant="subtitle2"
+                        >
+                          {link.title}
+                        </Link>
+                      )}
+                    />
+                  </ListItem>
+                ))}
+              </List>
+            </Grid>
+          ))}
+        </Grid>
       </Grid>
       <Divider
         sx={{
@@ -170,45 +174,48 @@ export const Footer: FC = (props) => (
         }}
       />
       <Grid
-  container
-  direction="row"
-  justifyContent="space-between"
-  alignItems="flex-start"
->
-      <Typography
-        color="textSecondary"
-        variant="caption"
+        container
+        direction="row"
+        justifyContent="space-between"
+        alignItems="flex-start"
       >
-        © Cripto Pro Management 2022
-      </Typography>
-      <Box sx={{ md:12 }} >
-                <Grid
-                    direction="row"
-                    justifyContent="space-evenly"
-                    alignItems="center"
+        <Grid item md={4} lg={4} xl={4} sm={12} xs={12}>
+          <Typography
+            color="textSecondary"
+            variant="caption"
+          >
+            © Cripto Pro Management 2022
+          </Typography>
+        </Grid>
+        <Box sx={{ md: 12 }} >
+          <Grid
+            item md={12} lg={12} xl={12} sm={12} xs={12}
+            direction="row"
+            justifyContent="space-evenly"
+            alignItems="center"
 
-                >
-                    <Link
-                        href="www.instagram.com/cpm.app/"
-                        color="inherit"
-                    >
-                        <InstagramIcon fontSize="large" />
-                    </Link>
-                    <Link
-                        href="www.linkedin.com/company/crypto-pro-management"
-                        color="inherit"
-                    >
-                    <LinkedInIcon fontSize="large" />
-                    </Link>
-                    <Link
-                        href="www.facebook.com/cpm.app"
-                        color="inherit"
-                    >
-                    <FacebookIcon fontSize="large" />
-                    </Link>
-                </Grid>
-            </Box>
-</Grid>
+          >
+            <Link
+              href="www.instagram.com/cpm.app/"
+              color="inherit"
+            >
+              <InstagramIcon fontSize="large" />
+            </Link>
+            <Link
+              href="www.linkedin.com/company/crypto-pro-management"
+              color="inherit"
+            >
+              <LinkedInIcon fontSize="large" />
+            </Link>
+            <Link
+              href="www.facebook.com/cpm.app"
+              color="inherit"
+            >
+              <FacebookIcon fontSize="large" />
+            </Link>
+          </Grid>
+        </Box>
+      </Grid>
     </Container>
   </Box>
 );
