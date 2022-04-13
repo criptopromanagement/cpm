@@ -114,8 +114,8 @@ const BlogPostList: NextPage = () => {
                     </Box>
 
                 </Container>
-                <Footer />
             </Box>
+                <Footer />
         </>
     );
 };
