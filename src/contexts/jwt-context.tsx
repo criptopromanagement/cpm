@@ -1,7 +1,7 @@
 import { createContext, useEffect, useReducer } from 'react';
 import type { FC, ReactNode } from 'react';
 import PropTypes from 'prop-types';
-import { authApi } from '../__fake-api__/auth-api';
+import { authApi } from '../__next-api__/auth-api';
 import type { User } from '../types/user';
 
 interface State {

@@ -35,7 +35,7 @@ interface ThemeConfig {
 export const createTheme = (config: ThemeConfig): Theme => {
   let theme = createMuiTheme(
     baseThemeOptions,
-    config.mode === 'dark' ? darkThemeOptions : lightThemeOptions,
+    config.mode === 'light' ? lightThemeOptions : darkThemeOptions,
     {
       direction: config.direction
     }

@@ -60,7 +60,7 @@ export const Footer: FC = (props) => (
     >
         <Container maxWidth="lg">
             <Box textAlign="center">
-                <Logo fill="#fff"
+                <Logo
                     sx={{
                         height: 60,
                         width: 100
