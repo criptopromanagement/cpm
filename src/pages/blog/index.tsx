@@ -5,7 +5,7 @@ import NextLink from 'next/link';
 import { Box, Button, Card, Container, Divider, Typography } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { blogApi } from '../../__fake-api__/blog-api';
+import { blogApi } from '../../__next-api__/blog-api';
 import { BlogNewsletter } from '../../components/blog/blog-newsletter';
 import { BlogPostCard } from '../../components/blog/blog-post-card';
 import { useMounted } from '../../hooks/use-mounted';
@@ -13,7 +13,7 @@ import { ArrowLeft as ArrowLeftIcon } from '../../icons/arrow-left';
 import { gtm } from '../../lib/gtm';
 import type { Post } from '../../types/blog';
 import { MainNavbar } from 'src/components/main-navbar';
-import { Footer } from 'src/components/main-footer';
+import { Footer } from 'src/components/footer';
 
 const BlogPostList: NextPage = () => {
     const isMounted = useMounted();
