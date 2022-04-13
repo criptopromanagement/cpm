@@ -196,8 +196,8 @@ const BlogPostDetails: NextPage = () => {
                     <Box sx={{ mt: 8 }}>
           </Box>
         </Container>
-        <Footer />
       </Box>
+      <Footer />
     </>
   );
 };
