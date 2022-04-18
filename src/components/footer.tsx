@@ -9,12 +9,14 @@ import {
   ListItem,
   ListItemAvatar,
   ListItemText,
-  Typography
+  Typography,
+  useMediaQuery
 } from '@mui/material';
 import { Logo } from './logo';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import FacebookIcon from '@mui/icons-material/Facebook';
+import { styled } from '@mui/material/styles';
 
 const sections = [
   {
@@ -43,6 +45,15 @@ const sections = [
     ]
   }
 ];
+
+// const Mobile = styled('div')(({theme}) => ({
+//   [theme.breakpoints.down('sm')]: {
+//     backgroundColor: 'grey',
+//     textAlign: 'center',
+//     padding: '4rem',
+//   }
+// }));
+
 
 export const Footer: FC = (props) => (
   <Box
