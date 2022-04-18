@@ -42,15 +42,15 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
 
   return (
     <Drawer
-      anchor="right"
+      anchor="top"
       onClose={onClose}
       open={!lgUp && open}
       PaperProps={{
         sx: {
-          width: 356,
-          height: "20vh",
-          marginTop: 10,
-          marginRight: 2,
+          width: '70%',
+          height: "20%",
+          marginLeft: 14,
+          marginTop: 11,
           borderTopLeftRadius: 8,
           borderBottomLeftRadius: 8,
           borderTopRightRadius: 8,
