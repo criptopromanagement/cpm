@@ -9,14 +9,14 @@ import {
   ListItem,
   ListItemAvatar,
   ListItemText,
-  Typography
+  Typography,
+  useMediaQuery
 } from '@mui/material';
-import { alpha } from '@mui/material/styles';
-import { MinusOutlined as MinusOutlinedIcon } from '../icons/minus-outlined';
 import { Logo } from './logo';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import FacebookIcon from '@mui/icons-material/Facebook';
+import { styled } from '@mui/material/styles';
 
 const sections = [
   {
@@ -46,6 +46,15 @@ const sections = [
   }
 ];
 
+// const Mobile = styled('div')(({theme}) => ({
+//   [theme.breakpoints.down('sm')]: {
+//     backgroundColor: 'grey',
+//     textAlign: 'center',
+//     padding: '4rem',
+//   }
+// }));
+
+
 export const Footer: FC = (props) => (
   <Box
     sx={{
@@ -53,7 +62,7 @@ export const Footer: FC = (props) => (
       borderTopColor: 'divider',
       borderTopStyle: 'solid',
       borderTopWidth: 1,
-      pb: 6,
+      pb: 2,
       pt: {
         md: 6,
         xs: 6
@@ -67,18 +76,7 @@ export const Footer: FC = (props) => (
         spacing={3}
       >
         <Grid
-          item
-          md={4}
-          sm={4}
-          // sx={{
-          //   display: 'flex',
-          //   flexDirection: 'column',
-          //   order: {
-          //     md: 1,
-          //     xs: 4
-          //   }
-          // }}
-          xs={8}
+          item md={4} lg={4} xl={4} sm={12} xs={12}
         >
           <Grid
             item
@@ -87,7 +85,7 @@ export const Footer: FC = (props) => (
             xl={4}
             sm={4}
             xs={4}
-            >
+          >
             <Logo variant="light" />
           </Grid>
           <Typography
@@ -121,12 +119,6 @@ export const Footer: FC = (props) => (
               }}
               xs={4}
             >
-              {/* <Typography
-              color="textSecondary"
-              variant="overline"
-            >
-              {section.title}
-            </Typography> */}
               <List disablePadding>
                 {section.links.map((link) => (
                   <ListItem
@@ -146,7 +138,6 @@ export const Footer: FC = (props) => (
                         mr: 0.5
                       }}
                     >
-                      {/* <MinusOutlinedIcon color="primary" /> */}
                     </ListItemAvatar>
                     <ListItemText
                       primary={(
@@ -173,13 +164,17 @@ export const Footer: FC = (props) => (
           my: 6
         }}
       />
+
       <Grid
         container
-        direction="row"
-        justifyContent="space-between"
-        alignItems="flex-start"
+        maxWidth="xs"
+        sx={{
+          direction: "row",
+          justifyContent: "space-between",
+          alignItems: "flex-start"
+        }}
       >
-        <Grid item md={4} lg={4} xl={4} sm={12} xs={12}>
+        <Grid>
           <Typography
             color="textSecondary"
             variant="caption"
@@ -187,14 +182,7 @@ export const Footer: FC = (props) => (
             © Cripto Pro Management 2022
           </Typography>
         </Grid>
-        <Box sx={{ md: 12 }} >
-          <Grid
-            item md={12} lg={12} xl={12} sm={12} xs={12}
-            direction="row"
-            justifyContent="space-evenly"
-            alignItems="center"
-
-          >
+          <Grid>
             <Link
               href="www.instagram.com/cpm.app/"
               color="inherit"
@@ -214,7 +202,6 @@ export const Footer: FC = (props) => (
               <FacebookIcon fontSize="large" />
             </Link>
           </Grid>
-        </Box>
       </Grid>
     </Container>
   </Box>

@@ -182,7 +182,8 @@ export const baseThemeOptions: ThemeOptions = {
     MuiPaper: {
       styleOverrides: {
         root: {
-          backgroundImage: 'none'
+          backgroundImage: 'none',
+          backgroundColor: '#474444'
         }
       }
     },

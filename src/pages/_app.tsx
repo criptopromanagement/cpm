@@ -42,7 +42,7 @@ const App: FC<EnhancedAppProps> = (props) => {
     <CacheProvider value={emotionCache}>
       <Head>
         <title>
-          Material Kit Pro
+          CPM | Inversiones Cripto
         </title>
         <meta
           name="viewport"
