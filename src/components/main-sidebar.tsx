@@ -45,7 +45,18 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
       anchor="right"
       onClose={onClose}
       open={!lgUp && open}
-      PaperProps={{ sx: { width: 256 } }}
+      PaperProps={{
+        sx: {
+          width: 356,
+          height: "20vh",
+          marginTop: 10,
+          marginRight: 2,
+          borderTopLeftRadius: 8,
+          borderBottomLeftRadius: 8,
+          borderTopRightRadius: 8,
+          borderBottomRightRadius: 8
+        }
+      }}
       sx={{
         zIndex: (theme) => theme.zIndex.appBar + 100
       }}
@@ -88,7 +99,7 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
             Contacto
           </MainSidebarLink>
         </NextLink>
-        <Button
+        {/* <Button
           component="a"
           fullWidth
           href="#"
@@ -97,7 +108,7 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
           variant="contained"
         >
           Ingresar
-        </Button>
+        </Button> */}
       </Box>
     </Drawer>
   );
