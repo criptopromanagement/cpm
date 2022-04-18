@@ -49,8 +49,8 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
         sx: {
           width: '70%',
           height: "20%",
-          marginLeft: 14,
-          marginTop: 11,
+          marginLeft: 13.5,
+          marginTop: 8,
           borderTopLeftRadius: 8,
           borderBottomLeftRadius: 8,
           borderTopRightRadius: 8,
