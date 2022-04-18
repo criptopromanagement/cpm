@@ -1,3 +1,4 @@
+
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import NextLink from 'next/link';
@@ -5,12 +6,11 @@ import { useRouter } from 'next/router';
 import { Box, Card, Container, Divider, Link, Typography } from '@mui/material';
 import { Logo } from '../components/logo';
 import { useAuth } from '../hooks/use-auth';
-import { JWTRegister } from '../components/authentication/jwt-register';
+import { JWTLogin } from '../components/authentication/jwt-login';
 
-type Platform = 'Amplify' | 'Auth0' | 'Firebase' | 'JWT';
+type Platform = 'JWT';
 
-
-const Register: NextPage = () => {
+const Login: NextPage = () => {
   const router = useRouter();
   const { platform }: { platform: Platform } = useAuth();
   const { disableGuard } = router.query;
@@ -18,7 +18,9 @@ const Register: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Register | Invierte en Cripto</title>
+        <title>
+          Login | Material Kit Pro
+        </title>
       </Head>
       <Box
         component="main"
@@ -66,15 +68,15 @@ const Register: NextPage = () => {
                 </a>
               </NextLink>
               <Typography variant="h4">
-                Te damos la bienvenida
+                Hola de nuevo
               </Typography>
               <Typography
                 color="textSecondary"
                 sx={{ mt: 2 }}
                 variant="body2"
               >
-                Creá tu cuenta
-              </Typography>
+                  Iniciar sesión
+            </Typography>
             </Box>
             <Box
               sx={{
@@ -82,19 +84,19 @@ const Register: NextPage = () => {
                 mt: 3
               }}
             >
-              {platform === 'JWT' && <JWTRegister />}
+              {platform === 'JWT' && <JWTLogin />}
             </Box>
             <div style={{
                 marginTop: 15,
                 textAlign:'center'
                 }}
             >
-            Ya estas registrado? {' '}
+            Aún no tenés cuenta? {' '}
               <NextLink
                 href={
                   disableGuard
-                    ? `/login?disableGuard=${disableGuard}`
-                    : '/login'
+                    ? `/register?disableGuard=${disableGuard}`
+                    : '/register'
                 }
                 passHref
               >
@@ -102,7 +104,7 @@ const Register: NextPage = () => {
                   color="primary"
                   variant="body2"
                 >
-                  Inicia sesión
+                  Registrate
                 </Link>
               </NextLink>
             </div>
@@ -113,4 +115,4 @@ const Register: NextPage = () => {
   );
 };
 
-export default Register;
+export default Login;

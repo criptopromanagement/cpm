@@ -1,10 +1,12 @@
-import type { FC } from 'react';
+import { FC, useState } from 'react';
 import { useRouter } from 'next/router';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
-import { Alert, Box, Button, FormHelperText, TextField } from '@mui/material';
+import { Box, Button, Checkbox, FormControl, FormControlLabel, FormHelperText, IconButton, InputAdornment, InputLabel, Link, OutlinedInput, TextField, Typography } from '@mui/material';
 import { useAuth } from '../../hooks/use-auth';
 import { useMounted } from '../../hooks/use-mounted';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 export const JWTLogin: FC = (props) => {
   const isMounted = useMounted();
@@ -12,20 +14,21 @@ export const JWTLogin: FC = (props) => {
   const { login } = useAuth();
   const formik = useFormik({
     initialValues: {
-      email: 'demo@devias.io',
-      password: 'Password123!',
+      email: '',
+      password: '',
+      rememberme: false,
       submit: null
     },
     validationSchema: Yup.object({
       email: Yup
         .string()
-        .email('Must be a valid email')
+        .email('Debes ingresar un email valido')
         .max(255)
-        .required('Email is required'),
+        .required('Email es requerido'),
       password: Yup
         .string()
         .max(255)
-        .required('Password is required')
+        .required('Password es requerido')
     }),
     onSubmit: async (values, helpers): Promise<void> => {
       try {
@@ -47,6 +50,7 @@ export const JWTLogin: FC = (props) => {
     }
   });
 
+  const [showPassword, setShowPassword] = useState(false);
   return (
     <form
       noValidate
@@ -58,26 +62,87 @@ export const JWTLogin: FC = (props) => {
         error={Boolean(formik.touched.email && formik.errors.email)}
         fullWidth
         helperText={formik.touched.email && formik.errors.email}
-        label="Email Address"
+        label="Email"
         margin="normal"
         name="email"
         onBlur={formik.handleBlur}
         onChange={formik.handleChange}
         type="email"
         value={formik.values.email}
+        placeholder='tu email'
       />
-      <TextField
-        error={Boolean(formik.touched.password && formik.errors.password)}
-        fullWidth
-        helperText={formik.touched.password && formik.errors.password}
-        label="Password"
+      <FormControl
+        fullWidth 
+        variant="outlined" 
         margin="normal"
-        name="password"
-        onBlur={formik.handleBlur}
-        onChange={formik.handleChange}
-        type="password"
-        value={formik.values.password}
-      />
+      >
+          <InputLabel 
+              htmlFor="outlined-adornment-password"
+              error={Boolean(formik.touched.password && formik.errors.password)}
+            >
+              Contraseña
+            </InputLabel>
+          <OutlinedInput
+            error={Boolean(formik.touched.password && formik.errors.password)}
+            fullWidth
+            name="password"
+            label="Contraseña"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            type={showPassword? "text":"password"}
+            value={formik.values.password}
+            placeholder='tu contraseña'
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={() => setShowPassword(!showPassword)}
+                  edge="end"
+                >
+                  {!showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+          />
+        {!!Boolean(formik.touched.password && formik.errors.password) && (
+          <FormHelperText 
+            error 
+            id="accountId-error"
+          >
+          {formik.touched.password && formik.errors.password}
+          </FormHelperText>
+        )}
+        </FormControl>
+      <Box
+        sx={{
+          alignItems: 'center',
+          display: 'flex',
+          justifyContent:'space-between',
+          mt: 0
+        }}
+      >
+        <FormControlLabel control={<Checkbox
+          checked={formik.values.rememberme}
+          name="rememberme"
+          onChange={formik.handleChange}/>} 
+          label="Recuerdame" 
+        />
+          <Link
+          sx={{
+            color:'white'
+          }}
+            component="a"
+            href="#"
+          >
+          <Typography
+            color="white"
+            variant="body2"
+          >
+            Olvidé mi contraseña
+            </Typography>
+          </Link>
+        
+      </Box>
       {formik.errors.submit && (
         <Box sx={{ mt: 3 }}>
           <FormHelperText error>
@@ -85,7 +150,7 @@ export const JWTLogin: FC = (props) => {
           </FormHelperText>
         </Box>
       )}
-      <Box sx={{ mt: 2 }}>
+      <Box sx={{ mt: 10 }}>
         <Button
           disabled={formik.isSubmitting}
           fullWidth
@@ -93,21 +158,8 @@ export const JWTLogin: FC = (props) => {
           type="submit"
           variant="contained"
         >
-          Log In
+          Ingresar
         </Button>
-      </Box>
-      <Box sx={{ mt: 2 }}>
-        <Alert severity="info">
-          <div>
-            Use
-            {' '}
-            <b>demo@devias.io</b>
-            {' '}
-            and password
-            {' '}
-            <b>Password123!</b>
-          </div>
-        </Alert>
       </Box>
     </form>
   );
