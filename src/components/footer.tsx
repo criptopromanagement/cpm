@@ -9,14 +9,15 @@ import {
   ListItem,
   ListItemAvatar,
   ListItemText,
-  Typography
+  Typography,
+  Stack,
+  useMediaQuery
 } from '@mui/material';
-import { alpha } from '@mui/material/styles';
-import { MinusOutlined as MinusOutlinedIcon } from '../icons/minus-outlined';
 import { Logo } from './logo';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import FacebookIcon from '@mui/icons-material/Facebook';
+import { styled } from '@mui/material/styles';
 
 const sections = [
   {
@@ -46,6 +47,15 @@ const sections = [
   }
 ];
 
+// const Mobile = styled('div')(({theme}) => ({
+//   [theme.breakpoints.down('sm')]: {
+//     backgroundColor: 'grey',
+//     textAlign: 'center',
+//     padding: '4rem',
+//   }
+// }));
+
+
 export const Footer: FC = (props) => (
   <Box
     sx={{
@@ -53,7 +63,7 @@ export const Footer: FC = (props) => (
       borderTopColor: 'divider',
       borderTopStyle: 'solid',
       borderTopWidth: 1,
-      pb: 6,
+      pb: 2,
       pt: {
         md: 6,
         xs: 6
@@ -67,83 +77,65 @@ export const Footer: FC = (props) => (
         spacing={3}
       >
         <Grid
-          item
-          md={4}
-          sm={4}
-          // sx={{
-          //   display: 'flex',
-          //   flexDirection: 'column',
-          //   order: {
-          //     md: 1,
-          //     xs: 4
-          //   }
-          // }}
-          xs={8}
+          container
+          justifyContent={{ lg: "left", xs: "center" }}
+          direction="row"
+          textAlign={{ lg: "left", xs: "center" }}
+          spacing={0}
+          item md={4} lg={4} xl={4} sm={12} xs={12}
         >
-          <Grid 
+          <Grid
             item
-            xs={4}>
+            md={4}
+            lg={4}
+            xl={4}
+            sm={4}
+            xs={4}
+          >
             <Logo variant="light" />
           </Grid>
-          <Typography
-            color="textSecondary"
-            sx={{ mt: 1 }}
-            variant="caption"
+          <Grid
+            item
+            md={12}
+            lg={12}
+            xl={12}
+            sm={12}
+            xs={12}
           >
-            Nos apasiona difundir y brindar herramientas para invertir en tecnologías blockchain
-          </Typography>
+            <Typography
+              color="textSecondary"
+              variant="caption"
+            >
+              Nos apasiona difundir y brindar herramientas para invertir en tecnologías blockchain
+            </Typography>
+          </Grid>
         </Grid>
-        <Grid 
+        <Grid
           container
           direction="column"
-  justifyContent="flex-end"
-  alignItems="flex-end"
-
+          justifyContent={{ xs: "center", lg: "flex-end" }}
+          alignItems={{ xs: "center", lg: "flex-end" }}
           item
           md={8}
           sm={8}
-          xs={4}>
-        {sections.map((section, index) => (
-          <Grid
-            item
-            key={section.title}
-            md={3}
-            sm={4}
-            sx={{
-              order: {
-                md: index + 2,
-                xs: index + 1
-              }
-            }}
-            xs={4}
-          >
-            {/* <Typography
-              color="textSecondary"
-              variant="overline"
+          xs={12}>
+          {sections.map((section, index) => (
+            <Grid
+              item
+              key={section.title}
+              textAlign={{ lg: "center", xs: "center" }}
+              md={12}
+              sm={12}
+              sx={{
+                order: {
+                  md: index + 2,
+                  xs: index + 1
+                }
+              }}
+              xs={12}
             >
-              {section.title}
-            </Typography> */}
-            <List disablePadding>
-              {section.links.map((link) => (
-                <ListItem
-                  disableGutters
-                  key={link.title}
-                  sx={{
-                    pb: 0,
-                    pt: 0
-                  }}
-                >
-                  <ListItemAvatar
-                    sx={{
-                      alignItems: 'center',
-                      display: 'flex',
-                      minWidth: 0,
-                      spacing: 10,
-                      mr: 0.5
-                    }}
-                  >
-                    {/* <MinusOutlinedIcon color="primary" /> */}
-                  </ListItemAvatar>
+              <List disablePadding>
+                {section.links.map((link) => (
                   <ListItemText
                     primary={(
                       <Link
@@ -155,60 +147,69 @@ export const Footer: FC = (props) => (
                       </Link>
                     )}
                   />
-                </ListItem>
-              ))}
-            </List>
-          </Grid>
-        ))}
-      </Grid>
+                ))}
+              </List>
+            </Grid>
+          ))}
+        </Grid>
       </Grid>
       <Divider
         sx={{
           // borderColor: "(theme) => alpha(theme.palette.primary.contrastText, 0.12)",
           borderColor: "#FFF",
-          my: 6
+          my: 2
         }}
       />
-      <Grid
-  container
-  direction="row"
-  justifyContent="space-between"
-  alignItems="flex-start"
->
-      <Typography
-        color="textSecondary"
-        variant="caption"
-      >
-        © Cripto Pro Management 2022
-      </Typography>
-      <Box sx={{ md:12 }} >
-                <Grid
-                    direction="row"
-                    justifyContent="space-evenly"
-                    alignItems="center"
 
-                >
-                    <Link
-                        href="www.instagram.com/cpm.app/"
-                        color="inherit"
-                    >
-                        <InstagramIcon fontSize="large" />
-                    </Link>
-                    <Link
-                        href="www.linkedin.com/company/crypto-pro-management"
-                        color="inherit"
-                    >
-                    <LinkedInIcon fontSize="large" />
-                    </Link>
-                    <Link
-                        href="www.facebook.com/cpm.app"
-                        color="inherit"
-                    >
-                    <FacebookIcon fontSize="large" />
-                    </Link>
-                </Grid>
-            </Box>
-</Grid>
+      <Grid
+        container
+        direction={{ md: "row", lg: "row", xl: "row", sm: "row", xs: "row-reverse" }}
+        justifyContent="space-between"
+        alignItems="flex-start"
+      >
+        <Grid
+          display={{xs:"none", lg:"block"}}
+          xs={12}
+          lg={4}
+        >
+          <Typography
+            color="textSecondary"
+            variant="caption"
+          >
+            © Cripto Pro Management 2022
+          </Typography>
+        </Grid>
+        <Grid
+          lg={8}
+          xs={12}
+        >
+          <Stack
+            direction="row"
+            spacing={3}
+            justifyContent={{ md: "flex-end", lg: "flex-end", xl: "flex-end", sm: "flex-end", xs: "space-around" }}
+            alignItems="center"
+          >
+            <Link
+              href="www.instagram.com/cpm.app/"
+              color="inherit"
+            >
+              <InstagramIcon fontSize="large" />
+            </Link>
+            <Link
+              href="www.linkedin.com/company/crypto-pro-management"
+              color="inherit"
+            >
+              <LinkedInIcon fontSize="large" />
+            </Link>
+            <Link
+              href="www.facebook.com/cpm.app"
+              color="inherit"
+            >
+              <FacebookIcon fontSize="large" />
+            </Link>
+          </Stack>
+        </Grid>
+      </Grid>
     </Container>
   </Box>
 );
