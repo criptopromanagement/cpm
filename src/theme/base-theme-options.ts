@@ -128,7 +128,7 @@ export const baseThemeOptions: ThemeOptions = {
           pointerEvents: 'none'
         },
         '#nprogress .bar': {
-          backgroundColor: '#5048E5',
+          backgroundColor: 'rgb(0, 255, 51)',
           height: 3,
           left: 0,
           position: 'fixed',
@@ -182,7 +182,8 @@ export const baseThemeOptions: ThemeOptions = {
     MuiPaper: {
       styleOverrides: {
         root: {
-          backgroundImage: 'none'
+          backgroundImage: 'none',
+          backgroundColor: '#474444'
         }
       }
     },
@@ -220,7 +221,7 @@ export const baseThemeOptions: ThemeOptions = {
     MuiTableCell: {
       styleOverrides: {
         root: {
-          padding: '15px 16px'
+          padding: '16px 16px'
         }
       }
     },

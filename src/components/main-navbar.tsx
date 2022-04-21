@@ -19,7 +19,7 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
         backgroundColor: 'background.default',
         borderBottomColor: 'divider',
         borderBottomStyle: 'solid',
-        borderBottomWidth: 1,
+        borderBottomWidth: 0,
         color: 'text.secondary'
       }}
     >
@@ -50,8 +50,9 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
             color="primary"
             onClick={onOpenSidebar}
             sx={{
+              marginRight: -1.5,
               display: {
-                md: 'none'
+                md: 'none',
               }
             }}
           >
