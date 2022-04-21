@@ -10,6 +10,7 @@ import {
   ListItemAvatar,
   ListItemText,
   Typography,
+  Stack,
   useMediaQuery
 } from '@mui/material';
 import { Logo } from './logo';
@@ -76,6 +77,11 @@ export const Footer: FC = (props) => (
         spacing={3}
       >
         <Grid
+          container
+          justifyContent={{ lg: "left", xs: "center" }}
+          direction="row"
+          textAlign={{ lg: "left", xs: "center" }}
+          spacing={0}
           item md={4} lg={4} xl={4} sm={12} xs={12}
         >
           <Grid
@@ -88,69 +94,58 @@ export const Footer: FC = (props) => (
           >
             <Logo variant="light" />
           </Grid>
-          <Typography
-            color="textSecondary"
-            sx={{ mt: 1 }}
-            variant="caption"
+          <Grid
+            item
+            md={12}
+            lg={12}
+            xl={12}
+            sm={12}
+            xs={12}
           >
-            Nos apasiona difundir y brindar herramientas para invertir en tecnologías blockchain
-          </Typography>
+            <Typography
+              color="textSecondary"
+              variant="caption"
+            >
+              Nos apasiona difundir y brindar herramientas para invertir en tecnologías blockchain
+            </Typography>
+          </Grid>
         </Grid>
         <Grid
           container
           direction="column"
-          justifyContent="flex-end"
-          alignItems="flex-end"
+          justifyContent={{ xs: "center", lg: "flex-end" }}
+          alignItems={{ xs: "center", lg: "flex-end" }}
           item
           md={8}
           sm={8}
-          xs={4}>
+          xs={12}>
           {sections.map((section, index) => (
             <Grid
               item
-              key={section.title}
-              md={3}
-              sm={4}
+              textAlign={{ lg: "center", xs: "center" }}
+              md={12}
+              sm={12}
               sx={{
                 order: {
                   md: index + 2,
                   xs: index + 1
                 }
               }}
-              xs={4}
+              xs={12}
             >
               <List disablePadding>
                 {section.links.map((link) => (
-                  <ListItem
-                    disableGutters
-                    key={link.title}
-                    sx={{
-                      pb: 0,
-                      pt: 0
-                    }}
-                  >
-                    <ListItemAvatar
-                      sx={{
-                        alignItems: 'center',
-                        display: 'flex',
-                        minWidth: 0,
-                        spacing: 10,
-                        mr: 0.5
-                      }}
-                    >
-                    </ListItemAvatar>
-                    <ListItemText
-                      primary={(
-                        <Link
-                          href={link.href}
-                          color="textPrimary"
-                          variant="subtitle2"
-                        >
-                          {link.title}
-                        </Link>
-                      )}
-                    />
-                  </ListItem>
+                  <ListItemText
+                    primary={(
+                      <Link
+                        href={link.href}
+                        color="textPrimary"
+                        variant="subtitle2"
+                      >
+                        {link.title}
+                      </Link>
+                    )}
+                  />
                 ))}
               </List>
             </Grid>
@@ -161,20 +156,21 @@ export const Footer: FC = (props) => (
         sx={{
           // borderColor: "(theme) => alpha(theme.palette.primary.contrastText, 0.12)",
           borderColor: "#FFF",
-          my: 6
+          my: 2
         }}
       />
 
       <Grid
         container
-        maxWidth="xs"
-        sx={{
-          direction: "row",
-          justifyContent: "space-between",
-          alignItems: "flex-start"
-        }}
+        direction={{ md: "row", lg: "row", xl: "row", sm: "row", xs: "row-reverse" }}
+        justifyContent="space-between"
+        alignItems="flex-start"
       >
-        <Grid>
+        <Grid
+          display={{xs:"none", lg:"block"}}
+          xs={12}
+          lg={4}
+        >
           <Typography
             color="textSecondary"
             variant="caption"
@@ -182,7 +178,16 @@ export const Footer: FC = (props) => (
             © Cripto Pro Management 2022
           </Typography>
         </Grid>
-          <Grid>
+        <Grid
+          lg={8}
+          xs={12}
+        >
+          <Stack
+            direction="row"
+            spacing={3}
+            justifyContent={{ md: "flex-end", lg: "flex-end", xl: "flex-end", sm: "flex-end", xs: "space-around" }}
+            alignItems="center"
+          >
             <Link
               href="www.instagram.com/cpm.app/"
               color="inherit"
@@ -201,7 +206,8 @@ export const Footer: FC = (props) => (
             >
               <FacebookIcon fontSize="large" />
             </Link>
-          </Grid>
+          </Stack>
+        </Grid>
       </Grid>
     </Container>
   </Box>
