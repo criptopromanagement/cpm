@@ -120,21 +120,44 @@ export const Footer: FC = (props) => (
           sm={8}
           xs={12}>
           {sections.map((section, index) => (
-            <Grid
-              item
-              textAlign={{ lg: "center", xs: "center" }}
-              md={12}
-              sm={12}
-              sx={{
-                order: {
-                  md: index + 2,
-                  xs: index + 1
-                }
-              }}
-              xs={12}
+          <Grid
+            item
+            key={section.title}
+            md={3}
+            sm={4}
+            sx={{
+              order: {
+                md: index + 2,
+                xs: index + 1
+              }
+            }}
+            xs={12}
+          >
+            <Typography
+              color="textSecondary"
+              variant="overline"
             >
-              <List disablePadding>
-                {section.links.map((link) => (
+              {section.title}
+            </Typography>
+            <List disablePadding>
+              {section.links.map((link) => (
+                <ListItem
+                  disableGutters
+                  key={link.title}
+                  sx={{
+                    pb: 0,
+                    pt: 1
+                  }}
+                >
+                  <ListItemAvatar
+                    sx={{
+                      alignItems: 'center',
+                      display: 'flex',
+                      minWidth: 0,
+                      mr: 0.5
+                    }}
+                  >
+                  </ListItemAvatar>
                   <ListItemText
                     primary={(
                       <Link
@@ -146,10 +169,11 @@ export const Footer: FC = (props) => (
                       </Link>
                     )}
                   />
-                ))}
-              </List>
-            </Grid>
-          ))}
+                </ListItem>
+              ))}
+            </List>
+          </Grid>
+        ))}
         </Grid>
       </Grid>
       <Divider
@@ -167,6 +191,7 @@ export const Footer: FC = (props) => (
         alignItems="flex-start"
       >
         <Grid
+          item
           display={{xs:"none", lg:"block"}}
           xs={12}
           lg={4}
@@ -179,6 +204,7 @@ export const Footer: FC = (props) => (
           </Typography>
         </Grid>
         <Grid
+          item
           lg={8}
           xs={12}
         >
