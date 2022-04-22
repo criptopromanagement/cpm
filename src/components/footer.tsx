@@ -120,66 +120,51 @@ export const Footer: FC = (props) => (
           sm={8}
           xs={12}>
           {sections.map((section, index) => (
-          <Grid
-            item
-            key={section.title}
-            md={3}
-            sm={4}
-            sx={{
-              order: {
-                md: index + 2,
-                xs: index + 1
-              }
-            }}
-            xs={12}
-          >
-            <Typography
-              color="textSecondary"
-              variant="overline"
+            <Grid
+              item
+              key={section.title}
+              md={3}
+              sm={4}
+              sx={{
+                order: {
+                  md: index + 2,
+                  xs: index + 1
+                }
+              }}
+              xs={12}
             >
-              {section.title}
-            </Typography>
-            <List disablePadding>
-              {section.links.map((link) => (
-                <ListItem
-                  disableGutters
-                  key={link.title}
-                  sx={{
-                    pb: 0,
-                    pt: 1
-                  }}
-                >
-                  <ListItemAvatar
+              <List disablePadding>
+                {section.links.map((link) => (
+                  <ListItem
+                    disableGutters
+                    key={link.title}
                     sx={{
-                      alignItems: 'center',
-                      display: 'flex',
-                      minWidth: 0,
-                      mr: 0.5
+                      pb: 0,
+                      pt: 1
                     }}
                   >
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary={(
-                      <Link
-                        href={link.href}
-                        color="textPrimary"
-                        variant="subtitle2"
-                      >
-                        {link.title}
-                      </Link>
-                    )}
-                  />
-                </ListItem>
-              ))}
-            </List>
-          </Grid>
-        ))}
+                    <ListItemText
+                    sx={{textAlign: {xs:'center', lg:'right'}}}
+                      primary={(
+                        <Link
+                          href={link.href}
+                          color="textPrimary"
+                          variant="subtitle2"
+                        >
+                          {link.title}
+                        </Link>
+                      )}
+                    />
+                  </ListItem>
+                ))}
+              </List>
+            </Grid>
+          ))}
         </Grid>
       </Grid>
       <Divider
         sx={{
-          // borderColor: "(theme) => alpha(theme.palette.primary.contrastText, 0.12)",
-          borderColor: "#FFF",
+          borderColor:{lg:"#FFF", xs:"#474444"},
           my: 2
         }}
       />
@@ -192,7 +177,7 @@ export const Footer: FC = (props) => (
       >
         <Grid
           item
-          display={{xs:"none", lg:"block"}}
+          display={{ xs: "none", lg: "block" }}
           xs={12}
           lg={4}
         >
