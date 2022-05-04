@@ -108,10 +108,9 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
             </NextLink>
             <Button
               component="a"
-              href="/ingresar"
+              href="/login"
               size="medium"
               sx={{ ml: 2 }}
-              target="_blank"
               variant="contained"
             >
               Ingresar

@@ -185,7 +185,7 @@ export const AuthProvider: FC<AuthProviderProps> = (props) => {
     password: string
   ): Promise<void> => {
     const registerResponse: RegisterResponse = await authApi.register({ name, email , password });
-    console.log(registerResponse, "registerResponse")
+
     if(registerResponse){
       const {token, user} = await authApi.login({email, password});
       localStorage.setItem('accessToken', token);

@@ -27,7 +27,7 @@ export const JWTRegister: FC = (props) => {
         .required('Email es requerido'),
       password: Yup
         .string()
-        .min(7)
+        .min(8,"La contraseña debe incluir al menos 8 caracteres, una mayuscula, un numero y un simbolo")
         .max(255)
         .required('Password es requerido'),
         passwordConfirmation: Yup
