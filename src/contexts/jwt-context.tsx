@@ -1,8 +1,10 @@
 import { createContext, useEffect, useReducer } from 'react';
 import type { FC, ReactNode } from 'react';
 import PropTypes from 'prop-types';
-import { authApi } from '../__next-api__/auth-api';
+import  { authApi }  from '../services/api-auth';
 import type { User } from '../types/user';
+import { LoginResponse } from '../types/login';
+import { RegisterResponse } from 'src/types/register';
 
 interface State {
   isInitialized: boolean;
@@ -126,7 +128,7 @@ export const AuthProvider: FC<AuthProviderProps> = (props) => {
         const accessToken = globalThis.localStorage.getItem('accessToken');
 
         if (accessToken) {
-          const user = await authApi.me(accessToken);
+          const user = null //await authApi.me(accessToken);
 
           dispatch({
             type: ActionType.INITIALIZE,
@@ -160,10 +162,9 @@ export const AuthProvider: FC<AuthProviderProps> = (props) => {
   }, []);
 
   const login = async (email: string, password: string): Promise<void> => {
-    const accessToken = await authApi.login({ email, password });
-    const user = await authApi.me(accessToken);
+    const {token, user}: LoginResponse = await authApi.login({ email, password });
 
-    localStorage.setItem('accessToken', accessToken);
+    localStorage.setItem('accessToken', token);
 
     dispatch({
       type: ActionType.LOGIN,
@@ -179,21 +180,23 @@ export const AuthProvider: FC<AuthProviderProps> = (props) => {
   };
 
   const register = async (
-    email: string,
     name: string,
+    email: string,
     password: string
   ): Promise<void> => {
-    const accessToken = await authApi.register({ email, name, password });
-    const user = await authApi.me(accessToken);
+    const registerResponse: RegisterResponse = await authApi.register({ name, email , password });
 
-    localStorage.setItem('accessToken', accessToken);
+    if(registerResponse){
+      const {token, user} = await authApi.login({email, password});
+      localStorage.setItem('accessToken', token);
 
-    dispatch({
-      type: ActionType.REGISTER,
-      payload: {
-        user
-      }
-    });
+      dispatch({
+        type: ActionType.REGISTER,
+        payload: {
+          user
+        }
+      });
+    }
   };
 
   return (
