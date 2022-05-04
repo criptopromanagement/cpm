@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 import { useRouter } from 'next/router';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
-import { Box, Button, Checkbox, FormControl, FormControlLabel, FormHelperText, IconButton, InputAdornment, InputLabel, Link, OutlinedInput, TextField, Typography } from '@mui/material';
+import { Alert, AlertTitle, Box, Button, Checkbox, FormControl, FormControlLabel, FormHelperText, IconButton, InputAdornment, InputLabel, Link, OutlinedInput, TextField, Typography } from '@mui/material';
 import { useAuth } from '../../hooks/use-auth';
 import { useMounted } from '../../hooks/use-mounted';
 import Visibility from '@mui/icons-material/Visibility';
@@ -55,6 +55,16 @@ export const JWTLogin: FC = (props) => {
       onSubmit={formik.handleSubmit}
       {...props}
     >
+      {formik.errors.submit && (
+        <Box sx={{ mt: 3 }}>
+          <Alert 
+            severity="error"
+            variant="outlined"
+          >
+          {formik.errors.submit}
+          </Alert>
+        </Box>
+      )}
       <TextField
         autoFocus
         error={Boolean(formik.touched.email && formik.errors.email)}
@@ -141,13 +151,7 @@ export const JWTLogin: FC = (props) => {
           </Link>
         
       </Box>
-      {formik.errors.submit && (
-        <Box sx={{ mt: 3 }}>
-          <FormHelperText error>
-            {formik.errors.submit}
-          </FormHelperText>
-        </Box>
-      )}
+      
       <Box sx={{ mt: 10 }}>
         <Button
           disabled={formik.isSubmitting}

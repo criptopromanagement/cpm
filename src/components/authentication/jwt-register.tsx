@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import { useRouter } from 'next/router';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
-import { Box, Button, Checkbox, FormHelperText, TextField, Typography, Link } from '@mui/material';
+import { Box, Button, Checkbox, FormHelperText, TextField, Typography, Link, Alert } from '@mui/material';
 import { useAuth } from '../../hooks/use-auth';
 import { useMounted } from '../../hooks/use-mounted';
 
@@ -63,6 +63,16 @@ export const JWTRegister: FC = (props) => {
       onSubmit={formik.handleSubmit}
       {...props}
     >
+      {formik.errors.submit && (
+        <Box sx={{ mt: 3 }}>
+          <Alert 
+            severity="error"
+            variant="outlined"
+          >
+          {formik.errors.submit}
+          </Alert>
+        </Box>
+      )}
       <TextField
         error={Boolean(formik.touched.email && formik.errors.email)}
         fullWidth
@@ -133,13 +143,6 @@ export const JWTRegister: FC = (props) => {
         <FormHelperText error>
           {formik.errors.policy}
         </FormHelperText>
-      )}
-      {formik.errors.submit && (
-        <Box sx={{ mt: 3 }}>
-          <FormHelperText error>
-            {formik.errors.submit}
-          </FormHelperText>
-        </Box>
       )}
       <Box sx={{ mt: 2 }}>
         <Button
