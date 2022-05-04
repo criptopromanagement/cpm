@@ -14,6 +14,7 @@ export const JWTRegister: FC = (props) => {
     initialValues: {
       email: '',
       password: '',
+      name:' ',
       passwordConfirmation: '',
       policy: false,
       submit: null
@@ -38,8 +39,7 @@ export const JWTRegister: FC = (props) => {
     }),
     onSubmit: async (values, helpers): Promise<void> => {
       try {
-        console.log(values)
-        // await register(values.email, values.password);
+        await register(values.name, values.email, values.password);
 
         if (isMounted()) {
           const returnUrl = (router.query.returnUrl as string | undefined) || '/dashboard';

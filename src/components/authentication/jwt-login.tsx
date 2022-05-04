@@ -11,7 +11,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 export const JWTLogin: FC = (props) => {
   const isMounted = useMounted();
   const router = useRouter();
-  const { login } = useAuth();
+  const {login} = useAuth();
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -39,8 +39,6 @@ export const JWTLogin: FC = (props) => {
           router.push(returnUrl).catch(console.error);
         }
       } catch (err) {
-        console.error(err);
-
         if (isMounted()) {
           helpers.setStatus({ success: false });
           helpers.setErrors({ submit: err.message });

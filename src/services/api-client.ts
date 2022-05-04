@@ -15,10 +15,10 @@ const request = {
   get: (url: string) => {
     return axios.get(url);
   },
-  post: (url: string, body: object) => {
+  post: (url: string, body: string) => {
     return axios.post(url, body);
   },
-  put: (url: string, body: object) => {
+  put: (url: string, body: string) => {
     return axios.put(url, body);
   },
   delete: (url: string) => {
