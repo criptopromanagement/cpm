@@ -19,7 +19,7 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
         backgroundColor: 'background.default',
         borderBottomColor: 'divider',
         borderBottomStyle: 'solid',
-        borderBottomWidth: 1,
+        borderBottomWidth: 0,
         color: 'text.secondary'
       }}
     >
@@ -50,8 +50,9 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
             color="primary"
             onClick={onOpenSidebar}
             sx={{
+              marginRight: -1.5,
               display: {
-                md: 'none'
+                md: 'none',
               }
             }}
           >
@@ -67,7 +68,7 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
             }}
           >
             <NextLink
-              href="/dashboard"
+              href="/packs"
               passHref
             >
               <Link
@@ -75,11 +76,11 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
                 underline="none"
                 variant="subtitle2"
               >
-                Live Demo
+                Packs
               </Link>
             </NextLink>
             <NextLink
-              href="/browse"
+              href="/blog"
               passHref
             >
               <Link
@@ -88,11 +89,11 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
                 underline="none"
                 variant="subtitle2"
               >
-                Components
+                Blog
               </Link>
             </NextLink>
             <NextLink
-              href="/docs/welcome"
+              href="/contacto"
               passHref
             >
               <Link
@@ -102,18 +103,18 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
                 underline="none"
                 variant="subtitle2"
               >
-                Documentation
+                Contacto
               </Link>
             </NextLink>
             <Button
               component="a"
-              href="https://material-ui.com/store/items/devias-kit-pro"
+              href="/ingresar"
               size="medium"
               sx={{ ml: 2 }}
               target="_blank"
               variant="contained"
             >
-              Buy Now
+              Ingresar
             </Button>
           </Box>
         </Toolbar>

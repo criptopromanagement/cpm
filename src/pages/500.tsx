@@ -12,7 +12,7 @@ const ServerError: NextPage = () => {
     <>
       <Head>
         <title>
-          Error: Server Error | Material Kit Pro
+          Error: Server Error | CPM
         </title>
       </Head>
       <Box

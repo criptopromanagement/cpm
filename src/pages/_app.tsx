@@ -41,7 +41,9 @@ const App: FC<EnhancedAppProps> = (props) => {
   return (
     <CacheProvider value={emotionCache}>
       <Head>
-        <title>CPM | Invierte en Cripto</title>
+        <title>
+          CPM | Inversiones Cripto
+        </title>
         <meta
           name="viewport"
           content="initial-scale=1, width=device-width"

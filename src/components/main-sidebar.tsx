@@ -42,10 +42,21 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
 
   return (
     <Drawer
-      anchor="right"
+      anchor="top"
       onClose={onClose}
       open={!lgUp && open}
-      PaperProps={{ sx: { width: 256 } }}
+      PaperProps={{
+        sx: {
+          width: '70%',
+          height: "20%",
+          marginLeft: 13.5,
+          marginTop: 8,
+          borderTopLeftRadius: 8,
+          borderBottomLeftRadius: 8,
+          borderTopRightRadius: 8,
+          borderBottomRightRadius: 8
+        }
+      }}
       sx={{
         zIndex: (theme) => theme.zIndex.appBar + 100
       }}
@@ -53,7 +64,7 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
     >
       <Box sx={{ p: 2 }}>
         <NextLink
-          href="/dashboard"
+          href="/packs"
           passHref
         >
           <MainSidebarLink
@@ -61,11 +72,11 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
             underline="none"
             variant="subtitle2"
           >
-            Live Demo
+            Packs
           </MainSidebarLink>
         </NextLink>
         <NextLink
-          href="/browse"
+          href="/blog"
           passHref
         >
           <MainSidebarLink
@@ -73,11 +84,11 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
             underline="none"
             variant="subtitle2"
           >
-            Components
+            Blog
           </MainSidebarLink>
         </NextLink>
         <NextLink
-          href="/docs/welcome"
+          href="/contacto"
           passHref
         >
           <MainSidebarLink
@@ -85,19 +96,19 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
             underline="none"
             variant="subtitle2"
           >
-            Documentation
+            Contacto
           </MainSidebarLink>
         </NextLink>
-        <Button
+        {/* <Button
           component="a"
           fullWidth
-          href="https://material-ui.com/store/items/devias-kit-pro"
+          href="#"
           sx={{ mt: 1.5 }}
           target="_blank"
           variant="contained"
         >
-          Buy Now
-        </Button>
+          Ingresar
+        </Button> */}
       </Box>
     </Drawer>
   );

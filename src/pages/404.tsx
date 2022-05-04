@@ -14,7 +14,7 @@ const NotFound: NextPage = () => {
     <>
       <Head>
         <title>
-          Error: Not Found | Material Kit Pro
+          Error: Not Found | CPM
         </title>
       </Head>
       <Box
@@ -70,14 +70,14 @@ const NotFound: NextPage = () => {
             }}
           >
             <NextLink
-              href="/dashboard"
+              href="/"
               passHref
             >
               <Button
                 component="a"
                 variant="outlined"
               >
-                Back to Dashboard
+                Volver al Inicio
               </Button>
             </NextLink>
           </Box>

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import { MainNavbar } from './main-navbar';
 import { MainSidebar } from './main-sidebar';
+import { Footer } from './footer';
 
 interface MainLayoutProps {
   children?: ReactNode;
@@ -28,7 +29,7 @@ export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
         open={isSidebarOpen}
       />
       {children}
-      {/* <Footer /> */}
+      <Footer />
     </MainLayoutRoot>
   );
 };

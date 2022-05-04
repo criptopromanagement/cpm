@@ -8,7 +8,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>CPM | Invierte en Cripto</title>
+        <title>CPM | Inversiones Cripto</title>
       </Head>
       <main>
         <HomeHero />

@@ -34,7 +34,12 @@ export const HomePlans: FC = (props) => {
       }}
     >
       <Container maxWidth="lg">
-        <Grid container justifyContent="center" spacing={5} padding={2}>
+        <Grid
+          container
+          justifyContent="center"
+          spacing={5}
+          padding={2}
+        >
           {plans.map((plan) => (
             <CardPlan key={plan.id} plan={plan} />
           ))}
