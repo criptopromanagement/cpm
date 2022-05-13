@@ -99,16 +99,16 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
             Contacto
           </MainSidebarLink>
         </NextLink>
-        {/* <Button
+        <Button
           component="a"
           fullWidth
-          href="#"
+          href="/login"
           sx={{ mt: 1.5 }}
           target="_blank"
           variant="contained"
         >
           Ingresar
-        </Button> */}
+        </Button>
       </Box>
     </Drawer>
   );
