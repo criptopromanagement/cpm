@@ -53,7 +53,7 @@ const BlogPostList: NextPage = () => {
                     py: 8
                 }}
             >
-                <Container maxWidth="md">
+                <Container maxWidth="lg">
                     <MainNavbar />
                     <Typography
                         variant="h3"

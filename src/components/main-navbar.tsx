@@ -23,7 +23,7 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
         color: 'text.secondary'
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="xl">
         <Toolbar
           disableGutters
           sx={{ minHeight: 64 }}

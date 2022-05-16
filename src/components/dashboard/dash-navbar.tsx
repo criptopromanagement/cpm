@@ -5,26 +5,10 @@ import NextLink from 'next/link';
 import { AppBar, Box, Menu, MenuItem, Container, IconButton, Link, Toolbar } from '@mui/material';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { Logo } from '../logo';
-import { styled } from '@mui/material/styles';
 
 interface MainNavbarProps {
   onOpenSidebar?: () => void;
 }
-
-const teta = () => {
-  console.log('teta')
-}
-
-const MainSidebarLink = styled(Link)(
-  ({ theme }) => ({
-    borderRadius: theme.shape.borderRadius,
-    display: 'block',
-    padding: theme.spacing(1.5),
-    '&:hover': {
-      backgroundColor: theme.palette.action.hover
-    }
-  })
-);
 
 export const MainNavbar: FC<MainNavbarProps> = (props) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -47,7 +31,7 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
         color: 'text.secondary'
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="xl">
         <Toolbar
           disableGutters
           sx={{ minHeight: 64 }}
