@@ -9,7 +9,7 @@ export const HomeClients: FC = (props) => (
     }}
     {...props}
   >
-    <Container maxWidth="lg">
+    <Container maxWidth="xl">
       <Typography
         align="center"
         sx={{ pb: 6 }}

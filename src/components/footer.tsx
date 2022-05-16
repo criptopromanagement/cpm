@@ -71,7 +71,7 @@ export const Footer: FC = (props) => (
     }}
     {...props}
   >
-    <Container maxWidth="lg">
+    <Container maxWidth="xl">
       <Grid
         container
         spacing={3}

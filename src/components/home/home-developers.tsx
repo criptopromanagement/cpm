@@ -14,7 +14,7 @@ export const HomeDevelopers: FC = (props) => {
       }}
       {...props}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="xl">
         <Grid
           alignItems="center"
           container
