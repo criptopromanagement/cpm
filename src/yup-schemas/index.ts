@@ -1,0 +1,1 @@
+export { stepperFormSchema } from './stepper-form-schema';

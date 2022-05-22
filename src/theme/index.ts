@@ -1,5 +1,6 @@
 import type { Direction, Theme } from '@mui/material';
 import { createTheme as createMuiTheme, responsiveFontSizes } from '@mui/material/styles';
+import { aditionalThemeOptions } from './aditional-theme-options';
 import { baseThemeOptions } from './base-theme-options';
 import { darkThemeOptions } from './dark-theme-options';
 import { lightThemeOptions } from './light-theme-options';
@@ -32,35 +33,11 @@ interface ThemeConfig {
   mode: 'light' | 'dark';
 }
 
-declare module '@mui/material/styles' {
-  interface TypographyVariants {
-    bigBalanceAmounts: React.CSSProperties;
-  }
-
-  interface TypographyVariantsOptions {
-    bigBalanceAmounts?: React.CSSProperties;
-  }
-}
-
-declare module '@mui/material/Typography' {
-  interface TypographyPropsVariantOverrides {
-    bigBalanceAmounts: true;
-  }
-}
-
-const additionaltypographies = {
-  typography: {
-    bigBalanceAmounts: {
-      fontSize: '2.5rem',
-      fontWeight: "bold"
-    }
-  }
-}
 export const createTheme = (config: ThemeConfig): Theme => {
   let theme = createMuiTheme(
     baseThemeOptions,
     darkThemeOptions,
-    additionaltypographies
+    aditionalThemeOptions
   );
 
   if (config.responsiveFontSizes) {
