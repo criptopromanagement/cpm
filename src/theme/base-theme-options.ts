@@ -315,7 +315,7 @@ export const baseThemeOptions: ThemeOptions = {
       fontWeight: 600,
       fontSize: '1.125rem',
       lineHeight: 1.375
-    }
+    },
   },
   zIndex: {
     appBar: 1200,

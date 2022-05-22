@@ -158,6 +158,9 @@ export const darkThemeOptions: ThemeOptions = {
           }
         }
       }
+    },
+    MuiTypography:{
+
     }
   },
   palette: {

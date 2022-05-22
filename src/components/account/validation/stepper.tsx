@@ -1,35 +1,24 @@
 import { FC, useState } from "react";
-import {
-  Box,
-  Button,
-  Container,
-  IconButton,
-  MobileStepper,
-  Paper,
-  Typography,
-} from "@mui/material";
+import { Box, Container, IconButton, Paper, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { StepperForm } from "./stepper-forms";
 
 export const Stepper: FC = (props) => {
-
-
   return (
     <Box
       sx={{
         backgroundColor: "background.default",
         minHeight: "100%",
-        p: 3,
+        p: { xs: 0.5, lg: 3 },
       }}
     >
       <Container maxWidth="sm">
-        <Paper 
-          elevation={12} 
+        <Paper
+        elevation={5}
           sx={{
             position: "relative",
             backgroundColor: "background.default",
-            minHeight: '90vh'
-        }}
+          }}
         >
           <IconButton
             sx={{
@@ -49,29 +38,15 @@ export const Stepper: FC = (props) => {
             }}
           >
             <div>
-              <Typography 
-                variant="h5" 
-                align="center"
-              >
+              <Typography variant="h5" align="center">
                 Completá tu cuenta
               </Typography>
-              <Typography color="textSecondary"
-                sx={{ mt: 1 }}
-                variant="body2"
-              >
+              <Typography color="textSecondary" sx={{ mt: 1 }} variant="body2">
                 Completá los siguientes datos personales para empezar a invertir
               </Typography>
             </div>
           </Box>
-          <Box
-            p={3}
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-          <StepperForm/>
-          </Box>
+          <StepperForm />
         </Paper>
       </Container>
     </Box>
