@@ -3,10 +3,10 @@ import axios from "axios";
 axios.defaults.baseURL = "https://cpm-back-end.herokuapp.com/api";
 
 axios.interceptors.request.use((config) =>{
-  const token = window.localStorage.getItem("token") || "";
+  const accessToken = window.localStorage.getItem("accessToken") || "";
   config.headers = {
     "Content-Type": "application/json",
-    'cpm-user-app-token': token
+    'cpm-user-app-token': accessToken
   }
   return config;
 })
