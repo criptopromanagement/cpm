@@ -49,8 +49,9 @@ class AuthApi {
     return new Promise(async (resolve, reject) => {
       try {
         const response = await ApiClient.get("/users");
+        console.log(response.data)
         const user: UserDetail = response.data;
-        console.log("error")
+        console.log("no error")
         resolve(user);
       } catch (err) {
         if (err?.reponse) {
