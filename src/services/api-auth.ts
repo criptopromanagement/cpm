@@ -49,15 +49,12 @@ class AuthApi {
     return new Promise(async (resolve, reject) => {
       try {
         const response = await ApiClient.get("/users");
-        console.log(response.data)
         const user: UserDetail = response.data;
-        console.log("no error")
         resolve(user);
       } catch (err) {
         if (err?.reponse) {
           reject(new Error(err.response.data.error));
         } else {
-          console.log("error")
           reject(new Error("Error de servidor"));
         }
       }

@@ -13,39 +13,41 @@ import EditIcon from "@mui/icons-material/Edit";
 import { Button } from "@mui/material";
 import { FC, useState } from "react";
 import { ModalMyInfo } from "./ModalMyInfo";
-import { FormChangeAlias } from "./FormChangeAlias";
+import { FormChangeFirstName } from "./FormChangeFirstName";
 import { FormChangeMail } from "./FormChangeMail";
 import { FormChangeAddress } from "./FormChangeAddress";
+import { UserDetail } from "src/types/user-data";
 
-interface Props {}
-export const TabMyInfo: FC<Props> = () => {
-  const xs = useMediaQuery((theme) => theme.breakpoints.up('xs'));
-  console.log(xs)
-  const [openEditUser, setOpenEditUser] = useState<boolean>(false);
+interface Props {
+  user: UserDetail;
+}
+export const TabMyInfo: FC<Props> = ({ user }) => {
+  const xs = useMediaQuery((theme) => theme.breakpoints.up("xs"));
+  const [openEditFirstName, setOpenEditFirstName] = useState<boolean>(false);
   const [openEditEmail, setOpenEditEmail] = useState<boolean>(false);
   const [openEditAddress, setOpenEditAddress] = useState<boolean>(false);
   const [openModal, setOpenModal] = useState<boolean>(false);
 
   const closeModal = () => {
     setOpenModal(false);
-    setOpenEditUser(false);
+    setOpenEditFirstName(false);
     setOpenEditEmail(false);
     setOpenEditAddress(false);
   };
   const handleOpen = (value: string) => {
     switch (value) {
-      case "user":
-        setOpenEditUser(true);
+      case "firstname":
+        setOpenEditFirstName(true);
         setOpenEditEmail(false);
         setOpenEditAddress(false);
         break;
       case "email":
-        setOpenEditUser(false);
+        setOpenEditFirstName(false);
         setOpenEditEmail(true);
         setOpenEditAddress(false);
         break;
       case "address":
-        setOpenEditUser(false);
+        setOpenEditFirstName(false);
         setOpenEditEmail(false);
         setOpenEditAddress(true);
         break;
@@ -53,16 +55,6 @@ export const TabMyInfo: FC<Props> = () => {
         break;
     }
     setOpenModal(true);
-  };
-  const user = {
-    avatar: "",
-    name: "Jane Doe",
-    user: "Jane Doe",
-    nacionality: "Argentina",
-    cuil: "23-3333333333333-2",
-    email: "jane_doe@gmail.com",
-    fecha_nacimiento: "02/03/2002",
-    domicilio: "Av Siempre Viva 123",
   };
 
   return (
@@ -76,7 +68,7 @@ export const TabMyInfo: FC<Props> = () => {
       >
         <Grid item md={12} xs={12}>
           <Typography variant="h5" textAlign="center">
-            {user.name}
+            {user.full_name}
           </Typography>
         </Grid>
         <Grid
@@ -109,15 +101,15 @@ export const TabMyInfo: FC<Props> = () => {
               <Grid container direction="column" spacing={2}>
                 <Grid item>
                   <Typography variant="body1">Nombre</Typography>
-                  <Typography>{user.name}</Typography>
+                  <Typography>{user.full_name}</Typography>
                 </Grid>
                 <Grid item>
-                  <Typography>Usuario</Typography>
+                  <Typography>Primer Nombre</Typography>
                   <Typography>
-                    {user.user}{" "}
+                    {user.firstname}{" "}
                     <IconButton
-                      name="user"
-                      onClick={() => handleOpen("user")}
+                      name="firstname"
+                      onClick={() => handleOpen("firstname")}
                       size="small"
                     >
                       <EditIcon fontSize="inherit" />
@@ -126,11 +118,11 @@ export const TabMyInfo: FC<Props> = () => {
                 </Grid>
                 <Grid item>
                   <Typography>Nacionalidad</Typography>
-                  <Typography>{user.nacionality}</Typography>
+                  <Typography>{user.country}</Typography>
                 </Grid>
                 <Grid item>
                   <Typography>CUIL</Typography>
-                  <Typography>{user.cuil}</Typography>
+                  <Typography>{user.legalId}</Typography>
                 </Grid>
                 <Grid item>
                   <Typography>Email</Typography>
@@ -147,12 +139,12 @@ export const TabMyInfo: FC<Props> = () => {
                 </Grid>
                 <Grid item>
                   <Typography>Fecha de nacimiento</Typography>
-                  <Typography>{user.fecha_nacimiento}</Typography>
+                  <Typography>{user.birthday}</Typography>
                 </Grid>
                 <Grid item>
                   <Typography>Domicilio</Typography>
                   <Typography>
-                    {user.domicilio}{" "}
+                    {user.address}{" "}
                     <IconButton
                       onClick={() => handleOpen("address")}
                       size="small"
@@ -167,8 +159,8 @@ export const TabMyInfo: FC<Props> = () => {
         </Grid>
       </Grid>
       <ModalMyInfo open={openModal} handleClose={closeModal}>
-        {openEditUser && <FormChangeAlias closeModal={closeModal} />}
-        {openEditEmail && <FormChangeMail closeModal={closeModal} />}
+        {openEditFirstName && <FormChangeFirstName closeModal={closeModal} firstname={user.firstname} />}
+        {openEditEmail && <FormChangeMail closeModal={closeModal} email={user.email} />}
         {openEditAddress && <FormChangeAddress closeModal={closeModal} />}
       </ModalMyInfo>
     </>

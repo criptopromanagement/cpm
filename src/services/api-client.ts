@@ -21,6 +21,9 @@ const request = {
   put: (url: string, body: string) => {
     return axios.put(url, body);
   },
+  patch: (url: string, body: string) => {
+    return axios.patch(url, body);
+  },
   delete: (url: string) => {
     return axios.delete(url);
   },

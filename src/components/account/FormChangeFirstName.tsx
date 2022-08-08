@@ -1,5 +1,11 @@
 import React, { FC } from "react";
-import { Grid, Typography, TextField, Button, CircularProgress } from "@mui/material";
+import {
+  Grid,
+  Typography,
+  TextField,
+  Button,
+  CircularProgress,
+} from "@mui/material";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import ApiClient from "../../services/api-client";
@@ -10,33 +16,36 @@ import {
   succesNotification,
 } from "src/slices/my-account-notificacion-slice";
 import { MyAccountNotification } from "./MyAccountNotification";
-
 interface Props {
-  email: string;
+  firstname: string;
   closeModal: () => void;
 }
-export const FormChangeMail: FC<Props> = ({ email, closeModal }) => {
+
+export const FormChangeFirstName: FC<Props> = ({ firstname, closeModal }) => {
   const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
-      email: "",
+      firstname: "",
     },
     validationSchema: Yup.object({
-      email: Yup.string().email().required("Debes ingresar el email"),
+      firstname: Yup.string()
+        .max(10, "El primer nombre debe ser menor a 10 caracteres")
+        .required("Debes ingresar el primer nombre"),
     }),
     onSubmit: async (values, helpers): Promise<void> => {
       try {
         const json = JSON.stringify(values);
-        console.log(json);
         const response = await ApiClient.patch("/users", json);
         closeModal();
         dispatch(setUser({ token: "", user: response.data }));
-        dispatch(succesNotification("Cambiaste tu email"));
+        dispatch(succesNotification("Cambiaste tu primer nombre"));
       } catch (err) {
-        dispatch(errorNotification("No se pudo cambiar tu email"));
+        dispatch(errorNotification("No se pudo cambiar tu primer nombre"));
       }
     },
   });
+
   return (
     <Grid
       container
@@ -59,25 +68,27 @@ export const FormChangeMail: FC<Props> = ({ email, closeModal }) => {
         <Typography variant="h3">¿Cómo querés que te llamemos?</Typography>
       </Grid>
       <Grid item xs={12} sm={12} md={12} lg={12}>
-        <Typography variant="body1">Modificar email de contacto</Typography>
+        <Typography variant="body1">
+          El nombre que elijas será el que usaremos para comunicarnos con vos
+          dentro de la plataforma.
+        </Typography>
       </Grid>
       <Grid item xs={12} sm={12} md={12} lg={12}>
         <Typography variant="body1">
-          Te enviaremos un email para confirmación
+          Sólo usaremos el nombre que figura en tu DNI si es necesario
         </Typography>
       </Grid>
       <Grid item xs={12}>
         <TextField
           fullWidth
           focused
-          label="Email elegido"
-          placeholder={email}
-          name="email"
-          type="email"
+          label="Primer nombre elegido"
+          placeholder={firstname}
+          name="firstname"
           onBlur={formik.handleBlur}
-          helperText={formik.touched.email && formik.errors.email}
-          error={Boolean(formik.touched.email && formik.errors.email)}
-          value={formik.values.email}
+          helperText={formik.touched.firstname && formik.errors.firstname}
+          error={Boolean(formik.touched.firstname && formik.errors.firstname)}
+          value={formik.values.firstname}
           onChange={formik.handleChange}
         />
       </Grid>
@@ -85,11 +96,11 @@ export const FormChangeMail: FC<Props> = ({ email, closeModal }) => {
         <Button
           color="primary"
           fullWidth
-          variant="contained"
-          type="submit"
+          variant="outlined"
           disabled={Boolean(
             Object.keys(formik.errors).length || formik.isSubmitting
           )}
+          type="submit"
           endIcon={
             formik.isSubmitting && (
               <CircularProgress size={20} color="primary" />

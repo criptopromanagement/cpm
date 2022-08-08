@@ -125,7 +125,6 @@ export const AuthProvider: FC<AuthProviderProps> = (props) => {
     const initialize = async (): Promise<void> => {
       try {
         const accessToken = globalThis.localStorage.getItem("accessToken");
-        console.log("accestoken");
         if (accessToken) {
           const user = await authApi.me();
           reduxDispatch(setUser({ user: user, token: "accessToken" }));

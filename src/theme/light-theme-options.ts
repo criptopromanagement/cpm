@@ -37,9 +37,9 @@ const secondary = {
 };
 
 const success = {
-  main: '#14B8A6',
-  light: '#43C6B7',
-  dark: '#0E8074',
+  main: '#0F3',
+  light: '#0F3',
+  dark: '#0E8D27',
   contrastText: neutral[900]
 };
 

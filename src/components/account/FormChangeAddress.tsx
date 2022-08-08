@@ -9,7 +9,18 @@ interface Props {
 export const FormChangeAddress: FC<Props> = ({ closeModal }) => {
   const theme = useTheme();
   return (
-    <>
+    <Grid
+      container
+      item
+      xs={12}
+      sm={12}
+      md={12}
+      lg={12}
+      sx={{ bgcolor: "background.paper" }}
+      p={2}
+      rowSpacing={2}
+      boxShadow={24}
+    >
       <Grid item xs={12} sm={12} md={12} lg={12}>
         <Card style={{ borderTop: `3px solid ${theme.palette.primary.main}` }}>
           <CardContent>
@@ -39,6 +50,6 @@ export const FormChangeAddress: FC<Props> = ({ closeModal }) => {
           Volver al inicio
         </Button>
       </Grid>
-    </>
+    </Grid>
   );
 };

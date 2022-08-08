@@ -28,6 +28,9 @@ const userInitialState: UserState = {
       profile_complete: false,
       id: "",
       full_name: "",
+      avatar: "",
+      username: "",
+      birthday: "",
     },
     token: "",
   },
@@ -46,4 +49,4 @@ const slice = createSlice({
   },
 });
 export const { reducer } = slice;
-export const {setUser} = slice.actions;
+export const { setUser } = slice.actions;
