@@ -50,6 +50,7 @@ class AuthApi {
       try {
         const response = await ApiClient.get("/users");
         const user: UserDetail = response.data;
+        console.log(user, "me")
         resolve(user);
       } catch (err) {
         if (err?.reponse) {
