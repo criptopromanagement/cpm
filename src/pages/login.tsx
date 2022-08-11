@@ -7,6 +7,7 @@ import { Box, Card, Container, Divider, Link, Typography } from '@mui/material';
 import { Logo } from '../components/logo';
 import { useAuth } from '../hooks/use-auth';
 import { JWTLogin } from '../components/authentication/jwt-login';
+import { GuestGuard } from 'src/components/authentication/guest-guard';
 
 type Platform = 'JWT';
 
@@ -114,5 +115,11 @@ const Login: NextPage = () => {
     </>
   );
 };
+
+Login.getLayout = (page) => (
+  <GuestGuard>
+    {page}
+  </GuestGuard>
+);
 
 export default Login;

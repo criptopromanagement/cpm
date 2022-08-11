@@ -35,7 +35,7 @@ interface ThemeConfig {
 export const createTheme = (config: ThemeConfig): Theme => {
   let theme = createMuiTheme(
     baseThemeOptions,
-    lightThemeOptions,
+    darkThemeOptions,
   );
 
   if (config.responsiveFontSizes) {

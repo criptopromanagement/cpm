@@ -6,6 +6,7 @@ import { Box, Card, Container, Divider, Link, Typography } from '@mui/material';
 import { Logo } from '../components/logo';
 import { useAuth } from '../hooks/use-auth';
 import { JWTRegister } from '../components/authentication/jwt-register';
+import { GuestGuard } from 'src/components/authentication/guest-guard';
 
 type Platform = 'Amplify' | 'Auth0' | 'Firebase' | 'JWT';
 
@@ -112,5 +113,11 @@ const Register: NextPage = () => {
     </>
   );
 };
+
+Register.getLayout = (page) => (
+  <GuestGuard>
+    {page}
+  </GuestGuard>
+);
 
 export default Register;
