@@ -19,10 +19,9 @@ import { FormChangeAddress } from "./FormChangeAddress";
 import { UserDetail } from "src/types/user-data";
 
 interface Props {
-  user: UserDetail;
+  user: UserDetail | null;
 }
 export const TabMyInfo: FC<Props> = ({ user }) => {
-  const xs = useMediaQuery((theme) => theme.breakpoints.up("xs"));
   const [openEditFirstName, setOpenEditFirstName] = useState<boolean>(false);
   const [openEditEmail, setOpenEditEmail] = useState<boolean>(false);
   const [openEditAddress, setOpenEditAddress] = useState<boolean>(false);
@@ -68,7 +67,7 @@ export const TabMyInfo: FC<Props> = ({ user }) => {
       >
         <Grid item md={12} xs={12}>
           <Typography variant="h5" textAlign="center">
-            {user.full_name}
+            {user?.full_name}
           </Typography>
         </Grid>
         <Grid
@@ -80,7 +79,7 @@ export const TabMyInfo: FC<Props> = ({ user }) => {
         >
           <Grid item md={12} xs={12}>
             <Avatar
-              src={user.avatar}
+              src={user?.avatar}
               sx={{
                 height: 80,
                 mr: 2,
@@ -101,12 +100,12 @@ export const TabMyInfo: FC<Props> = ({ user }) => {
               <Grid container direction="column" spacing={2}>
                 <Grid item>
                   <Typography variant="body1">Nombre</Typography>
-                  <Typography>{user.full_name}</Typography>
+                  <Typography>{user?.full_name}</Typography>
                 </Grid>
                 <Grid item>
                   <Typography>Primer Nombre</Typography>
                   <Typography>
-                    {user.firstname}{" "}
+                    {user?.firstname}{" "}
                     <IconButton
                       name="firstname"
                       onClick={() => handleOpen("firstname")}
@@ -118,16 +117,16 @@ export const TabMyInfo: FC<Props> = ({ user }) => {
                 </Grid>
                 <Grid item>
                   <Typography>Nacionalidad</Typography>
-                  <Typography>{user.country}</Typography>
+                  <Typography>{user?.country}</Typography>
                 </Grid>
                 <Grid item>
                   <Typography>CUIL</Typography>
-                  <Typography>{user.legalId}</Typography>
+                  <Typography>{user?.legalId}</Typography>
                 </Grid>
                 <Grid item>
                   <Typography>Email</Typography>
                   <Typography>
-                    {user.email}{" "}
+                    {user?.email}{" "}
                     <IconButton
                       name="email"
                       onClick={() => handleOpen("email")}
@@ -139,12 +138,12 @@ export const TabMyInfo: FC<Props> = ({ user }) => {
                 </Grid>
                 <Grid item>
                   <Typography>Fecha de nacimiento</Typography>
-                  <Typography>{user.birthday}</Typography>
+                  <Typography>{user?.birthday}</Typography>
                 </Grid>
                 <Grid item>
                   <Typography>Domicilio</Typography>
                   <Typography>
-                    {user.address}{" "}
+                    {user?.address}{" "}
                     <IconButton
                       onClick={() => handleOpen("address")}
                       size="small"
@@ -159,8 +158,15 @@ export const TabMyInfo: FC<Props> = ({ user }) => {
         </Grid>
       </Grid>
       <ModalMyInfo open={openModal} handleClose={closeModal}>
-        {openEditFirstName && <FormChangeFirstName closeModal={closeModal} firstname={user.firstname} />}
-        {openEditEmail && <FormChangeMail closeModal={closeModal} email={user.email} />}
+        {openEditFirstName && (
+          <FormChangeFirstName
+            closeModal={closeModal}
+            firstname={user?.firstname}
+          />
+        )}
+        {openEditEmail && (
+          <FormChangeMail closeModal={closeModal} email={user?.email} />
+        )}
         {openEditAddress && <FormChangeAddress closeModal={closeModal} />}
       </ModalMyInfo>
     </>

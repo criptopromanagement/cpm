@@ -1,27 +1,47 @@
 import Head from "next/head";
 import { Box, Container, Tab, Tabs, Typography, Divider } from "@mui/material";
 import { MainNavbar } from "../../components/dashboard/dash-navbar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TabMyInfo } from "../../components/account";
-import { useDispatch, useSelector } from "react-redux";
 import { AuthGuard } from "src/components/authentication/auth-guard";
 import { MyAccountNotification } from "src/components/account/MyAccountNotification";
 import type { NextPage } from "next";
+import { useSelector } from "src/store";
+import { useRouter } from "next/router";
 
-const Account: NextPage = () => {
+interface Props {
+  tab: string;
+}
+const Account: NextPage<Props> = ({ tab }) => {
+  const router = useRouter();
+  const { pathname, query } = router;
+
+  const [currentTab, setCurrentTab] = useState<string>(tab);
+
   const { userData } = useSelector((state) => state.user);
   const { user } = userData;
-  const [currentTab, setCurrentTab] = useState<number>(0);
 
   const tabs = [
-    { label: "Mis datos", value: 0 },
-    { label: "Mis cuentas", value: 1 },
-    { label: "seguridad", value: 2 },
+    { label: "Mis datos", value: "0" },
+    { label: "Mis cuentas", value: "1" },
+    { label: "Seguridad", value: "2" },
   ];
 
-  const handleChangeTabs = (event: any, newValue: number) => {
+  const handleChangeTabs = (event: any, newValue: string) => {
     setCurrentTab(newValue);
+    router.push({
+      pathname,
+      query: {
+        ...query,
+        tab: newValue,
+      },
+    });
   };
+
+  useEffect(() => {
+    setCurrentTab(tab);
+  }, [tab]);
+
   return (
     <>
       <Head>
@@ -52,12 +72,18 @@ const Account: NextPage = () => {
           <Divider sx={{ mb: 3 }} />
           <Box sx={{ mt: 4 }}>
             <MyAccountNotification showSuccess />
-            {currentTab === 0 && <TabMyInfo user={user} />}
+            {currentTab === "0" && <TabMyInfo user={user} />}
           </Box>
         </Container>
       </Box>
     </>
   );
 };
+
+Account.getInitialProps = async ({ query }) => {
+  const tab: string = query.tab?.toString() ?? "0";
+  return { tab };
+};
+
 Account.getLayout = (page) => <AuthGuard>{page}</AuthGuard>;
 export default Account;

@@ -1,5 +1,11 @@
 import React, { FC } from "react";
-import { Grid, Typography, TextField, Button, CircularProgress } from "@mui/material";
+import {
+  Grid,
+  Typography,
+  TextField,
+  Button,
+  CircularProgress,
+} from "@mui/material";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import ApiClient from "../../services/api-client";
@@ -12,7 +18,7 @@ import {
 import { MyAccountNotification } from "./MyAccountNotification";
 
 interface Props {
-  email: string;
+  email: string | undefined;
   closeModal: () => void;
 }
 export const FormChangeMail: FC<Props> = ({ email, closeModal }) => {

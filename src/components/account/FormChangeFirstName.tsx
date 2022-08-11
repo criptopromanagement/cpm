@@ -17,7 +17,7 @@ import {
 } from "src/slices/my-account-notificacion-slice";
 import { MyAccountNotification } from "./MyAccountNotification";
 interface Props {
-  firstname: string;
+  firstname: string | undefined;
   closeModal: () => void;
 }
 
@@ -96,11 +96,11 @@ export const FormChangeFirstName: FC<Props> = ({ firstname, closeModal }) => {
         <Button
           color="primary"
           fullWidth
-          variant="outlined"
+          variant="contained"
+          type="submit"
           disabled={Boolean(
             Object.keys(formik.errors).length || formik.isSubmitting
           )}
-          type="submit"
           endIcon={
             formik.isSubmitting && (
               <CircularProgress size={20} color="primary" />

@@ -17,7 +17,6 @@ import {
   Typography,
   Avatar,
 } from "@mui/material";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import { Logo } from "../logo";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -28,6 +27,7 @@ import CollectionsBookmarkIcon from "@mui/icons-material/CollectionsBookmark";
 import LogoutIcon from "@mui/icons-material/Logout";
 import CloseIcon from "@mui/icons-material/Close";
 import { useSelector } from "../../store/index";
+import Link from "next/link";
 
 interface MainNavbarProps {
   onOpenSidebar?: () => void;
@@ -40,7 +40,6 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
-
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -121,24 +120,30 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
                 </ListItemText>
               </MenuItem>
               <Divider />
-              <MenuItem>
-                <ListItemIcon>
-                  <AccountCircleIcon fontSize="small" />
-                </ListItemIcon>
-                <ListItemText>Mis datos</ListItemText>
-              </MenuItem>
-              <MenuItem>
-                <ListItemIcon>
-                  <LockOutlinedIcon fontSize="small" />
-                </ListItemIcon>
-                <ListItemText>Seguridad</ListItemText>
-              </MenuItem>
-              <MenuItem>
-                <ListItemIcon>
-                  <AccountBalanceIcon fontSize="small" />
-                </ListItemIcon>
-                <ListItemText>Mis cuentas</ListItemText>
-              </MenuItem>
+              <Link href="/account?tab=0">
+                <MenuItem>
+                  <ListItemIcon>
+                    <AccountCircleIcon fontSize="small" />
+                  </ListItemIcon>
+                  <ListItemText>Mis datos</ListItemText>
+                </MenuItem>
+              </Link>
+              <Link href="/account?tab=1">
+                <MenuItem>
+                  <ListItemIcon>
+                    <LockOutlinedIcon fontSize="small" />
+                  </ListItemIcon>
+                  <ListItemText>Seguridad</ListItemText>
+                </MenuItem>
+              </Link>
+              <Link href="/account?tab=2">
+                <MenuItem>
+                  <ListItemIcon>
+                    <AccountBalanceIcon fontSize="small" />
+                  </ListItemIcon>
+                  <ListItemText>Mis cuentas</ListItemText>
+                </MenuItem>
+              </Link>
               <Divider />
               <MenuItem>
                 <ListItemIcon>
