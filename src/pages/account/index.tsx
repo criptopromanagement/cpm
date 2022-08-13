@@ -2,7 +2,7 @@ import Head from "next/head";
 import { Box, Container, Tab, Tabs, Typography, Divider } from "@mui/material";
 import { MainNavbar } from "../../components/dashboard/dash-navbar";
 import { useEffect, useState } from "react";
-import { TabMyInfo } from "../../components/account";
+import { TabMyInfo } from "../../components/account/MyData";
 import { AuthGuard } from "src/components/authentication/auth-guard";
 import { MyAccountNotification } from "src/components/account/MyAccountNotification";
 import type { NextPage } from "next";
