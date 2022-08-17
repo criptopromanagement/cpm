@@ -1,7 +1,7 @@
 import { Alert, IconButton } from "@mui/material";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { closeNotification } from "src/slices/my-account-notificacion-slice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector, RootStateOrAny } from "react-redux";
 import { FC } from "react";
 
 interface Props {
@@ -13,7 +13,7 @@ export const MyAccountNotification: FC<Props> = ({
   showError = false,
 }) => {
   const { msg, open, type } = useSelector(
-    (state) => state.myAccountNotification
+    (state: RootStateOrAny) => state.myAccountNotification
   );
   const dispatch = useDispatch();
   const handleCloseNotification = () => {
