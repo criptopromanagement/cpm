@@ -3,9 +3,11 @@ import type { FC } from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import { Box, Button, Drawer, Link, useMediaQuery } from '@mui/material';
+import { Box, Button, Drawer, IconButton, Link, useMediaQuery, } from '@mui/material';
 import type { Theme } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import CloseIcon from '@mui/icons-material/Close';
+
 
 interface MainSidebarProps {
   onClose?: () => void;
@@ -34,6 +36,12 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
     }
   };
 
+  const handleClose = () => {
+    if (open) {
+      onClose?.()
+    }
+  };
+
   useEffect(
     handlePathChange,
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -47,9 +55,7 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
       open={!lgUp && open}
       PaperProps={{
         sx: {
-          width: '70%',
-          height: "20%",
-          marginLeft: 13.5,
+          width: '100%',
           marginTop: 8,
           borderTopLeftRadius: 8,
           borderBottomLeftRadius: 8,
@@ -63,16 +69,31 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
       variant="temporary"
     >
       <Box sx={{ p: 2 }}>
+        <IconButton
+          color='primary'
+          onClick={handleClose}
+        // edge="end"
+
+        // sx={{
+        //   display: {
+        //     md: 'flex',
+        //     alignItems: 'flex-end'
+        //   }
+        // }}
+
+        >
+          <CloseIcon />
+        </IconButton>
         <NextLink
-          href="/packs"
+          href="/indices"
           passHref
         >
           <MainSidebarLink
-            color="textSecondary"
+            color="textPrimary"
             underline="none"
             variant="subtitle2"
           >
-            Packs
+            Índices
           </MainSidebarLink>
         </NextLink>
         <NextLink
@@ -80,7 +101,7 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
           passHref
         >
           <MainSidebarLink
-            color="textSecondary"
+            color="textPrimary"
             underline="none"
             variant="subtitle2"
           >
@@ -92,25 +113,60 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
           passHref
         >
           <MainSidebarLink
-            color="textSecondary"
+            color="textPrimary"
             underline="none"
             variant="subtitle2"
           >
             Contacto
           </MainSidebarLink>
         </NextLink>
+        <NextLink
+          href="/ayuda"
+          passHref
+        >
+          <MainSidebarLink
+            color="textPrimary"
+            underline="none"
+            variant="subtitle2"
+          >
+            Ayuda
+          </MainSidebarLink>
+        </NextLink>
+        <NextLink
+          href="/terminos"
+          passHref
+        >
+          <MainSidebarLink
+            color="textPrimary"
+            underline="none"
+            variant="subtitle2"
+          >
+            Términos
+          </MainSidebarLink>
+        </NextLink>
+        <Button
+          component="a"
+          fullWidth
+          href="/signup"
+          sx={{ mt: 15 }}
+          target="_blank"
+          variant="contained"
+        >
+          Registrate
+        </Button>
+
         <Button
           component="a"
           fullWidth
           href="/login"
           sx={{ mt: 1.5 }}
           target="_blank"
-          variant="contained"
+          variant="outlined"
         >
-          Ingresar
+          Inicia sesión
         </Button>
       </Box>
-    </Drawer>
+    </Drawer >
   );
 };
 
