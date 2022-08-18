@@ -1,6 +1,5 @@
 import React from "react";
 import type { FC } from "react";
-import PropTypes from "prop-types";
 import NextLink from "next/link";
 import {
   AppBar,
@@ -26,14 +25,12 @@ import HelpIcon from "@mui/icons-material/Help";
 import CollectionsBookmarkIcon from "@mui/icons-material/CollectionsBookmark";
 import LogoutIcon from "@mui/icons-material/Logout";
 import CloseIcon from "@mui/icons-material/Close";
-import { useSelector } from "../../store/index";
+import { useDispatch, useSelector } from "../../store/index";
 import Link from "next/link";
+import { openLogoutModal } from "src/slices/logout-modal-slice";
 
-interface MainNavbarProps {
-  onOpenSidebar?: () => void;
-}
-
-export const MainNavbar: FC<MainNavbarProps> = (props) => {
+export const LoggedNavbar: FC = () => {
+  const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.user);
   const { user } = userData;
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -44,6 +41,9 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
     setAnchorEl(null);
   };
 
+  const handleOpenLogoutModal = () => {
+    dispatch(openLogoutModal());
+  };
   return (
     <AppBar
       elevation={0}
@@ -128,7 +128,7 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
                   <ListItemText>Mis datos</ListItemText>
                 </MenuItem>
               </Link>
-              <Link href="/account?tab=1">
+              <Link href="/account?tab=2">
                 <MenuItem>
                   <ListItemIcon>
                     <LockOutlinedIcon fontSize="small" />
@@ -136,7 +136,7 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
                   <ListItemText>Seguridad</ListItemText>
                 </MenuItem>
               </Link>
-              <Link href="/account?tab=2">
+              <Link href="/account?tab=1">
                 <MenuItem>
                   <ListItemIcon>
                     <AccountBalanceIcon fontSize="small" />
@@ -164,25 +164,16 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
                 <ListItemText>Términos & condiciones</ListItemText>
               </MenuItem>
               <Divider />
-              <MenuItem>
+              <MenuItem onClick={handleOpenLogoutModal}>
                 <ListItemIcon>
                   <LogoutIcon fontSize="small" />
                 </ListItemIcon>
                 <ListItemText>Cerrar sesión</ListItemText>
               </MenuItem>
-              {/* <MenuItem onClick={handleClose}>My cuenta</MenuItem>
-                <MenuItem onClick={handleClose}>Seguridad</MenuItem>
-                <MenuItem onClick={handleClose}>Cuentas bancarias</MenuItem>
-                <MenuItem onClick={handleClose}>Validación de datos</MenuItem>
-                <MenuItem onClick={handleClose}>Cerrar sesión</MenuItem> */}
             </MenuList>
           </Menu>
         </Toolbar>
       </Container>
     </AppBar>
   );
-};
-
-MainNavbar.propTypes = {
-  onOpenSidebar: PropTypes.func,
 };

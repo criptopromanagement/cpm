@@ -1,6 +1,4 @@
-import Head from "next/head";
 import { Box, Container, Tab, Tabs, Typography, Divider } from "@mui/material";
-import { MainNavbar } from "../../components/dashboard/dash-navbar";
 import { useEffect, useState } from "react";
 import { TabMyInfo } from "../../components/account/MyData";
 import { TabSecurity } from "../../components/account/security";
@@ -9,7 +7,7 @@ import { MyAccountNotification } from "src/components/account/MyAccountNotificat
 import type { NextPage } from "next";
 import { useSelector } from "src/store";
 import { useRouter } from "next/router";
-
+import { LoggedLayout } from "src/components/common";
 
 interface Props {
   tab: string;
@@ -46,10 +44,6 @@ const Account: NextPage<Props> = ({ tab }) => {
 
   return (
     <>
-      <Head>
-        <title>Mi cuenta | CPM</title>
-      </Head>
-      <MainNavbar />
       <Box
         component="main"
         sx={{
@@ -88,5 +82,9 @@ Account.getInitialProps = async ({ query }) => {
   return { tab };
 };
 
-Account.getLayout = (page) => <AuthGuard>{page}</AuthGuard>;
+Account.getLayout = (page) => (
+  <AuthGuard>
+    <LoggedLayout head="Mi cuenta | CPM">{page}</LoggedLayout>
+  </AuthGuard>
+);
 export default Account;

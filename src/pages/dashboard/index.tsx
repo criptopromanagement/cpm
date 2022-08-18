@@ -1,21 +1,16 @@
 import React from "react";
-import Head from "next/head";
 import { Box, Container, Grid, Typography } from "@mui/material";
-import { MainNavbar } from "../../components/dashboard/dash-navbar";
 import { Balance } from "src/components/dashboard/dash-balance";
-import { useSelector } from "react-redux";
 import { AuthGuard } from "src/components/authentication/auth-guard";
 import type { NextPage } from "next";
+import { LoggedLayout } from "src/components/common";
+import { useSelector } from "src/store";
 
 const Dashboard: NextPage = () => {
   const { userData } = useSelector((state) => state.user);
   const { user } = userData;
   return (
     <>
-      <Head>
-        <title>Dashboard | CPM</title>
-      </Head>
-      <MainNavbar />
       <Box
         component="main"
         sx={{
@@ -27,7 +22,7 @@ const Dashboard: NextPage = () => {
             <Grid container justifyContent="space-between" spacing={3}>
               <Grid item>
                 <Typography variant="h4">
-                  ¡Hola {user.firstname} {user.lastname}!
+                  ¡Hola {user?.firstname} {user?.lastname}!
                 </Typography>
               </Grid>
             </Grid>
@@ -38,6 +33,10 @@ const Dashboard: NextPage = () => {
     </>
   );
 };
-Dashboard.getLayout = (page) => <AuthGuard>{page}</AuthGuard>;
+Dashboard.getLayout = (page) => (
+  <AuthGuard>
+    <LoggedLayout head="Dashboard | CPM">{page}</LoggedLayout>
+  </AuthGuard>
+);
 
 export default Dashboard;
