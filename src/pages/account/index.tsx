@@ -3,7 +3,7 @@ import { Box, Container, Tab, Tabs, Typography, Divider } from "@mui/material";
 import { MainNavbar } from "../../components/dashboard/dash-navbar";
 import { useEffect, useState } from "react";
 import { TabMyInfo } from "../../components/account/MyData";
-import { TabSecurity } from "../../components/account/Security";
+import { TabSecurity } from "../../components/account/security";
 import { AuthGuard } from "src/components/authentication/auth-guard";
 import { MyAccountNotification } from "src/components/account/MyAccountNotification";
 import type { NextPage } from "next";

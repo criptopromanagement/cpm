@@ -1,6 +1,8 @@
 import { Grid } from "@mui/material";
 import React from "react";
-import { FormChangePassword } from "./FormChangePassword";
+import { AccountLogout } from "./account-logout";
+import { FormChangePassword } from "./form-change-password";
+import { LoginHistory } from "./login-history";
 
 export const TabSecurity = () => {
   return (
@@ -12,6 +14,8 @@ export const TabSecurity = () => {
       alignItems="stretch"
     >
       <FormChangePassword />
+      <LoginHistory />
+      <AccountLogout />
     </Grid>
   );
 };
