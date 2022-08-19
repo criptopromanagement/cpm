@@ -27,7 +27,7 @@ const Dashboard: NextPage = () => {
             <Grid container justifyContent="space-between" spacing={3}>
               <Grid item>
                 <Typography variant="h4">
-                  ¡Hola {user.firstname} {user.lastname}!
+                  ¡Hola {user?.firstname} {user?.lastname}!
                 </Typography>
               </Grid>
             </Grid>
