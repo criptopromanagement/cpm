@@ -3,9 +3,9 @@ import Head from "next/head";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { MainNavbar } from "../../components/dashboard/dash-navbar";
 import { Balance } from "src/components/dashboard/dash-balance";
-import { useSelector } from "react-redux";
 import { AuthGuard } from "src/components/authentication/auth-guard";
 import type { NextPage } from "next";
+import { useSelector } from "src/store";
 
 const Dashboard: NextPage = () => {
   const { userData } = useSelector((state) => state.user);
