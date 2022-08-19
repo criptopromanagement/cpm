@@ -13,7 +13,7 @@ export const MyAccountNotification: FC<Props> = ({
   showError = false,
 }) => {
   const { msg, open, type } = useSelector(
-    (state) => state.myAccountNotification
+    (state: RootStateOrAny) => state.myAccountNotification
   );
   const dispatch = useDispatch();
   const handleCloseNotification = () => {
