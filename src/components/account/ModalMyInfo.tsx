@@ -1,5 +1,4 @@
 import { Grid, Modal, Box, useMediaQuery, useTheme } from "@mui/material";
-
 import { FC } from "react";
 
 interface Props {
