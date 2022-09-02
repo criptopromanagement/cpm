@@ -144,7 +144,7 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
         <Button
           component="a"
           fullWidth
-          href="/signup"
+          href="/register"
           sx={{ mt: 15 }}
           variant="contained"
         >
