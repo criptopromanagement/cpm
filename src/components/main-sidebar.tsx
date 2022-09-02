@@ -146,7 +146,6 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
           fullWidth
           href="/signup"
           sx={{ mt: 15 }}
-          target="_blank"
           variant="contained"
         >
           Registrate
@@ -157,7 +156,6 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
           fullWidth
           href="/login"
           sx={{ mt: 1.5 }}
-          target="_blank"
           variant="outlined"
         >
           Inicia sesión
