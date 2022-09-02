@@ -57,10 +57,7 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
         sx: {
           width: '100%',
           marginTop: 8,
-          borderTopLeftRadius: 8,
-          borderBottomLeftRadius: 8,
-          borderTopRightRadius: 8,
-          borderBottomRightRadius: 8
+          backgroundColor: 'background.default'
         }
       }}
       sx={{
