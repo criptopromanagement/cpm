@@ -12,7 +12,8 @@ export const HomePlans: FC = (props) => {
       cover: "/static/home/foundation.svg",
       title: "Foundation",
       description:
-        "Pack de inversión en proyectos cripto. Invertí en contratos inteligentes de manera diversificada.",
+        "Obtené una exposición diversificada en los principales proyectos de plataformas de contratos inteligentes.",
+      subdescription: "Foundation consta de un índice con las cripto mas valiosas y mejor consolidadas en el sector según la capitalización de mercado",
       informationLink: "",
       investmentLink: "",
     },
