@@ -16,15 +16,6 @@ export const HomePlans: FC = (props) => {
       informationLink: "",
       investmentLink: "",
     },
-    {
-      id: "2",
-      cover: "/static/home/p2e.svg",
-      title: "P2E: Axie Infinity",
-      description:
-        "Ganá en el mundo gaming, sin jugar. Becá jugadores y llevá a tu equipo a las grandes ligas.",
-      informationLink: "",
-      investmentLink: "",
-    },
   ];
   return (
     <Box

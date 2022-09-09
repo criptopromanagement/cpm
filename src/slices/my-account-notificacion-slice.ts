@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { AlertColor } from "@mui/material";
 
 interface MyAccountNotificationState {
   msg: string;
   open: boolean;
-  type: string;
+  type: AlertColor | undefined;
 }
 const initialState: MyAccountNotificationState = {
   msg: "",
