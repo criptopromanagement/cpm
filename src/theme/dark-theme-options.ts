@@ -174,6 +174,13 @@ export const darkThemeOptions: ThemeOptions = {
           }
         }
       }
+    },
+    MuiTypography:{
+      styleOverrides:{
+        body2:{
+          color: neutral[400]
+        }
+      }
     }
   },
   palette: {

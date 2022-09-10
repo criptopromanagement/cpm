@@ -1,8 +1,9 @@
 import { Alert, IconButton } from "@mui/material";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { closeNotification } from "src/slices/my-account-notificacion-slice";
+import { useDispatch } from "react-redux";
 import { FC } from "react";
-import { useDispatch, useSelector } from "src/store";
+import { useSelector } from "src/store";
 
 interface Props {
   showSuccess?: boolean;

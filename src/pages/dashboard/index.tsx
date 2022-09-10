@@ -1,10 +1,9 @@
 import React from "react";
-import Head from "next/head";
 import { Box, Container, Grid, Typography } from "@mui/material";
-import { MainNavbar } from "../../components/dashboard/dash-navbar";
 import { Balance } from "src/components/dashboard/dash-balance";
 import { AuthGuard } from "src/components/authentication/auth-guard";
 import type { NextPage } from "next";
+import { LoggedLayout } from "src/components/common";
 import { useSelector } from "src/store";
 
 const Dashboard: NextPage = () => {
@@ -12,10 +11,6 @@ const Dashboard: NextPage = () => {
   const { user } = userData;
   return (
     <>
-      <Head>
-        <title>Dashboard | CPM</title>
-      </Head>
-      <MainNavbar />
       <Box
         component="main"
         sx={{
@@ -38,6 +33,10 @@ const Dashboard: NextPage = () => {
     </>
   );
 };
-Dashboard.getLayout = (page) => <AuthGuard>{page}</AuthGuard>;
+Dashboard.getLayout = (page) => (
+  <AuthGuard>
+    <LoggedLayout head="Dashboard | CPM">{page}</LoggedLayout>
+  </AuthGuard>
+);
 
 export default Dashboard;
