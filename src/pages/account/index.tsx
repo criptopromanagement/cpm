@@ -1,8 +1,8 @@
 import { Box, Container, Tab, Tabs, Typography, Divider } from "@mui/material";
 import { useEffect, useState } from "react";
 import { TabMyInfo } from "../../components/account/MyData";
-import { TabSecurity } from "../../components/account/security";
 import { AuthGuard } from "src/components/authentication/auth-guard";
+import { TabSecurity } from "../../components/account/security";
 import { MyAccountNotification } from "src/components/account/MyAccountNotification";
 import type { NextPage } from "next";
 import { useSelector } from "src/store";
