@@ -48,14 +48,14 @@ export const HomeHero: FC = (props) => {
           align="left" 
           variant="h1"
         >
-          INVERTÍ EN LA INDUSTRIA CRIPTO
+          INVERTÍ EN CRIPTO
         </Typography>
         <Typography 
           align="left" 
           variant="subtitle2" 
           sx={{ py: 1 }}
         >
-          ELEGÍ TU PACK PARA INVERTIR DE MANERA PROFESIONAL EN EL MUNDO CRIPTO
+          La industria cripto ofrece miles de oportunidades. Accedé de forma simple a través de nuestros fondos diseñados y gestionados por profesionales
         </Typography>
         <NextLink 
           href="/dashboard" 

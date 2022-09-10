@@ -58,6 +58,20 @@ export const CardPlan = ({ plan }: Props) => (
         >
           {plan.description}
         </Typography>
+        <Typography
+          color="textSecondary"
+          sx={{
+            height: 92,
+            mt: 1,
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            WebkitBoxOrient: "vertical",
+            WebkitLineClamp: 2,
+          }}
+          variant="body1"
+        >
+          {plan.subdescription}
+        </Typography>
       </Box>
         <Stack
           direction={{ xs: 'column', sm: 'row' }}
