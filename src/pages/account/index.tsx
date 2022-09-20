@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { TabMyInfo } from "../../components/account/MyData";
 import { AuthGuard } from "src/components/authentication/auth-guard";
 import { TabSecurity } from "../../components/account/Security";
+import { TabMyAccount } from "../../components/account/accounts";
 import { MyAccountNotification } from "src/components/account/MyAccountNotification";
 import type { NextPage } from "next";
 import { useSelector } from "src/store";
@@ -67,8 +68,8 @@ const Account: NextPage<Props> = ({ tab }) => {
           </Tabs>
           <Divider sx={{ mb: 3 }} />
           <Box sx={{ mt: 4 }}>
-            <MyAccountNotification showSuccess />
             {currentTab === "0" && <TabMyInfo user={user} />}
+            {currentTab === "1" && <TabMyAccount />}
             {currentTab === "2" && <TabSecurity />}
           </Box>
         </Container>

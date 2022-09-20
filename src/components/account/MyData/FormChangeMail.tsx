@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import ApiClient from "../../../services/api-client"
+import ApiClient from "../../../services/api-client";
 import { useDispatch } from "react-redux";
 import { setUser } from "src/slices/user-slice";
 import {
@@ -37,9 +37,19 @@ export const FormChangeMail: FC<Props> = ({ email, closeModal }) => {
         const response = await ApiClient.patch("/users", json);
         closeModal();
         dispatch(setUser({ token: "", user: response.data }));
-        dispatch(succesNotification("Cambiaste tu email"));
+        dispatch(
+          succesNotification({
+            msg: "Cambiaste tu email",
+            tab: "my-data",
+          })
+        );
       } catch (err) {
-        dispatch(errorNotification("No se pudo cambiar tu email"));
+        dispatch(
+          errorNotification({
+            msg: "No se pudo cambiar tu email",
+            tab: "my-data",
+          })
+        );
       }
     },
   });
@@ -59,7 +69,7 @@ export const FormChangeMail: FC<Props> = ({ email, closeModal }) => {
       onSubmit={formik.handleSubmit}
     >
       <Grid item xs={12} sm={12} md={12} lg={12}>
-        <MyAccountNotification showError />
+        <MyAccountNotification showError currentTab="my-data"/>
       </Grid>
       <Grid item xs={12} sm={12} md={12} lg={12}>
         <Typography variant="h3">¿Cómo querés que te llamemos?</Typography>

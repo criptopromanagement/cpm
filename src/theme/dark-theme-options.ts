@@ -20,7 +20,7 @@ const background = {
   paper: neutral[900]
 };
 
-const divider = '#2D3748';
+const divider = '#8F898F';
 
 const primary = {
   main: '#0F3',

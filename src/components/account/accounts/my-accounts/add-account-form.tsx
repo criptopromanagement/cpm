@@ -8,46 +8,45 @@ import {
 } from "@mui/material";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import ApiClient from "../../services/api-client";
+import ApiClient from "../../../../services/api-client";
 import { useDispatch } from "react-redux";
 import { setUser } from "src/slices/user-slice";
 import {
   errorNotification,
   succesNotification,
 } from "src/slices/my-account-notificacion-slice";
-import { MyAccountNotification } from "./MyAccountNotification";
+import { MyAccountNotification } from "../../MyAccountNotification";
 
 interface Props {
-  email: string | undefined;
   closeModal: () => void;
 }
-export const FormChangeMail: FC<Props> = ({ email, closeModal }) => {
+export const AddAccountForm: FC<Props> = ({ closeModal }) => {
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
-      email: "",
+      name: "",
+      cbu: "",
     },
     validationSchema: Yup.object({
-      email: Yup.string().email().required("Debes ingresar el email"),
+      name: Yup.string().required("Debes ingresar el nombre de cuenta"),
+      cbu: Yup.string().required("Debes ingresar el CBU"),
     }),
     onSubmit: async (values, helpers): Promise<void> => {
       try {
         const json = JSON.stringify(values);
-        console.log(json);
-        const response = await ApiClient.patch("/users", json);
+        // const response = await ApiClient.patch("/users", json
         closeModal();
-        dispatch(setUser({ token: "", user: response.data }));
         dispatch(
           succesNotification({
-            msg: "Cambiaste tu email",
-            tab: "my-data",
+            msg: "Añadiste una nueva cuenta bancaria",
+            tab: "my-accounts",
           })
         );
       } catch (err) {
         dispatch(
           errorNotification({
-            msg: "No se pudo cambiar tu email",
-            tab: "my-data",
+            msg: "No se pudo cambiar tu name",
+            tab: "my-accounts",
           })
         );
       }
@@ -69,31 +68,43 @@ export const FormChangeMail: FC<Props> = ({ email, closeModal }) => {
       onSubmit={formik.handleSubmit}
     >
       <Grid item xs={12} sm={12} md={12} lg={12}>
-        <MyAccountNotification showError currentTab="my-data" />
+        <MyAccountNotification showSuccess showError currentTab="my-accounts" />
       </Grid>
       <Grid item xs={12} sm={12} md={12} lg={12}>
-        <Typography variant="h3">¿Cómo querés que te llamemos?</Typography>
-      </Grid>
-      <Grid item xs={12} sm={12} md={12} lg={12}>
-        <Typography variant="body1">Modificar email de contacto</Typography>
+        <Typography variant="h3">Agregar una cuenta bancaria</Typography>
       </Grid>
       <Grid item xs={12} sm={12} md={12} lg={12}>
         <Typography variant="body1">
-          Te enviaremos un email para confirmación
+          Te enviaremos un name para confirmación
         </Typography>
       </Grid>
       <Grid item xs={12}>
         <TextField
           fullWidth
           focused
-          label="Email elegido"
-          placeholder={email}
-          name="email"
-          type="email"
+          label="Nombre de cuenta"
+          placeholder="Ej: Santander pesos"
+          name="name"
+          type="text"
           onBlur={formik.handleBlur}
-          helperText={formik.touched.email && formik.errors.email}
-          error={Boolean(formik.touched.email && formik.errors.email)}
-          value={formik.values.email}
+          helperText={formik.touched.name && formik.errors.name}
+          error={Boolean(formik.touched.name && formik.errors.name)}
+          value={formik.values.name}
+          onChange={formik.handleChange}
+        />
+      </Grid>
+      <Grid item xs={12}>
+        <TextField
+          fullWidth
+          focused
+          label="CBU"
+          placeholder="CBU o Alias"
+          name="cbu"
+          type="text"
+          onBlur={formik.handleBlur}
+          helperText={formik.touched.cbu && formik.errors.cbu}
+          error={Boolean(formik.touched.cbu && formik.errors.cbu)}
+          value={formik.values.cbu}
           onChange={formik.handleChange}
         />
       </Grid>

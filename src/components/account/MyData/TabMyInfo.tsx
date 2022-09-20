@@ -16,6 +16,7 @@ import { FormChangeFirstName } from "./FormChangeFirstName";
 import { FormChangeMail } from "./FormChangeMail";
 import { FormChangeAddress } from "./FormChangeAddress";
 import { UserDetail } from "src/types/user-data";
+import { MyAccountNotification } from "../MyAccountNotification";
 
 interface Props {
   user: UserDetail | null;
@@ -64,6 +65,7 @@ export const TabMyInfo: FC<Props> = ({ user }) => {
         justifyContent="center"
         alignItems="stretch"
       >
+        <MyAccountNotification showSuccess currentTab="my-data" />
         <Grid item md={12} xs={12}>
           <Typography variant="h5" textAlign="center">
             {user?.full_name}
