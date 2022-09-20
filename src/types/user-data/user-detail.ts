@@ -1,9 +1,11 @@
+import { Account } from "./account";
+
 export interface UserDetail {
   email: string;
   active: boolean;
   terms: Date | string;
   documents: string[];
-  accounts: string[];
+  accounts: Account[];
   createdAt: Date | string;
   updatedAt: Date | string;
   address: string;

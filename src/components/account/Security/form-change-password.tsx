@@ -35,7 +35,6 @@ export const FormChangePassword = () => {
     }),
     onSubmit: async (values, helpers): Promise<void> => {},
   });
-  console.log(formik.values);
   return (
     <Grid item md={12} xs={12}>
       <Card>

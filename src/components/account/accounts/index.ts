@@ -1,0 +1,1 @@
+export { TabMyAccount } from "./tab-my-account";
