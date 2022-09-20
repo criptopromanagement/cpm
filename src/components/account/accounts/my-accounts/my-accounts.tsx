@@ -4,6 +4,7 @@ import {
   CardActions,
   CardContent,
   CardHeader,
+  Divider,
   Grid,
 } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
@@ -16,6 +17,7 @@ import { AddAccountForm } from "./add-account-form";
 import { DeleteAccountModal } from "./delete-account-modal";
 import { errorNotification } from "src/slices/my-account-notificacion-slice";
 import { useDispatch } from "../../../../store/index";
+import { Typography } from "@mui/material";
 
 export const MyAccounts = () => {
   const { user } = useSelector((state) => state.user.userData);
@@ -61,9 +63,8 @@ export const MyAccounts = () => {
     },
   ]; // user?.accounts;
   const [openModal, setOpenModal] = useState<boolean>(false);
-  const [openDeleteAccountModal, setOpenDeleteAccountModal] = useState<boolean>(
-    false
-  );
+  const [openDeleteAccountModal, setOpenDeleteAccountModal] =
+    useState<boolean>(false);
   const closeModal = () => {
     setOpenModal(false);
   };
@@ -80,10 +81,21 @@ export const MyAccounts = () => {
         <Card>
           <CardHeader title="Cuentas bancarias" />
           <CardContent style={{ paddingTop: 0, paddingBottom: 0 }}>
-            <AccountList
-              myAccounts={myAccounts}
-              handleDeleteAccount={handleDeleteAccount}
-            />
+            {myAccounts.length > 0 ? (
+              <AccountList
+                myAccounts={myAccounts}
+                handleDeleteAccount={handleDeleteAccount}
+              />
+            ) : (
+              <>
+                <Typography style={{ color: "#A1AEC1" }}>
+                  Aún no tenés una cuenta bancaria asociada.
+                </Typography>
+                <Typography style={{ color: "#A1AEC1" }}>
+                  Agrega una para empezar a invertir
+                </Typography>
+              </>
+            )}
           </CardContent>
           <CardActions style={{ paddingTop: 0 }}>
             <Button endIcon={<ArrowForwardIcon />} onClick={openAddAccount}>
