@@ -2,14 +2,18 @@ import axios from "axios";
 
 axios.defaults.baseURL = "https://cpm-back-end.herokuapp.com/api";
 
-axios.interceptors.request.use((config) =>{
-  const accessToken = window.localStorage.getItem("accessToken") || "";
+axios.interceptors.request.use((config) => {
+  const accessToken =
+    config.params !== undefined
+      ? config.params?.token
+      : window.localStorage.getItem("accessToken") || "";
   config.headers = {
     "Content-Type": "application/json",
-    'cpm-user-app-token': accessToken
-  }
+    "cpm-user-app-token": accessToken,
+  };
+
   return config;
-})
+});
 
 const request = {
   get: (url: string) => {
@@ -17,6 +21,9 @@ const request = {
   },
   post: (url: string, body: string) => {
     return axios.post(url, body);
+  },
+  postWithToken: (url: string, body: string, token: string) => {
+    return axios.post(url, body, { params: { token } });
   },
   put: (url: string, body: string) => {
     return axios.put(url, body);

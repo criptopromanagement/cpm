@@ -12,11 +12,10 @@ class AuthApi {
       try {
         const json = JSON.stringify(userLoginData);
         const response = await ApiClient.post("/auth/login", json);
-
         const data: User = response.data;
         resolve(data);
       } catch (err) {
-        if (err?.reponse) {
+        if (err?.response) {
           reject(new Error(err.response.data.error));
         } else {
           reject(new Error("Error de servidor"));
@@ -50,7 +49,6 @@ class AuthApi {
       try {
         const response = await ApiClient.get("/users");
         const user: UserDetail = response.data;
-        console.log(user, "me")
         resolve(user);
       } catch (err) {
         if (err?.reponse) {
