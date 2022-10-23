@@ -7,6 +7,7 @@ import { Box, Button, Drawer, IconButton, Link, useMediaQuery, } from '@mui/mate
 import type { Theme } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import CloseIcon from '@mui/icons-material/Close';
+import { display } from '@mui/system';
 
 
 interface MainSidebarProps {
@@ -50,13 +51,12 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
 
   return (
     <Drawer
-      anchor="top"
+      anchor="right"
       onClose={onClose}
       open={!lgUp && open}
       PaperProps={{
         sx: {
           width: '100%',
-          marginTop: 8,
           backgroundColor: 'background.default'
         }
       }}
@@ -67,17 +67,12 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
     >
       <Box sx={{ p: 2 }}>
         <IconButton
+          style={{
+            width: "190%"
+          }}
           color='primary'
           onClick={handleClose}
-        // edge="end"
-
-        // sx={{
-        //   display: {
-        //     md: 'flex',
-        //     alignItems: 'flex-end'
-        //   }
-        // }}
-
+          size="large"
         >
           <CloseIcon />
         </IconButton>
