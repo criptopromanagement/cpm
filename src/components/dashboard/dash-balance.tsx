@@ -125,12 +125,15 @@ const BarChart: FC = () => {
   const chartSeries = [{ data: [10, 20, 30, 40, 50, 60, 5] }];
 
   return (
-    <Chart
-      options={chartOptions}
-      series={chartSeries}
-      type="bar"
-      width={120}
-    />
+        // @ts-ignore
+    <>
+      <Chart
+        options={chartOptions}
+        series={chartSeries}
+        type="bar"
+        width={120}
+      />
+    </>
   );
 };
 
