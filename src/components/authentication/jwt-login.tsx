@@ -140,7 +140,7 @@ export const JWTLogin: FC = (props) => {
             color:'white'
           }}
             component="a"
-            href="#"
+            href="/reset-password"
           >
           <Typography
             color="white"
