@@ -12,7 +12,7 @@ import { FC } from "react";
 
 interface Props {
   token?: string;
-  redirect: () => void;
+  redirect?: () => void;
 }
 export const FormChangePassword: FC<Props> = ({ token, redirect }) => {
   const dispatch = useDispatch();
@@ -54,7 +54,7 @@ export const FormChangePassword: FC<Props> = ({ token, redirect }) => {
             tab: "security",
           })
         );
-        token && redirect();
+        token && redirect?.();
       } catch (error) {
         dispatch(
           errorNotification({
