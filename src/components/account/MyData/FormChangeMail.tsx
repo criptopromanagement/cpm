@@ -33,7 +33,7 @@ export const FormChangeMail: FC<Props> = ({ email, closeModal }) => {
     onSubmit: async (values, helpers): Promise<void> => {
       try {
         const json = JSON.stringify(values);
-        console.log(json);
+        
         const response = await ApiClient.patch("/users", json);
         closeModal();
         dispatch(setUser({ token: "", user: response.data }));

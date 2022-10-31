@@ -1,5 +1,4 @@
 import type { FC } from "react";
-import NextLink from "next/link";
 import { Box } from "@mui/system";
 import { Container, Grid } from "@mui/material";
 import { Plan } from "src/types/plan";
