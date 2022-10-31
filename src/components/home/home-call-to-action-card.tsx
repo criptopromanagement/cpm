@@ -15,8 +15,7 @@ interface Props {
 
 const BlogPostCardMediaWrapper = styled("div")({
     paddingTop: "calc(50% * 4 / 4)",
-    position: "relative",
-
+    position: "relative"
 });
 
 export const HomeCallCard = ({ plan }: Props) => (
@@ -24,14 +23,13 @@ export const HomeCallCard = ({ plan }: Props) => (
         item
         md={4}
         xs={12}
-        sx={{
-
-        }}
     >
         <Card
             sx={{
                 height: "100%",
                 p: 2,
+                backgroundColor: "#1A1B1A",
+                boxShadow: "none"
             }}
         >
             <BlogPostCardMediaWrapper>
