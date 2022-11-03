@@ -26,10 +26,7 @@ export const HomeCallCard = ({ plan }: Props) => (
     >
         <Card
             sx={{
-                height: "100%",
-                p: 2,
-                backgroundColor: "#1A1B1A",
-                boxShadow: "none"
+                borderRadius: "unset",
             }}
         >
             <BlogPostCardMediaWrapper>
@@ -37,10 +34,10 @@ export const HomeCallCard = ({ plan }: Props) => (
                     image={plan.cover}
                     sx={{
                         height: "100%",
+                        width: "100%",
                         position: "absolute",
                         top: 0,
-                        width: "100%",
-                        transform: "rotateY(180deg)"
+                        transform: "rotateY(180deg)",
                     }}
                 />
                 <Typography
