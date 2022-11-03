@@ -1,0 +1,74 @@
+import { Button, Typography } from "@mui/material";
+import { Box, Container } from "@mui/system";
+import Head from "next/head";
+import React from "react";
+import { Footer } from "src/components/footer";
+import { MainNavbar } from "src/components/main-navbar";
+import NextLink from "next/link";
+import Composition from "./composition";
+import Terms from "./terms";
+
+const Indices = () => {
+  return (
+    <>
+      <Head>
+        <title>CPM | Indices</title>
+      </Head>
+            <Box
+                component="main"
+                sx={{
+                    flexGrow: 1,
+                    py: 8
+                }}
+            >
+                <Container maxWidth="lg">
+                    <MainNavbar />
+                    <Typography
+                        variant="h3"
+                        sx={{ mt: 3, mb: 1 }}
+                    >
+                        &lt;	Índices fondo CPM
+                    </Typography>
+                    <Typography
+                        color="textSecondary"
+                        variant="subtitle1"
+                    >
+                        Fondo de inversión en proyectos cripto.
+                    </Typography>
+                    
+                    <Typography
+                        color="textSecondary"
+                        variant="subtitle1"
+                        sx={{ mb: 2 }}
+                    >
+                        Contratos inteligentes seleccionados de manera diversificada.
+                    </Typography>
+                    <NextLink 
+                        href={'dashboard'} 
+                        passHref
+                    >
+                        <Button
+                        component="a" 
+                        size="large"
+                        fullWidth
+                        variant="contained"
+                        >
+                        Invertir
+                        </Button>
+                    </NextLink>
+                    <Composition />
+                    <Typography
+                        variant="h5"
+                        sx={{ mt: 3 }}
+                    >
+                        Términos
+                    </Typography>
+                    <Terms />
+                </Container>
+            </Box>
+      <Footer />
+    </>
+  );
+};
+
+export default Indices;
