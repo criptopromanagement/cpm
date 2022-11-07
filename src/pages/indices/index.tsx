@@ -1,5 +1,4 @@
-import { Button, Typography } from "@mui/material";
-import { Box, Container } from "@mui/system";
+import { Box, Button, Container, Typography } from "@mui/material";
 import Head from "next/head";
 import React from "react";
 import { Footer } from "src/components/footer";
