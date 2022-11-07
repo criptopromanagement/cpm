@@ -6,6 +6,8 @@ import { MainNavbar } from "src/components/main-navbar";
 import NextLink from "next/link";
 import Composition from "./composition";
 import Terms from "./terms";
+import Documents from "./documents";
+import Performance from "./performance";
 
 const Indices = () => {
   return (
@@ -63,6 +65,14 @@ const Indices = () => {
                         Términos
                     </Typography>
                     <Terms />
+                    <Typography
+                        variant="h5"
+                        sx={{ mt: 3, mb: 2 }}
+                    >
+                        Rendimiento
+                    </Typography>
+                    <Performance />
+                    <Documents />
                 </Container>
             </Box>
       <Footer />
