@@ -28,12 +28,16 @@ export const HomeCallToAction: FC = (props) => {
                 flexGrow: 5,
             }}
         >
-            <Container maxWidth="lg">
+            <Container
+                maxWidth="lg"
+                style={{
+                    padding: 0
+                }}
+            >
                 <Grid
                     container
                     justifyContent="center"
                     spacing={5}
-                    padding={2}
                 >
                     {plans.map((plan) => (
                         <HomeCallCard key={plan.id} plan={plan} />
