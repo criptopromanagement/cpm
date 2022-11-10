@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import type { FC } from "react";
 import {
   Box,
   Container,
@@ -11,40 +11,40 @@ import {
   ListItemText,
   Typography,
   Stack,
-  useMediaQuery
-} from '@mui/material';
-import { Logo } from './logo';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import { styled } from '@mui/material/styles';
+  useMediaQuery,
+} from "@mui/material";
+import { Logo } from "./logo";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import { styled } from "@mui/material/styles";
 
 const sections = [
   {
-    title: 'Menu',
+    title: "Menu",
     links: [
       {
-        title: 'Packs',
-        href: '#'
+        title: "Packs",
+        href: "#",
       },
       {
-        title: 'Blog',
-        href: '/blog'
+        title: "Blog",
+        href: "/blog",
       },
       {
-        title: 'Ayuda',
-        href: '#'
+        title: "Ayuda",
+        href: "#",
       },
       {
-        title: 'Contacto',
-        href: '#'
+        title: "Contacto",
+        href: "#",
       },
       {
-        title: 'Términos',
-        href: '#'
-      }
-    ]
-  }
+        title: "Términos",
+        href: "#",
+      },
+    ],
+  },
 ];
 
 // const Mobile = styled('div')(({theme}) => ({
@@ -55,58 +55,43 @@ const sections = [
 //   }
 // }));
 
-
 export const Footer: FC = (props) => (
   <Box
     sx={{
-      backgroundColor: 'background.footer',
-      borderTopColor: 'divider',
-      borderTopStyle: 'solid',
+      backgroundColor: "background.footer",
+      borderTopColor: "divider",
+      borderTopStyle: "solid",
       borderTopWidth: 1,
       pb: 2,
       pt: {
         md: 6,
-        xs: 6
-      }
+        xs: 6,
+      },
     }}
     {...props}
   >
     <Container maxWidth="xl">
-      <Grid
-        container
-        spacing={3}
-      >
+      <Grid container spacing={3}>
         <Grid
           container
           justifyContent={{ lg: "left", xs: "center" }}
           direction="row"
           textAlign={{ lg: "left", xs: "center" }}
           spacing={0}
-          item md={4} lg={4} xl={4} sm={12} xs={12}
+          item
+          md={4}
+          lg={4}
+          xl={4}
+          sm={12}
+          xs={12}
         >
-          <Grid
-            item
-            md={4}
-            lg={4}
-            xl={4}
-            sm={4}
-            xs={4}
-          >
+          <Grid item md={4} lg={4} xl={4} sm={4} xs={4}>
             <Logo variant="light" />
           </Grid>
-          <Grid
-            item
-            md={12}
-            lg={12}
-            xl={12}
-            sm={12}
-            xs={12}
-          >
-            <Typography
-              color="textSecondary"
-              variant="caption"
-            >
-              Nos apasiona difundir y brindar herramientas para invertir en tecnologías blockchain
+          <Grid item md={12} lg={12} xl={12} sm={12} xs={12}>
+            <Typography color="textSecondary" variant="caption">
+              Nos apasiona difundir y brindar herramientas para invertir en
+              tecnologías blockchain
             </Typography>
           </Grid>
         </Grid>
@@ -118,7 +103,8 @@ export const Footer: FC = (props) => (
           item
           md={8}
           sm={8}
-          xs={12}>
+          xs={12}
+        >
           {sections.map((section, index) => (
             <Grid
               item
@@ -128,8 +114,8 @@ export const Footer: FC = (props) => (
               sx={{
                 order: {
                   md: index + 2,
-                  xs: index + 1
-                }
+                  xs: index + 1,
+                },
               }}
               xs={12}
             >
@@ -140,12 +126,12 @@ export const Footer: FC = (props) => (
                     key={link.title}
                     sx={{
                       pb: 0,
-                      pt: 1
+                      pt: 1,
                     }}
                   >
                     <ListItemText
-                    sx={{textAlign: {xs:'center', lg:'right'}}}
-                      primary={(
+                      sx={{ textAlign: { xs: "center", lg: "right" } }}
+                      primary={
                         <Link
                           href={link.href}
                           color="textPrimary"
@@ -153,7 +139,7 @@ export const Footer: FC = (props) => (
                         >
                           {link.title}
                         </Link>
-                      )}
+                      }
                     />
                   </ListItem>
                 ))}
@@ -164,45 +150,42 @@ export const Footer: FC = (props) => (
       </Grid>
       <Divider
         sx={{
-          borderColor:{lg:"#FFF", xs:"#474444"},
-          my: 2
+          borderColor: { lg: "#FFF", xs: "#474444" },
+          my: 2,
         }}
       />
 
       <Grid
         container
-        direction={{ md: "row", lg: "row", xl: "row", sm: "row", xs: "row-reverse" }}
+        direction={{
+          md: "row",
+          lg: "row",
+          xl: "row",
+          sm: "row",
+          xs: "row-reverse",
+        }}
         justifyContent="space-between"
         alignItems="flex-start"
       >
-        <Grid
-          item
-          display={{ xs: "none", lg: "block" }}
-          xs={12}
-          lg={4}
-        >
-          <Typography
-            color="textSecondary"
-            variant="caption"
-          >
+        <Grid item display={{ xs: "none", lg: "block" }} xs={12} lg={4}>
+          <Typography color="textSecondary" variant="caption">
             © Cripto Pro Management 2022
           </Typography>
         </Grid>
-        <Grid
-          item
-          lg={8}
-          xs={12}
-        >
+        <Grid item lg={8} xs={12}>
           <Stack
             direction="row"
             spacing={3}
-            justifyContent={{ md: "flex-end", lg: "flex-end", xl: "flex-end", sm: "flex-end", xs: "space-around" }}
+            justifyContent={{
+              md: "flex-end",
+              lg: "flex-end",
+              xl: "flex-end",
+              sm: "flex-end",
+              xs: "space-around",
+            }}
             alignItems="center"
           >
-            <Link
-              href="www.instagram.com/cpm.app/"
-              color="inherit"
-            >
+            <Link href="www.instagram.com/cpm.app/" color="inherit">
               <InstagramIcon fontSize="large" />
             </Link>
             <Link
@@ -211,10 +194,7 @@ export const Footer: FC = (props) => (
             >
               <LinkedInIcon fontSize="large" />
             </Link>
-            <Link
-              href="www.facebook.com/cpm.app"
-              color="inherit"
-            >
+            <Link href="www.facebook.com/cpm.app" color="inherit">
               <FacebookIcon fontSize="large" />
             </Link>
           </Stack>

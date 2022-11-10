@@ -1,11 +1,26 @@
 import React from "react";
-import { Box, Container, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
+  Container,
+  Grid,
+  Typography,
+} from "@mui/material";
 import { AuthGuard } from "src/components/authentication/auth-guard";
 import type { NextPage } from "next";
-import { LoggedLayout } from "src/components/common";
+import { CommonModal, LoggedLayout } from "src/components/common";
 import { useSelector } from "src/store";
-import { MyTransactions, Balance } from "../../components/dashboard";
+import {
+  MyTransactions,
+  Balance,
+  DepositMoney,
+  InvestMoney,
+} from "../../components/dashboard";
 import { Transaction } from "../../types";
+import { InvestMoneyForm } from "src/components/invest";
 
 const Dashboard: NextPage = () => {
   const { userData } = useSelector((state) => state.user);
@@ -42,22 +57,27 @@ const Dashboard: NextPage = () => {
       <Box
         component="main"
         sx={{
-          py: 10,
+          py: 4,
         }}
       >
         <Container maxWidth="xl">
           <Box sx={{ mb: 4 }}>
-            <Grid container justifyContent="space-between" spacing={3}>
-              <Grid item>
+            <Grid container justifyContent="flex-start" spacing={2}>
+              <Grid item xs={12} md={12} sm={12} lg={12}>
                 <Typography variant="h4">
                   ¡Hola {user?.firstname} {user?.lastname}!
                 </Typography>
               </Grid>
+              <Balance />
+              <DepositMoney />
+              <InvestMoney />
+              <MyTransactions transactions={transactions} />
+              <CommonModal open={true} handleClose={() => {}}>
+                <InvestMoneyForm total_funds={10} closeModal={() => {}} />
+              </CommonModal>
             </Grid>
           </Box>
         </Container>
-        <Balance />
-        <MyTransactions transactions={transactions} />
       </Box>
     </>
   );
