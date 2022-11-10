@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Card,
@@ -24,6 +24,8 @@ import { InvestMoneyForm } from "src/components/invest";
 
 const Dashboard: NextPage = () => {
   const { userData } = useSelector((state) => state.user);
+  const [openDepositModal, setOpenDepositModal] = useState<boolean>(false);
+  const [openInvestModal, setOpenInvestModal] = useState<boolean>(false);
   const { user } = userData;
   const transactions: Transaction[] = [
     {
@@ -52,6 +54,10 @@ const Dashboard: NextPage = () => {
     },
   ];
 
+  const handleOpenDepositModal = () => setOpenDepositModal(true);
+  const handleCloseDepositModal = () => setOpenDepositModal(false);
+  const handleOpenInvestModal = () => setOpenInvestModal(true);
+  const handleCloseInvestModal = () => setOpenInvestModal(false);
   return (
     <>
       <Box
@@ -69,10 +75,13 @@ const Dashboard: NextPage = () => {
                 </Typography>
               </Grid>
               <Balance />
-              <DepositMoney />
-              <InvestMoney />
+              <DepositMoney handleOpenDepositModal={handleOpenDepositModal} />
+              <InvestMoney handleOpenInvestModal={handleOpenInvestModal} />
               <MyTransactions transactions={transactions} />
-              <CommonModal open={true} handleClose={() => {}}>
+              <CommonModal
+                open={openInvestModal}
+                handleClose={handleCloseInvestModal}
+              >
                 <InvestMoneyForm total_funds={10} closeModal={() => {}} />
               </CommonModal>
             </Grid>

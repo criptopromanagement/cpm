@@ -24,4 +24,9 @@ export interface UserDetail {
   avatar: string;
   username: string;
   birthday: string;
+  balance: {
+    available: number;
+    invested: number;
+    locked: number;
+  };
 }

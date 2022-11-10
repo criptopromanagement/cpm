@@ -10,11 +10,18 @@ import {
   useTheme,
 } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import React from "react";
+import React, { FC } from "react";
 import Stack from "@mui/material/Stack";
 import { LineChart } from "./line-chart";
+import { useSelector } from "src/store";
 
-export const InvestMoney = () => {
+interface Props {
+  handleOpenInvestModal: () => void;
+}
+
+export const InvestMoney: FC<Props> = ({ handleOpenInvestModal }) => {
+  const { userData } = useSelector((state) => state.user);
+  const { user } = userData;
   const theme = useTheme();
   return (
     <Grid item xs={12} sm={12} md={4} lg={4}>
@@ -38,7 +45,9 @@ export const InvestMoney = () => {
             justifyContent="space-between"
             alignItems="center"
           >
-            <Typography variant="h4">215,10 USDT</Typography>
+            <Typography variant="h4">
+              {user?.balance.invested.toFixed(2)} USDT
+            </Typography>
           </Stack>
           <Stack
             direction="row"
@@ -47,7 +56,7 @@ export const InvestMoney = () => {
             alignItems="center"
           >
             <Chip
-              label={`Ingresos pendientes $${0.0}`}
+              label={`Ingresos pendientes $${user?.balance.locked.toFixed(2)}`}
               variant="outlined"
               color="primary"
             />
@@ -62,7 +71,12 @@ export const InvestMoney = () => {
             paddingLeft: 5,
           }}
         >
-          <Button endIcon={<ArrowForwardIcon />}>Ingresar dinero</Button>
+          <Button
+            endIcon={<ArrowForwardIcon />}
+            onClick={handleOpenInvestModal}
+          >
+            Ingresar dinero
+          </Button>
         </CardActions>
       </Card>
     </Grid>

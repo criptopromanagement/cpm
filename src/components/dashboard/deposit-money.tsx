@@ -9,11 +9,17 @@ import {
   useTheme,
 } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import React from "react";
+import React, { FC } from "react";
 import { MaterialUISwitch } from "../widgets/toggle";
 import Stack from "@mui/material/Stack";
+import { useSelector } from "src/store";
+interface Props {
+  handleOpenDepositModal: () => void;
+}
 
-export const DepositMoney = () => {
+export const DepositMoney: FC<Props> = ({ handleOpenDepositModal }) => {
+  const { userData } = useSelector((state) => state.user);
+  const { user } = userData;
   const theme = useTheme();
   return (
     <Grid item xs={12} sm={12} md={4} lg={4}>
@@ -37,7 +43,9 @@ export const DepositMoney = () => {
             justifyContent="space-between"
             alignItems="center"
           >
-            <Typography variant="h4">215,10 USDT</Typography>
+            <Typography variant="h4">
+              {user?.balance.available.toFixed(2)} USDT
+            </Typography>
             <MaterialUISwitch />
           </Stack>
         </CardContent>
@@ -49,7 +57,12 @@ export const DepositMoney = () => {
             paddingLeft: 5,
           }}
         >
-          <Button endIcon={<ArrowForwardIcon />}>Ingresar dinero</Button>
+          <Button
+            endIcon={<ArrowForwardIcon />}
+            onClick={handleOpenDepositModal}
+          >
+            Ingresar dinero
+          </Button>
         </CardActions>
       </Card>
     </Grid>
