@@ -38,7 +38,7 @@ export default function Composition() {
   return (
     <>
       <Typography
-        variant="h5"
+        variant="h2"
         sx={{ mt: 3, mb: 2 }}
        >
         Composición

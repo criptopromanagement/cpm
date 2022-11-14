@@ -25,7 +25,7 @@ const Indices = () => {
                 <Container maxWidth="lg">
                     <MainNavbar />
                     <Typography
-                        variant="h3"
+                        variant="h1"
                         sx={{ mt: 3, mb: 1 }}
                     >
                         &lt;	Índices fondo CPM
