@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://cpm-back-end.herokuapp.com/api";
+axios.defaults.baseURL = "https://cpm-api.onrender.com/api";
 
 axios.interceptors.request.use((config) => {
   const accessToken =
@@ -9,7 +9,7 @@ axios.interceptors.request.use((config) => {
       : window.localStorage.getItem("accessToken") || "";
   config.headers = {
     "Content-Type": "application/json",
-    "cpm-user-app-token": accessToken,
+    "cpm_user_app_token": accessToken,
   };
 
   return config;
