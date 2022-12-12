@@ -36,6 +36,7 @@ class AuthApi {
         const data: RegisterResponse = response.data;
         resolve(data);
       } catch (err) {
+        console.log(err, "err");
         if (err?.reponse) {
           reject(new Error(err.response.data.error));
         } else {

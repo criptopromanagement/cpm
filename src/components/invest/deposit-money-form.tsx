@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import {
   Grid,
   Typography,
@@ -17,29 +17,29 @@ import * as Yup from "yup";
 import { useFormik } from "formik";
 import ApiClient from "../../services/api-client";
 import { useDispatch } from "react-redux";
+import { setUser } from "src/slices/user-slice";
 import {
   errorNotification,
   succesNotification,
 } from "src/slices/my-account-notificacion-slice";
 import { MaterialUISwitch } from "../widgets/toggle";
 import { useSelector } from "src/store";
-import { InvestReponse } from "src/types/invest";
-import { getUser } from "src/slices/user-slice";
 
 interface Props {
   closeModal: () => void;
 }
-export const InvestMoneyForm: FC<Props> = ({ closeModal }) => {
+export const DepositMoneyForm: FC<Props> = ({ closeModal }) => {
   const { userData } = useSelector((state) => state.user);
   const { user } = userData;
   const dispatch = useDispatch();
   const theme = useTheme();
   const formik = useFormik({
     initialValues: {
-      amount: 0.0,
+      total_local_currency: 0.0,
+      total_usdt: 0.0,
     },
     validationSchema: Yup.object({
-      amount: Yup.number()
+      total_local_currency: Yup.number()
         .required("Debes ingresar la cantidad a invertir")
         .positive("La cantidad debe ser mayor a 0"),
     }),
@@ -47,34 +47,25 @@ export const InvestMoneyForm: FC<Props> = ({ closeModal }) => {
       try {
         const json = JSON.stringify(values);
 
-        const response = await ApiClient.post(
-          "/funds/638388bd54915e92006cba96/buy",
-          json
-        );
-        const investResponse: InvestReponse = response.data;
+        const response = await ApiClient.patch("/users", json);
         closeModal();
-        dispatch(getUser());
+        dispatch(setUser({ token: "", user: response.data }));
         dispatch(
           succesNotification({
-            msg: "Cambiaste tu amount",
+            msg: "Cambiaste tu total_invest",
             tab: "my-data",
           })
         );
-        console.log(investResponse);
       } catch (err) {
         dispatch(
           errorNotification({
-            msg: "No se pudo cambiar tu amount",
+            msg: "No se pudo cambiar tu total_invest",
             tab: "my-data",
           })
         );
       }
     },
   });
-  const handleSetTotalFunds = () => {
-    formik.setValues({ amount: user?.balance.available || 0 });
-  };
-
   return (
     <Grid
       container
@@ -93,55 +84,56 @@ export const InvestMoneyForm: FC<Props> = ({ closeModal }) => {
       <Grid item xs={12} md={12} sm={12} lg={12}>
         <Card elevation={0} style={{ background: "rgba(0,0,0,0)" }}>
           <CardHeader
-            title={<Typography variant="h3">Invertir dinero</Typography>}
+            title={<Typography variant="h3">Depositá dinero</Typography>}
+            subheader="Para invertir dinero en el fondo cargá dinero a tu cuenta CPM"
             style={{ paddingTop: 0 }}
           />
-          <CardContent
-            style={{
-              paddingTop: 20,
-              paddingBottom: 20,
-            }}
-          >
-            <Stack
-              direction="row"
-              spacing={1}
-              justifyContent="space-between"
-              alignItems="center"
-            >
-              <Typography variant="body1">Foundation</Typography>
-              <MaterialUISwitch />
-            </Stack>
-          </CardContent>
           <CardActions>
             <Grid container rowSpacing={5}>
               <Grid item xs={12} sm={12} md={12} lg={12}>
                 <TextField
                   fullWidth
-                  focused
-                  label="Cantidad USDT"
-                  name="amount"
+                  label="Cantidad ARS"
+                  name="total_local_currency"
                   type="number"
                   onBlur={formik.handleBlur}
-                  helperText={`Fondos di sponibles en cuenta ${user?.balance.available?.toFixed(
-                    2
-                  )} USDT`}
-                  error={Boolean(formik.touched.amount && formik.errors.amount)}
-                  value={formik.values.amount.toFixed(2)}
+                  error={Boolean(
+                    formik.touched.total_local_currency &&
+                      formik.errors.total_local_currency
+                  )}
+                  value={formik.values.total_local_currency.toFixed(2)}
                   onChange={formik.handleChange}
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="start">
-                        <Button variant="text" onClick={handleSetTotalFunds}>
-                          Total fondos
-                        </Button>
-                      </InputAdornment>
-                    ),
-                  }}
                   inputProps={{
                     step: "0.01",
                     min: "0.00",
                     pattern: "^d*(.d{0,2})?$",
                   }}
+                  helperText={
+                    formik.touched.total_local_currency &&
+                    formik.errors.total_local_currency
+                  }
+                />
+              </Grid>
+              <Grid item xs={12} sm={12} md={12} lg={12}>
+                <TextField
+                  fullWidth
+                  label="Cantidad USDT"
+                  name="total_usdt"
+                  type="number"
+                  onBlur={formik.handleBlur}
+                  error={Boolean(
+                    formik.touched.total_usdt && formik.errors.total_usdt
+                  )}
+                  value={formik.values.total_usdt.toFixed(2)}
+                  onChange={formik.handleChange}
+                  inputProps={{
+                    step: "0.01",
+                    min: "0.00",
+                    pattern: "^d*(.d{0,2})?$",
+                  }}
+                  helperText={
+                    formik.touched.total_usdt && formik.errors.total_usdt
+                  }
                 />
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -159,7 +151,7 @@ export const InvestMoneyForm: FC<Props> = ({ closeModal }) => {
                     )
                   }
                 >
-                  Invertir
+                  Depositar dinero
                 </Button>
               </Grid>
             </Grid>
@@ -170,14 +162,8 @@ export const InvestMoneyForm: FC<Props> = ({ closeModal }) => {
         <Card sx={{ borderTop: `3px solid ${theme.palette.primary.main}` }}>
           <CardContent>
             <Typography variant="body2" align="center">
-              Las inversiones en el fondo se hacen efectivas los días miércoles
-              a las 12PM.
-            </Typography>
-            <Typography variant="body2" align="center">
-              Tu inversión se acreditará dentro de:
-            </Typography>
-            <Typography variant="body2" align="center" color="primary">
-              3 días, 6 horas
+              Depositá el monto que quieras invertir en pesos y nosotros lo
+              convertiremos a USDT
             </Typography>
           </CardContent>
         </Card>

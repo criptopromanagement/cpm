@@ -1,10 +1,19 @@
-import type { FC } from 'react';
-import { useRouter } from 'next/router';
-import * as Yup from 'yup';
-import { useFormik } from 'formik';
-import { Box, Button, Checkbox, FormHelperText, TextField, Typography, Link, Alert } from '@mui/material';
-import { useAuth } from '../../hooks/use-auth';
-import { useMounted } from '../../hooks/use-mounted';
+import type { FC } from "react";
+import { useRouter } from "next/router";
+import * as Yup from "yup";
+import { useFormik } from "formik";
+import {
+  Box,
+  Button,
+  Checkbox,
+  FormHelperText,
+  TextField,
+  Typography,
+  Link,
+  Alert,
+} from "@mui/material";
+import { useAuth } from "../../hooks/use-auth";
+import { useMounted } from "../../hooks/use-mounted";
 
 export const JWTRegister: FC = (props) => {
   const isMounted = useMounted();
@@ -12,37 +21,41 @@ export const JWTRegister: FC = (props) => {
   const { register } = useAuth();
   const formik = useFormik({
     initialValues: {
-      email: '',
-      password: '',
-      name:' ',
-      passwordConfirmation: '',
+      email: "",
+      password: "",
+      name: " ",
+      passwordConfirmation: "",
       policy: false,
-      submit: null
+      submit: null,
     },
     validationSchema: Yup.object({
-      email: Yup
-        .string()
-        .email('Debes ingresar un email valido')
+      email: Yup.string()
+        .email("Debes ingresar un email valido")
         .max(255)
-        .required('Email es requerido'),
-      password: Yup
-        .string()
-        .min(8,"La contraseña debe incluir al menos 8 caracteres, una mayuscula, un numero y un simbolo")
+        .required("Email es requerido"),
+      password: Yup.string()
+        .matches(
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$#@$!%*?&])([A-Za-z\d$#@$!%*?&]|[^ ]){10,15}$/,
+          "La contraseña debe incluir al menos 10 caracteres, una mayuscula, un numero y un simbolo"
+        )
         .max(255)
-        .required('Password es requerido'),
-        passwordConfirmation: Yup
-        .string()
-        .oneOf([Yup.ref('password'), null], 'Debe ser igual a la contraseña'),
-      policy: Yup
-        .boolean()
-        .oneOf([true], 'Debes aceptar los Terminos y condiciones')
+        .required("Password es requerido"),
+      passwordConfirmation: Yup.string().oneOf(
+        [Yup.ref("password"), null],
+        "Debe ser igual a la contraseña"
+      ),
+      policy: Yup.boolean().oneOf(
+        [true],
+        "Debes aceptar los Terminos y condiciones"
+      ),
     }),
     onSubmit: async (values, helpers): Promise<void> => {
       try {
         await register(values.name, values.email, values.password);
 
         if (isMounted()) {
-          const returnUrl = (router.query.returnUrl as string | undefined) || '/dashboard';
+          const returnUrl =
+            (router.query.returnUrl as string | undefined) || "/dashboard";
           router.push(returnUrl).catch(console.error);
         }
       } catch (err) {
@@ -54,22 +67,15 @@ export const JWTRegister: FC = (props) => {
           helpers.setSubmitting(false);
         }
       }
-    }
+    },
   });
 
   return (
-    <form
-      noValidate
-      onSubmit={formik.handleSubmit}
-      {...props}
-    >
+    <form noValidate onSubmit={formik.handleSubmit} {...props}>
       {formik.errors.submit && (
         <Box sx={{ mt: 3 }}>
-          <Alert 
-            severity="error"
-            variant="outlined"
-          >
-          {formik.errors.submit}
+          <Alert severity="error" variant="outlined">
+            {formik.errors.submit}
           </Alert>
         </Box>
       )}
@@ -99,10 +105,16 @@ export const JWTRegister: FC = (props) => {
         value={formik.values.password}
         variant="outlined"
       />
-        <TextField
-        error={Boolean(formik.touched.passwordConfirmation && formik.errors.passwordConfirmation)}
+      <TextField
+        error={Boolean(
+          formik.touched.passwordConfirmation &&
+            formik.errors.passwordConfirmation
+        )}
         fullWidth
-        helperText={formik.touched.passwordConfirmation && formik.errors.passwordConfirmation}
+        helperText={
+          formik.touched.passwordConfirmation &&
+          formik.errors.passwordConfirmation
+        }
         label="Confirma contraseña"
         margin="normal"
         name="passwordConfirmation"
@@ -114,10 +126,10 @@ export const JWTRegister: FC = (props) => {
       />
       <Box
         sx={{
-          alignItems: 'center',
-          display: 'flex',
+          alignItems: "center",
+          display: "flex",
           ml: -1,
-          mt: 2
+          mt: 2,
         }}
       >
         <Checkbox
@@ -125,24 +137,15 @@ export const JWTRegister: FC = (props) => {
           name="policy"
           onChange={formik.handleChange}
         />
-        <Typography
-          color="textSecondary"
-          variant="body2"
-        >
-          Acepto los
-          {' '}
-          <Link
-            component="a"
-            href="#"
-          >
+        <Typography color="textSecondary" variant="body2">
+          Acepto los{" "}
+          <Link component="a" href="#">
             Terminos y Condiciones
           </Link>
         </Typography>
       </Box>
       {Boolean(formik.touched.policy && formik.errors.policy) && (
-        <FormHelperText error>
-          {formik.errors.policy}
-        </FormHelperText>
+        <FormHelperText error>{formik.errors.policy}</FormHelperText>
       )}
       <Box sx={{ mt: 2 }}>
         <Button
