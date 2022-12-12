@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MobileStepper from "@mui/material/MobileStepper";
@@ -10,7 +10,7 @@ import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
 import { Card, Container, Grid } from "@mui/material";
-import { useMounted } from '../../hooks/use-mounted';
+import { useMounted } from "../../hooks/use-mounted";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -35,7 +35,6 @@ function HomeBlog() {
   const maxSteps = images.length;
   const isMounted = useMounted();
 
-
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -53,18 +52,12 @@ function HomeBlog() {
       component="main"
       sx={{
         flexGrow: 5,
-        pt: 3
-        ,
+        pt: 3,
         pb: 3,
       }}
     >
       <Container maxWidth="lg">
-        <Grid
-          container
-          md={4}
-          xs={12}
-          justifyContent="center"
-          >
+        <Grid container md={4} xs={12} justifyContent="center">
           <Card
             sx={{
               height: "100%",
@@ -83,9 +76,9 @@ function HomeBlog() {
                     <Box
                       component="img"
                       sx={{
-                        height: '100%',
+                        height: "100%",
                         display: "block",
-                        maxWidth: '100%',
+                        maxWidth: "100%",
                         overflow: "hidden",
                         width: "100%",
                       }}

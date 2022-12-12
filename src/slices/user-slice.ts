@@ -1,13 +1,24 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { User } from "../types/user-data";
+import ApiClient from "../services/api-client";
+import { User, UserDetail } from "../types/user-data";
 
 interface UserState {
   userData: User;
 }
+
+export const getUser = createAsyncThunk("user/getUser", async () => {
+  try {
+    const response = await ApiClient.get("/users");
+    console.log(response.data);
+    return response.data as UserDetail;
+  } catch (error) {}
+});
+
 const userInitialState: UserState = {
   userData: {
     user: {
+      balance: { available: 0, invested: 0, locked: 0 },
       email: "",
       active: false,
       terms: "",
@@ -47,6 +58,12 @@ const slice = createSlice({
       state.userData = userInitialState.userData;
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(getUser.fulfilled, (state, { payload }) => {
+      state.userData = { ...state.userData, user: payload as UserDetail };
+    });
+  },
 });
+
 export const { reducer } = slice;
 export const { setUser } = slice.actions;
