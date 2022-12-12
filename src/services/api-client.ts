@@ -9,7 +9,7 @@ axios.interceptors.request.use((config) => {
       : window.localStorage.getItem("accessToken") || "";
   config.headers = {
     "Content-Type": "application/json",
-    "cpm-user-app-token": accessToken,
+    cpm_user_app_token: accessToken,
   };
 
   return config;
