@@ -15,8 +15,7 @@ interface Props {
 
 const BlogPostCardMediaWrapper = styled("div")({
     paddingTop: "calc(50% * 4 / 4)",
-    position: "relative",
-
+    position: "relative"
 });
 
 export const HomeCallCard = ({ plan }: Props) => (
@@ -24,14 +23,10 @@ export const HomeCallCard = ({ plan }: Props) => (
         item
         md={4}
         xs={12}
-        sx={{
-
-        }}
     >
         <Card
             sx={{
-                height: "100%",
-                p: 2,
+                borderRadius: "unset",
             }}
         >
             <BlogPostCardMediaWrapper>
@@ -39,10 +34,10 @@ export const HomeCallCard = ({ plan }: Props) => (
                     image={plan.cover}
                     sx={{
                         height: "100%",
+                        width: "100%",
                         position: "absolute",
                         top: 0,
-                        width: "100%",
-                        transform: "rotateY(180deg)"
+                        transform: "rotateY(180deg)",
                     }}
                 />
                 <Typography
