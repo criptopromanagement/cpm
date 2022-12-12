@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import {
   Grid,
   Typography,
@@ -20,11 +20,14 @@ import { useDispatch } from "react-redux";
 import {
   errorNotification,
   succesNotification,
-} from "src/slices/my-account-notificacion-slice";
+} from "src/slices/notification-slice";
 import { MaterialUISwitch } from "../widgets/toggle";
 import { useSelector } from "src/store";
 import { InvestReponse } from "src/types/invest";
 import { getUser } from "src/slices/user-slice";
+import { MessageWithBorder } from "../widgets/message-with-border";
+import { CommonModal } from "../common";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 interface Props {
   closeModal: () => void;
@@ -32,6 +35,7 @@ interface Props {
 export const InvestMoneyForm: FC<Props> = ({ closeModal }) => {
   const { userData } = useSelector((state) => state.user);
   const { user } = userData;
+  const [openModal, setOpenModal] = useState(false);
   const dispatch = useDispatch();
   const theme = useTheme();
   const formik = useFormik({
@@ -52,20 +56,21 @@ export const InvestMoneyForm: FC<Props> = ({ closeModal }) => {
           json
         );
         const investResponse: InvestReponse = response.data;
-        closeModal();
         dispatch(getUser());
+        setOpenModal(true);
         dispatch(
           succesNotification({
-            msg: "Cambiaste tu amount",
-            tab: "my-data",
+            msg: `Invertiste ${values.amount.toFixed(
+              2
+            )} USDT en Foundation. Te avisaremos cuando se acrediten`,
+            page: "dashboard",
           })
         );
-        console.log(investResponse);
       } catch (err) {
         dispatch(
           errorNotification({
-            msg: "No se pudo cambiar tu amount",
-            tab: "my-data",
+            msg: "No se pudo realizar la operación ",
+            page: "dashboard",
           })
         );
       }
@@ -182,6 +187,30 @@ export const InvestMoneyForm: FC<Props> = ({ closeModal }) => {
           </CardContent>
         </Card>
       </Grid>
+      <CommonModal handleClose={closeModal} open={openModal}>
+        <MessageWithBorder
+          close={closeModal}
+          title={
+            <Stack alignItems="center">
+              <CheckCircleIcon color="primary" style={{ fontSize: 50 }} />
+            </Stack>
+          }
+          content={
+            <>
+              <Typography variant="h5">{`Invertiste ${formik.values.amount.toFixed(
+                2
+              )} ARS`}</Typography>
+              <Typography variant="body2">
+                Tu inversión se acreditará el próximo miércoles 16/07/2022 a las
+                12PM.
+              </Typography>
+              <Typography variant="body2">
+                te enviaremos un email para avisarte.
+              </Typography>
+            </>
+          }
+        />
+      </CommonModal>
     </Grid>
   );
 };

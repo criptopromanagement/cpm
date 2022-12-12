@@ -21,6 +21,7 @@ import {
 } from "../../components/dashboard";
 import { Transaction } from "../../types";
 import { DepositMoneyForm, InvestMoneyForm } from "src/components/invest";
+import { Notification } from "src/components/common/notification";
 
 const Dashboard: NextPage = () => {
   const { userData } = useSelector((state) => state.user);
@@ -73,6 +74,7 @@ const Dashboard: NextPage = () => {
                 <Typography variant="h4">
                   ¡Hola {user?.firstname} {user?.lastname}!
                 </Typography>
+                <Notification currentPage="dashboard" showSuccess />
               </Grid>
               {/* <Balance /> */}
               <DepositMoney handleOpenDepositModal={handleOpenDepositModal} />
@@ -82,7 +84,7 @@ const Dashboard: NextPage = () => {
                 open={openInvestModal}
                 handleClose={handleCloseInvestModal}
               >
-                <InvestMoneyForm closeModal={() => {}} />
+                <InvestMoneyForm closeModal={handleCloseInvestModal} />
               </CommonModal>
               <CommonModal
                 open={openDepositModal}
