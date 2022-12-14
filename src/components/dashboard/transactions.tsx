@@ -1,77 +1,80 @@
 import {
   Chip,
   Divider,
-  IconButton,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
   Paper,
-  useTheme,
+  Skeleton,
 } from "@mui/material";
 import { FC, Fragment } from "react";
 import { Transaction } from "src/types";
+import { TransactionSkeleton } from "./transaction-skeleton";
 
 interface Props {
   transactions: Transaction[];
+  showLoader: boolean;
 }
 
-export const Transactions: FC<Props> = ({ transactions }) => {
-  const theme = useTheme();
+export const Transactions: FC<Props> = ({ transactions, showLoader }) => {
+  const currency = "USDT";
+  const criptoCurrency = "USDT";
   return (
     <List component={Paper}>
-      {transactions.map(
-        ({ id, type, amount, currency, date, criptoCurrency }) => {
-          const text =
-            type === "carga"
-              ? `Cargaste`
-              : type === "inversion"
-              ? `Invertiste`
-              : `Retiraste`;
-          const formatedDate = date.toLocaleDateString("es-ES", {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-          });
-          const formatedAmount = `${currency} ${amount.toFixed(2)}`;
-          const formatedAmountCrypto = `${amount.toFixed(2)} ${criptoCurrency}`;
-          const transacction =
-            type === "carga"
-              ? `+ ${formatedAmountCrypto}`
-              : type === "inversion"
-              ? `+ ${formatedAmountCrypto}`
-              : `- ${formatedAmountCrypto}`;
-
-          const to =
-            type === "carga"
-              ? `A tu cuenta`
-              : type === "inversion"
-              ? `Foundation`
-              : `De tu cuenta`;
-
-          return (
-            <Fragment key={id}>
-              <ListItem>
-                <ListItemText primary={text} secondary={formatedDate} />
-                <ListItemText
-                  primary={transacction}
-                  secondary={to}
-                  primaryTypographyProps={{
-                    color: type === "retiro" ? "error" : "primary",
-                  }}
-                />
-                <ListItemIcon>
-                  <Chip
-                    label={formatedAmount}
-                    color={type === "retiro" ? "error" : "primary"}
-                  />
-                </ListItemIcon>
-              </ListItem>
-              <Divider />
-            </Fragment>
-          );
-        }
+      {showLoader && (
+        <>
+          <TransactionSkeleton />
+          <TransactionSkeleton />
+          <TransactionSkeleton />
+        </>
       )}
+      {transactions.map(({ id, type, amount, createdAt, fund }) => {
+        const text =
+          type === "buy"
+            ? `Invertiste`
+            : type === "inversion"
+            ? `Invertiste`
+            : `Retiraste`;
+        const created = new Date(createdAt);
+        const formatedDate = created.toLocaleDateString("es-ES", {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+        });
+        const formatedAmount = `${currency} ${amount.toFixed(2)}`;
+        const formatedAmountCrypto = `${amount.toFixed(2)} ${criptoCurrency}`;
+        const transacction =
+          type === "buy"
+            ? `+ ${formatedAmountCrypto}`
+            : type === "inversion"
+            ? `+ ${formatedAmountCrypto}`
+            : `- ${formatedAmountCrypto}`;
+
+        const to = fund.name;
+
+        return (
+          <Fragment key={id}>
+            <ListItem>
+              <ListItemText primary={text} secondary={formatedDate} />
+              <ListItemText
+                primary={transacction}
+                secondary={to}
+                primaryTypographyProps={{
+                  color: type === "retiro" ? "error" : "primary",
+                }}
+              />
+              <ListItemIcon>
+                <Chip
+                  label={formatedAmount}
+                  color={type === "retiro" ? "error" : "primary"}
+                />
+              </ListItemIcon>
+            </ListItem>
+            <Divider />
+          </Fragment>
+        );
+      })}
     </List>
   );
 };

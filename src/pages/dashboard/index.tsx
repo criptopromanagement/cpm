@@ -28,32 +28,6 @@ const Dashboard: NextPage = () => {
   const [openDepositModal, setOpenDepositModal] = useState<boolean>(false);
   const [openInvestModal, setOpenInvestModal] = useState<boolean>(false);
   const { user } = userData;
-  const transactions: Transaction[] = [
-    {
-      id: "0",
-      type: "carga",
-      date: new Date("2022-04-20"),
-      amount: 500.0,
-      currency: "$",
-      criptoCurrency: "USDT",
-    },
-    {
-      id: "1",
-      type: "inversion",
-      date: new Date("2022-02-06"),
-      amount: 1000.0,
-      currency: "$",
-      criptoCurrency: "USDT",
-    },
-    {
-      id: "2",
-      type: "retiro",
-      date: new Date("2022-01-18"),
-      amount: 100.0,
-      currency: "$",
-      criptoCurrency: "USDT",
-    },
-  ];
 
   const handleOpenDepositModal = () => setOpenDepositModal(true);
   const handleCloseDepositModal = () => setOpenDepositModal(false);
@@ -79,7 +53,7 @@ const Dashboard: NextPage = () => {
               {/* <Balance /> */}
               <DepositMoney handleOpenDepositModal={handleOpenDepositModal} />
               <InvestMoney handleOpenInvestModal={handleOpenInvestModal} />
-              <MyTransactions transactions={transactions} />
+              <MyTransactions />
               <CommonModal
                 open={openInvestModal}
                 handleClose={handleCloseInvestModal}
