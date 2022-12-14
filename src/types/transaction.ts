@@ -1,8 +1,11 @@
+import { Fund } from "./fund";
+
 export interface Transaction {
-  id: string;
-  type: "carga" | "inversion" | "retiro";
-  date: Date;
   amount: number;
-  currency: string;
-  criptoCurrency: string;
+  type: string;
+  status: string;
+  fund: Fund;
+  createdAt: Date;
+  updatedAt: Date;
+  id: string;
 }
