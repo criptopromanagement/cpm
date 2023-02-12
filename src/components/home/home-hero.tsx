@@ -1,10 +1,52 @@
 import type { FC } from "react";
 import NextLink from "next/link";
-import { Box, Button, Container, Typography } from "@mui/material";
+import { Box, Button, Container, Grid, styled, Typography } from "@mui/material";
+
+const Root = styled('div')(({ theme }) => ({
+  padding: theme.spacing(1),
+  [theme.breakpoints.down('md')]: {
+    textTransform: "uppercase",
+  },
+}));
 
 export const HomeHero: FC = (props) => {
   return (
-    <Box
+    <Root>
+    <Grid item 
+      xs={12} 
+      sm={12} 
+      md={6} 
+      lg={6}>
+      <Container
+        maxWidth="md"
+        sx={{
+          alignItems: "left",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <Typography 
+          align="left" 
+          variant="h1"
+        >
+          Fondos cripto indexados
+        </Typography>
+        <Typography 
+          align="left" 
+          variant="subtitle2" 
+          sx={{ py: 1 }}
+        >
+          Estrategia automatizada
+        </Typography>
+        <Typography 
+          align="left" 
+          variant="subtitle2" 
+          sx={{ py: 1 }}
+        >
+          Exposición diversificada
+        </Typography>
+        
+      <Box
       sx={{
         pt: 3,
         pb: 3,
@@ -36,28 +78,8 @@ export const HomeHero: FC = (props) => {
           />
         </Box>
       </Box>
-      <Container
-        maxWidth="md"
-        sx={{
-          alignItems: "center",
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        <Typography 
-          align="left" 
-          variant="h1"
-        >
-          INVERTÍ EN CRIPTO
-        </Typography>
-        <Typography 
-          align="left" 
-          variant="subtitle2" 
-          sx={{ py: 1 }}
-        >
-          La industria cripto ofrece miles de oportunidades. Accedé de forma simple a través de nuestros fondos diseñados y gestionados por profesionales
-        </Typography>
-        <NextLink 
+      </Box>
+      <NextLink 
           href="/dashboard" 
           passHref
         >
@@ -71,7 +93,10 @@ export const HomeHero: FC = (props) => {
             Invertir
           </Button>
         </NextLink>
-      </Container>
-    </Box>
+        </Container>
+
+    </Grid>
+    </Root>
+
   );
 };
