@@ -13,11 +13,13 @@ import { ArrowLeft as ArrowLeftIcon } from '../../icons/arrow-left';
 import { gtm } from '../../lib/gtm';
 import type { Post } from '../../types/blog';
 import { MainNavbar } from 'src/components/main-navbar';
+import { MainSidebar } from 'src/components/main-sidebar';
 import { Footer } from 'src/components/footer';
 
 const BlogPostList: NextPage = () => {
     const isMounted = useMounted();
     const [posts, setPosts] = useState<Post[]>([]);
+    const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
 
     useEffect(() => {
         gtm.push({ event: 'page_view' });
@@ -39,6 +41,11 @@ const BlogPostList: NextPage = () => {
         getPosts();
     }, [getPosts]);
 
+    const handleOpenSideBar = () => {
+        setIsSidebarOpen(!isSidebarOpen)
+    }
+
+
     return (
         <>
             <Head>
@@ -54,7 +61,11 @@ const BlogPostList: NextPage = () => {
                 }}
             >
                 <Container maxWidth="lg">
-                    <MainNavbar />
+                    <MainNavbar handleOpenSideBar={handleOpenSideBar} open={isSidebarOpen} />
+                    <MainSidebar
+                        onClose={(): void => setIsSidebarOpen(false)}
+                        open={isSidebarOpen}
+                    />
                     <Typography
                         variant="h3"
                         sx={{ mt: 3 }}
@@ -115,7 +126,7 @@ const BlogPostList: NextPage = () => {
 
                 </Container>
             </Box>
-                <Footer />
+            <Footer />
         </>
     );
 };
