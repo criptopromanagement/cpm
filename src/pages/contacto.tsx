@@ -16,6 +16,10 @@ const Contacto: NextPage = () => {
     const [openError, setOpenError] = useState(false)
     const [loading, setLoading] = useState(false)
 
+    const handleOpenSideBar = () => {
+        setIsSidebarOpen(!isSidebarOpen)
+    }
+
     const validationSchema = Yup.object({
         name: Yup
             .string()
@@ -93,7 +97,7 @@ const Contacto: NextPage = () => {
                             }}>
                             Dejanos tu mensaje y pronto nos comunicaremos con vos.
                         </Typography>
-                        <MainNavbar onOpenSidebar={(): void => setIsSidebarOpen(true)} />
+                        <MainNavbar handleOpenSideBar={handleOpenSideBar} open={isSidebarOpen} />
                         <MainSidebar
                             onClose={(): void => setIsSidebarOpen(false)}
                             open={isSidebarOpen}

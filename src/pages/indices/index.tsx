@@ -1,6 +1,6 @@
 import { Box, Button, Container, Typography } from "@mui/material";
 import Head from "next/head";
-import React from "react";
+import React, { useState } from "react";
 import { Footer } from "src/components/footer";
 import { MainNavbar } from "src/components/main-navbar";
 import NextLink from "next/link";
@@ -10,11 +10,17 @@ import Documents from "./documents";
 import Performance from "./performance";
 
 const Indices = () => {
-  return (
-    <>
-      <Head>
-        <title>CPM | Indices</title>
-      </Head>
+    const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
+
+    const handleOpenSideBar = () => {
+        setIsSidebarOpen(!isSidebarOpen)
+    }
+
+    return (
+        <>
+            <Head>
+                <title>CPM | Indices</title>
+            </Head>
             <Box
                 component="main"
                 sx={{
@@ -23,7 +29,7 @@ const Indices = () => {
                 }}
             >
                 <Container maxWidth="lg">
-                    <MainNavbar />
+                    <MainNavbar handleOpenSideBar={handleOpenSideBar} open={isSidebarOpen} />
                     <Typography
                         variant="h1"
                         sx={{ mt: 3, mb: 1 }}
@@ -36,7 +42,7 @@ const Indices = () => {
                     >
                         Fondo de inversión en proyectos cripto.
                     </Typography>
-                    
+
                     <Typography
                         color="textSecondary"
                         variant="subtitle1"
@@ -44,17 +50,17 @@ const Indices = () => {
                     >
                         Contratos inteligentes seleccionados de manera diversificada.
                     </Typography>
-                    <NextLink 
-                        href={'dashboard'} 
+                    <NextLink
+                        href={'dashboard'}
                         passHref
                     >
                         <Button
-                        component="a" 
-                        size="large"
-                        fullWidth
-                        variant="contained"
+                            component="a"
+                            size="large"
+                            fullWidth
+                            variant="contained"
                         >
-                        Invertir
+                            Invertir
                         </Button>
                     </NextLink>
                     <Composition />
@@ -75,9 +81,9 @@ const Indices = () => {
                     <Documents />
                 </Container>
             </Box>
-      <Footer />
-    </>
-  );
+            <Footer />
+        </>
+    );
 };
 
 export default Indices;
