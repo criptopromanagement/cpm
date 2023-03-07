@@ -2,6 +2,7 @@ import { FC, ReactNode, useState } from "react";
 import PropTypes from "prop-types";
 import { styled } from "@mui/material/styles";
 import { LoggedNavbar } from "./logged-navbar";
+import { LoggedNavbarDesktop } from "./logged-navbar-desktop";
 import Head from "next/head";
 import { ConfirmationLogoutModal } from "../logout";
 import { ModalMyInfo } from "../account/MyData";
@@ -28,11 +29,22 @@ export const LoggedLayout: FC<MainLayoutProps> = ({
     dispatch(closeLogoutModal());
   };
 
+  const [openUserMenu, setOpenUserMenu] = useState<boolean>(false);
+
+  const handleOpenSideBar = () => {
+    setOpenUserMenu(!openUserMenu)
+  }
+
   return (
     <MainLayoutRoot>
       <Head>
         <title>{head}</title>
       </Head>
+      <LoggedNavbarDesktop
+        onClose={(): void => setOpenUserMenu(false)}
+        onOpenUserMenu={handleOpenSideBar}
+        open={openUserMenu}
+      />
       <LoggedNavbar />
       {children}
       <ModalMyInfo open={openModal} handleClose={handleCloseModal}>
