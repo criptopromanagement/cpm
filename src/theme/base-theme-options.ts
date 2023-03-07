@@ -271,7 +271,7 @@ export const baseThemeOptions: ThemeOptions = {
       lineHeight: 1.2188
     },
     subtitle2: {
-      fontSize: '0.625rem',
+      fontSize: '0.825rem',
       fontWeight: 300,
       lineHeight: 0.9375
     },
