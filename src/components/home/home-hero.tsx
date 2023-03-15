@@ -90,7 +90,7 @@ export const HomeHero: FC = (props) => {
 
         ) : (
           // desktop
-          <div className="hero">
+          <div className="hero" style={{padding: 100}}>
           <Grid item
             xs={12}
             sm={12}
@@ -102,14 +102,20 @@ export const HomeHero: FC = (props) => {
                 alignItems: "left",
                 display: "flex",
                 flexDirection: "column",
-                padding: 20,
+                padding: 5,
               }}
             >
               <Typography
                 align="left"
                 variant="h1"
               >
-                Fondos cripto indexados
+                Fondos cripto
+              </Typography>
+              <Typography
+                align="left"
+                variant="h1"
+              >
+                indexados
               </Typography>
               <Typography
                 align="left"
@@ -141,7 +147,7 @@ export const HomeHero: FC = (props) => {
                 passHref
               >
                 <Button
-                  sx={{ maxWidth: "350px" }}
+                  sx={{ maxWidth: "150px" }}
                   component="a"
                   size="large"
                   fullWidth
@@ -150,15 +156,6 @@ export const HomeHero: FC = (props) => {
                   Invertir
                 </Button>
               </NextLink>
-
-              <Box
-              sx={{
-                maxWidth: 450,
-                width: "100%",
-                mx: "auto",
-                backgroundColor: 'primary.nav', 
-              }}
-            >
               <Box
                 sx={{
                   justifyContent: "flex-end",
@@ -166,9 +163,9 @@ export const HomeHero: FC = (props) => {
                   "& img": {
                     height: "auto",
                     position: "absolute",
-                    top: 100,
-                    left: 700,
-                    width: "50%",
+                    top: 50,
+                    left: 550,
+                    right: 250
                   },
                 }}
               >
@@ -177,9 +174,6 @@ export const HomeHero: FC = (props) => {
                   src="/static/home/hero.svg"
                 />
               </Box>
-            </Box>
-
-
             </Container>
 
 
