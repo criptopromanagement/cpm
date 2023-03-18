@@ -24,14 +24,11 @@ const MainLayoutRoot = styled('div')(
 export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
 
-  const handleOpenSideBar = () => {
-    setIsSidebarOpen(!isSidebarOpen)
-  }
-
 
   return (
     <MainLayoutRoot>
-      <MainNavbar handleOpenSideBar={handleOpenSideBar} open={isSidebarOpen} />
+
+      <MainNavbar onOpenSidebar={(): void => setIsSidebarOpen(true)} />
       <MainSidebar
         onClose={(): void => setIsSidebarOpen(false)}
         open={isSidebarOpen}
