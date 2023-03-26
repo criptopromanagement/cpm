@@ -15,6 +15,7 @@ import { LocalizationProvider } from "@mui/lab";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import { RTL } from "../components/rtl";
 import { SplashScreen } from "../components/splash-screen";
+import { PagesWrapper } from "src/components/pages-wraper";
 import {
   SettingsConsumer,
   SettingsProvider,
@@ -41,7 +42,6 @@ const App: FC<EnhancedAppProps> = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   const getLayout = Component.getLayout ?? ((page) => page);
-
   return (
     <CacheProvider value={emotionCache}>
       <Head>
@@ -69,7 +69,11 @@ const App: FC<EnhancedAppProps> = (props) => {
                           !auth.isInitialized ? (
                             <SplashScreen />
                           ) : (
-                            getLayout(<Component {...pageProps} />)
+                            getLayout(
+                              <PagesWrapper>
+                                <Component {...pageProps} />
+                              </PagesWrapper>
+                            )
                           )
                         }
                       </AuthConsumer>
