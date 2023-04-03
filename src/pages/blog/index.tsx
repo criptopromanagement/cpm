@@ -41,10 +41,6 @@ const BlogPostList: NextPage = () => {
         getPosts();
     }, [getPosts]);
 
-    const handleOpenSideBar = () => {
-        setIsSidebarOpen(!isSidebarOpen)
-    }
-
 
     return (
         <>
@@ -61,7 +57,7 @@ const BlogPostList: NextPage = () => {
                 }}
             >
                 <Container maxWidth="lg">
-                    <MainNavbar onOpenSidebar={handleOpenSideBar} />
+                    <MainNavbar onOpenSidebar={(): void => setIsSidebarOpen(true)} />
                     <MainSidebar
                         onClose={(): void => setIsSidebarOpen(false)}
                         open={isSidebarOpen}
