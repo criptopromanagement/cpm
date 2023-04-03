@@ -61,7 +61,7 @@ const BlogPostList: NextPage = () => {
                 }}
             >
                 <Container maxWidth="lg">
-                    <MainNavbar handleOpenSideBar={handleOpenSideBar} open={isSidebarOpen} />
+                    <MainNavbar onOpenSidebar={handleOpenSideBar} />
                     <MainSidebar
                         onClose={(): void => setIsSidebarOpen(false)}
                         open={isSidebarOpen}
