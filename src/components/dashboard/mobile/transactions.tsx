@@ -51,7 +51,7 @@ export const Transactions: FC<Props> = ({ transactions, showLoader }) => {
             ? `+ ${formatedAmountCrypto}`
             : `- ${formatedAmountCrypto}`;
 
-        const to = fund.name;
+        const to = fund ? fund.name : '';
 
         return (
           <Fragment key={id}>
