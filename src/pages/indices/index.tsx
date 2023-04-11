@@ -29,7 +29,7 @@ const Indices = () => {
                 }}
             >
                 <Container maxWidth="lg">
-                    <MainNavbar handleOpenSideBar={handleOpenSideBar} open={isSidebarOpen} />
+                    <MainNavbar onOpenSidebar={handleOpenSideBar}/>
                     <Typography
                         variant="h1"
                         sx={{ mt: 3, mb: 1 }}
