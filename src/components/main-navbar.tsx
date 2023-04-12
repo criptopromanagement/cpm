@@ -1,33 +1,16 @@
-import { FC } from 'react';
+import type { FC } from "react";
+import PropTypes from "prop-types";
 import NextLink from 'next/link';
-import { AppBar, Box, Container, Drawer, IconButton, Link, Toolbar, Grid, Stack } from '@mui/material';
-import { MenuIcon } from './menu-icon';
+import { AppBar, Box, Button, Container, IconButton, Link, Toolbar } from '@mui/material';
+import { Menu as MenuIcon } from '../icons/menu';
 import { Logo } from './logo';
-import InstagramIcon from "@mui/icons-material/Instagram";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import { styled } from "@mui/material/styles";
 
 interface MainNavbarProps {
-  handleOpenSideBar?: () => void;
-  open: boolean
+  onOpenSidebar?: () => void;
 }
 
-
-const LinkWrapper = styled("a")({
-  textDecoration: "none",
-  "& a:hover": {
-    color: "#00FF33"
-  }
-
-});
-
-
 export const MainNavbar: FC<MainNavbarProps> = (props) => {
-  const { handleOpenSideBar, open } = props;
-
-
-
+  const { onOpenSidebar } = props;
   return (
 
     <AppBar
@@ -65,134 +48,82 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
           <Box sx={{ flexGrow: 1 }} />
           <IconButton
             color="primary"
-            onClick={handleOpenSideBar}
-
+            onClick={onOpenSidebar}
             sx={{
               marginRight: -1.5,
-            }}
-          >
-            <MenuIcon
-              open={open}
-            />
-          </IconButton>
-
-          <Drawer
-            anchor='right'
-            open={open}
-            PaperProps={{
-              sx: {
-                width: '100%',
-                backgroundColor: 'background.default',
-                marginTop: "4rem"
+              display: {
+                md: 'none',
               }
             }}
-            variant="temporary"
           >
-            <Grid>
-              <Stack
-                spacing={2}
-                marginLeft={3}
+            <MenuIcon fontSize="large" />
+          </IconButton>
+          <Box
+            sx={{
+              alignItems: 'center',
+              display: {
+                md: 'flex',
+                xs: 'none'
+              }
+            }}
+          >
+            <NextLink
+              href="/packs"
+              passHref
+            >
+              <Link
+                color="textSecondary"
+                underline="none"
+                variant="subtitle2"
+
               >
+                Packs
+              </Link>
+            </NextLink>
 
-                <NextLink
-                  href="/packs"
-                  passHref
-                >
-                  <LinkWrapper>
-                    <Link
-                      color="textPrimary"
-                      underline="none"
-                    >
-                      Índices
-                    </Link>
-                  </LinkWrapper>
-                </NextLink>
-
-                <NextLink
-                  href="/blog"
-                  passHref
-                >
-                  <LinkWrapper>
-                    <Link
-                      color="textPrimary"
-                      underline="none"
-                    >
-                      Blog
-                    </Link>
-                  </LinkWrapper>
-                </NextLink>
-
-                <NextLink
-                  href="/contacto"
-                  passHref
-                >
-                  <LinkWrapper>
-                    <Link
-                      color="textPrimary"
-                      underline="none"
-                    >
-                      Contacto
-                    </Link>
-                  </LinkWrapper>
-                </NextLink>
-
-                <NextLink
-                  href="/ayuda"
-                  passHref
-                >
-                  <LinkWrapper>
-                    <Link
-                      color="textPrimary"
-                      underline="none"
-
-                    >
-                      Ayuda
-                    </Link>
-                  </LinkWrapper>
-                </NextLink>
-
-                <NextLink
-                  href="/terminos"
-                  passHref
-                >
-                  <LinkWrapper>
-                    <Link
-                      color="textPrimary"
-                      underline="none"
-
-                    >
-                      Términos
-                    </Link>
-                  </LinkWrapper>
-                </NextLink>
-
-              </Stack>
-            </Grid>
-            <Grid>
-              <Stack
-                direction="row"
-                spacing={3}
-                mt={3}
-                marginLeft={2}
+            <NextLink
+              href="/blog"
+              passHref
+            >
+              <Link
+                color="textSecondary"
+                sx={{ ml: 2 }}
+                underline="none"
+                variant="subtitle2"
               >
-                <Link href="www.instagram.com/cpm.app/" color="inherit">
-                  <InstagramIcon fontSize="large" />
-                </Link>
-                <Link
-                  href="www.linkedin.com/company/crypto-pro-management"
-                  color="inherit"
-                >
-                  <LinkedInIcon fontSize="large" />
-                </Link>
-                <Link href="www.facebook.com/cpm.app" color="inherit">
-                  <FacebookIcon fontSize="large" />
-                </Link>
-              </Stack>
-            </Grid>
-          </Drawer>
+                Blog
+              </Link>
+            </NextLink>
+            <NextLink
+              href="/contacto"
+              passHref
+            >
+              <Link
+                color="textSecondary"
+                component="a"
+                sx={{ ml: 2 }}
+                underline="none"
+                variant="subtitle2"
+              >
+                Contacto
+              </Link>
+            </NextLink>
+            <Button
+              component="a"
+              href="/login"
+              size="medium"
+              sx={{ ml: 2 }}
+              variant="contained"
+            >
+              Ingresar
+            </Button>
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>
   );
 };
 
+MainNavbar.propTypes = {
+  onOpenSidebar: PropTypes.func
+};
