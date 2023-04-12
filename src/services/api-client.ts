@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://cpm-api.onrender.com/api";
+axios.defaults.baseURL = "https://cpm-api-vejr.onrender.com/api";
 
 axios.interceptors.request.use((config) => {
   const accessToken =

@@ -97,7 +97,7 @@ const Contacto: NextPage = () => {
                             }}>
                             Dejanos tu mensaje y pronto nos comunicaremos con vos.
                         </Typography>
-                        <MainNavbar handleOpenSideBar={handleOpenSideBar} open={isSidebarOpen} />
+                        <MainNavbar onOpenSidebar={handleOpenSideBar} />
                         <MainSidebar
                             onClose={(): void => setIsSidebarOpen(false)}
                             open={isSidebarOpen}
