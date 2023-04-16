@@ -9,7 +9,7 @@ export const DesktopDashboard = () => {
             <Grid item md={3} lg={2} container>
                 <LeftBar />
             </Grid>
-            <Grid item md={9} lg={10} container>
+            <Grid item md={9} lg={10} container justifyContent="flex-start" alignItems="flex-start">
                 <DashContent />
             </Grid>
         </Grid>
