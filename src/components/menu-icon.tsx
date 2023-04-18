@@ -1,8 +1,9 @@
 import React, { FC } from "react"
 import { Box, Typography } from "@mui/material"
+import PropTypes from 'prop-types'
 
 interface MenuIconProps {
-    open: boolean
+    open?: boolean
 }
 
 
@@ -55,4 +56,8 @@ export const MenuIcon: FC<MenuIconProps> = ({ open }) => {
 
         </Box>
     )
+}
+
+MenuIcon.propTypes = {
+    open: PropTypes.bool
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import type { FC } from "react";
 import PropTypes from "prop-types";
 import NextLink from "next/link";
@@ -27,7 +27,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useSelector, useDispatch } from "../../store/index";
 import Link from "next/link";
 import { openLogoutModal } from "src/slices/logout-modal-slice";
-
+import { DesktopUserNavbar } from "./desktop-user-menu";
 interface LoggedNavbarDesktopProps {
     onOpenUserMenu?: () => void;
     onClose?: () => void;
@@ -38,11 +38,18 @@ export const LoggedNavbarDesktop: FC<LoggedNavbarDesktopProps> = (props) => {
     const { onOpenUserMenu, onClose, open } = props;
     const { userData } = useSelector((state) => state.user);
     const { user } = userData;
-
+    const [openDesktopUserMenu, setOpenDesktopUserMenu] = useState<boolean>(false)
     const dispatch = useDispatch();
     const handleOpenLogoutModal = () => {
         dispatch(openLogoutModal());
     };
+
+    const handleOpenDesktopUserMenu = () => {
+        setOpenDesktopUserMenu(!openDesktopUserMenu)
+    }
+
+
+
 
     return (
         <AppBar
@@ -82,6 +89,10 @@ export const LoggedNavbarDesktop: FC<LoggedNavbarDesktopProps> = (props) => {
                         <Avatar />
                     </Button>
 
+                    <DesktopUserNavbar
+                        onClose={handleOpenDesktopUserMenu}
+                        open={openDesktopUserMenu}
+                    />
                     <Drawer
                         anchor='top'
                         open={open}
