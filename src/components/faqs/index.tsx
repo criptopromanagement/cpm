@@ -6,7 +6,18 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Link } from '@mui/material';
+import { useSelector } from "react-redux";
+import { RootState } from "src/store";
 export const AccordionComponent = () => {
+
+  const isMobile = useSelector((state: RootState) => state.isMobile.isMobile);
+
+
+  const containerStyle = {
+    marginTop: "1.5rem",
+    borderRadius: 16,
+    border: isMobile ? "1px solid white" : "none",
+  };
 
   const accordionStyle = {
     backgroundColor: "transparent",
@@ -14,7 +25,7 @@ export const AccordionComponent = () => {
   };
 
   return (
-    <div style={{marginTop: "1.5rem", border: "1px solid white", borderRadius: 16}}>
+    <div style={containerStyle}>
       {data.map((item) => (
         <Accordion key={item.id} style={accordionStyle}>
           <AccordionSummary

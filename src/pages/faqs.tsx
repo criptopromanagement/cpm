@@ -39,8 +39,8 @@ const Faqs: NextPage = () => {
             mb: "2rem",
             display: "flex",
             flexDirection: "column",
-            alignItems: "center",
             [theme.breakpoints.up('md')]: {
+              alignItems: "center",
               mt: 6,
               mb: "4rem",
               justifyContent: "center",
