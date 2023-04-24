@@ -11,6 +11,9 @@ import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
 import { Card, Container, Grid } from "@mui/material";
 import { useMounted } from "../../hooks/use-mounted";
+import { HomeBlogDesktop } from "./home-blog-desktop";
+import { useSelector } from "react-redux";
+import { RootState } from "src/store";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -34,6 +37,7 @@ function HomeBlog() {
   const [activeStep, setActiveStep] = useState(0);
   const maxSteps = images.length;
   const isMounted = useMounted();
+  const isMobile = useSelector((state: RootState) => state.isMobile.isMobile);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -48,112 +52,154 @@ function HomeBlog() {
   };
 
   return (
-    <Box
-      component="main"
-      sx={{
-        flexGrow: 5,
-        pt: 3,
-        pb: 3,
-      }}
-    >
-      <Container maxWidth="lg">
-        <Grid container md={4} xs={12} justifyContent="center">
-          <Card
-            sx={{
-              height: "100%",
-              p: 2,
-            }}
+    isMobile ? (
+      <>
+        <Box
+          marginLeft={2}
+        >
+          <Typography
+            align="left"
+            variant="h1">
+            Blog e investigación
+          </Typography>
+          <Typography
+            align="left"
+            variant="subtitle2"
+            sx={{ py: 1 }}
           >
-            <AutoPlaySwipeableViews
-              axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-              index={activeStep}
-              onChangeIndex={handleStepChange}
-              enableMouseEvents
-            >
-              {images.map((images) => (
-                <div key={images.title}>
-                  {Math.abs(activeStep) <= 2 ? (
-                    <Box
-                      component="img"
-                      sx={{
-                        height: "100%",
-                        display: "block",
-                        maxWidth: "100%",
-                        overflow: "hidden",
-                        width: "100%",
-                      }}
-                      src={images.imgPath}
-                      alt={images.title}
-                    />
-                  ) : null}
-                </div>
-              ))}
-            </AutoPlaySwipeableViews>
-            <Paper
-              square
-              elevation={0}
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                height: 70,
-                pl: 2,
-                pb: 1,
-                bgcolor: "background.footer",
-              }}
-            >
-              <Typography>{images[activeStep].title}</Typography>
-            </Paper>
-            <Paper
-              square
-              elevation={0}
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                height: 80,
-                pl: 2,
-                pb: 3,
-                bgcolor: "background.footer",
-              }}
-            >
-              <Typography color="textSecondary" variant="caption">
-                {images[activeStep].subtitle}
-              </Typography>
-            </Paper>
-            <MobileStepper
-              steps={maxSteps}
-              position="static"
-              activeStep={activeStep}
-              nextButton={
-                <Button
-                  size="small"
-                  onClick={handleNext}
-                  disabled={activeStep === maxSteps - 1}
+            Qué está pasando en el mundo cripto y por qué es importante. Conocé mas sobre las últimas investigaciones del equipo de CPM.
+          </Typography>
+        </Box>
+        <Box
+          component="main"
+          sx={{
+            flexGrow: 5,
+            pt: 3,
+            pb: 3,
+          }}
+        >
+          <Container maxWidth="lg">
+            <Grid container md={4} xs={12} justifyContent="center">
+              <Card
+                sx={{
+                  height: "100%",
+                  p: 2,
+                }}
+              >
+                <AutoPlaySwipeableViews
+                  axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+                  index={activeStep}
+                  onChangeIndex={handleStepChange}
+                  enableMouseEvents
                 >
-                  {theme.direction === "rtl" ? (
-                    <KeyboardArrowLeft />
-                  ) : (
-                    <KeyboardArrowRight />
-                  )}
-                </Button>
-              }
-              backButton={
-                <Button
-                  size="small"
-                  onClick={handleBack}
-                  disabled={activeStep === 0}
+                  {images.map((images) => (
+                    <div key={images.title}>
+                      {Math.abs(activeStep) <= 2 ? (
+                        <Box
+                          component="img"
+                          sx={{
+                            height: "100%",
+                            display: "block",
+                            maxWidth: "100%",
+                            overflow: "hidden",
+                            width: "100%",
+                          }}
+                          src={images.imgPath}
+                          alt={images.title}
+                        />
+                      ) : null}
+                    </div>
+                  ))}
+                </AutoPlaySwipeableViews>
+                <Paper
+                  square
+                  elevation={0}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    height: 70,
+                    pl: 2,
+                    pb: 1,
+                    bgcolor: "background.footer",
+                  }}
                 >
-                  {theme.direction === "rtl" ? (
-                    <KeyboardArrowRight />
-                  ) : (
-                    <KeyboardArrowLeft />
-                  )}
-                </Button>
-              }
-            />
-          </Card>
-        </Grid>
-      </Container>
-    </Box>
+                  <Typography>{images[activeStep].title}</Typography>
+                </Paper>
+                <Paper
+                  square
+                  elevation={0}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    height: 80,
+                    pl: 2,
+                    pb: 3,
+                    bgcolor: "background.footer",
+                  }}
+                >
+                  <Typography color="textSecondary" variant="caption">
+                    {images[activeStep].subtitle}
+                  </Typography>
+                </Paper>
+                <MobileStepper
+                  steps={maxSteps}
+                  position="static"
+                  activeStep={activeStep}
+                  nextButton={
+                    <Button
+                      size="small"
+                      onClick={handleNext}
+                      disabled={activeStep === maxSteps - 1}
+                    >
+                      {theme.direction === "rtl" ? (
+                        <KeyboardArrowLeft />
+                      ) : (
+                        <KeyboardArrowRight />
+                      )}
+                    </Button>
+                  }
+                  backButton={
+                    <Button
+                      size="small"
+                      onClick={handleBack}
+                      disabled={activeStep === 0}
+                    >
+                      {theme.direction === "rtl" ? (
+                        <KeyboardArrowRight />
+                      ) : (
+                        <KeyboardArrowLeft />
+                      )}
+                    </Button>
+                  }
+                />
+              </Card>
+            </Grid>
+          </Container>
+        </Box>
+      </>
+    ) :
+      (
+        <>
+          <Box marginLeft={'100px'} marginBottom={5}>
+            <Typography align="left"
+              variant="h1">
+              Blog e investigación
+            </Typography>
+            <Typography
+              align="left"
+              variant="subtitle2"
+              sx={{ py: 1 }}
+            >
+              Qué está pasando en el mundo cripto y por qué es importante. Conocé mas sobre las últimas investigaciones del equipo de CPM.
+            </Typography>
+          </Box>
+          <HomeBlogDesktop
+            next={() => handleNext}
+            forward={handleBack}
+
+          />
+        </>
+      )
   );
 }
 
