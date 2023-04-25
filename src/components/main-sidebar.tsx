@@ -101,6 +101,18 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
           </MainSidebarLink>
         </NextLink>
         <NextLink
+          href="/faqs"
+          passHref
+        >
+          <MainSidebarLink
+            color="textPrimary"
+            underline="none"
+            variant="subtitle2"
+          >
+            FAQs
+          </MainSidebarLink>
+        </NextLink>
+        <NextLink
           href="/contacto"
           passHref
         >

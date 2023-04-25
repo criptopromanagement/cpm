@@ -95,6 +95,20 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
               </Link>
             </NextLink>
             <NextLink
+              href="/faqs"
+              passHref
+            >
+              <Link
+                color="textSecondary"
+                component="a"
+                sx={{ ml: 2 }}
+                underline="none"
+                variant="subtitle2"
+              >
+                FAQs
+              </Link>
+            </NextLink>
+            <NextLink
               href="/contacto"
               passHref
             >

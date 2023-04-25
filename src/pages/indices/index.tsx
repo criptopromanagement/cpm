@@ -8,6 +8,7 @@ import Composition from "./composition";
 import Terms from "./terms";
 import Documents from "./documents";
 import Performance from "./performance";
+import { MainSidebar } from "src/components/main-sidebar";
 
 const Indices = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
@@ -30,6 +31,10 @@ const Indices = () => {
             >
                 <Container maxWidth="lg">
                     <MainNavbar onOpenSidebar={handleOpenSideBar}/>
+                    <MainSidebar
+                        onClose={(): void => setIsSidebarOpen(false)}
+                        open={isSidebarOpen}
+                    />
                     <Typography
                         variant="h1"
                         sx={{ mt: 3, mb: 1 }}
