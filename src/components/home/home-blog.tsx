@@ -194,8 +194,8 @@ function HomeBlog() {
             </Typography>
           </Box>
           <HomeBlogDesktop
-            next={() => handleNext}
-            forward={handleBack}
+          // next={() => handleNext}
+          // forward={handleBack}
 
           />
         </>

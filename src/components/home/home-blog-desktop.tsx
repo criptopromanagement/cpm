@@ -7,18 +7,18 @@ import { Avatar, Box, Card, CardContent, Chip, Link, Typography, Grid, Button } 
 import { getInitials } from '../../utils/get-initials';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import type { FC } from "react";
-import PropTypes from "prop-types";
+// import type { FC } from "react";
+// import PropTypes from "prop-types";
 
-interface HomeBlogDesktopProps {
-    next?: () => void;
-    forward?: () => void;
+// interface HomeBlogDesktopProps {
+//     next?: () => void;
+//     forward?: () => void;
 
-}
+// }
 
-export const HomeBlogDesktop: FC<HomeBlogDesktopProps> = (props) => {
+export const HomeBlogDesktop = () => {
     const [posts, setPosts] = useState<Post[]>([]);
-    const { next, forward } = props;
+    // const { next, forward } = props;
     const getPosts = useCallback(async () => {
         try {
             const result = await blogApi.getPosts();
@@ -49,7 +49,7 @@ export const HomeBlogDesktop: FC<HomeBlogDesktopProps> = (props) => {
                     color: "white",
 
                 }}
-                onClick={forward}
+            // onClick={forward}
             >
 
                 <ArrowBackIcon
@@ -66,12 +66,12 @@ export const HomeBlogDesktop: FC<HomeBlogDesktopProps> = (props) => {
                     <Grid
                         item
                         xs={3}
+                        key={content.id}
                     >
                         <Card
                             sx={{
                                 backgroundColor: "#1c1c1c",
                                 border: "thin white solid",
-
                             }}
 
                         >
@@ -173,7 +173,7 @@ export const HomeBlogDesktop: FC<HomeBlogDesktopProps> = (props) => {
                     color: "white",
 
                 }}
-                onClick={next}
+            // onClick={next}
             >
 
                 <ArrowForwardIcon
@@ -188,8 +188,8 @@ export const HomeBlogDesktop: FC<HomeBlogDesktopProps> = (props) => {
     );
 };
 
-HomeBlogDesktop.propTypes = {
-    next: PropTypes.func,
-    forward: PropTypes.func,
+// HomeBlogDesktop.propTypes = {
+//     next: PropTypes.func,
+//     forward: PropTypes.func,
 
-} 
+// } 
