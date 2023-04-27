@@ -1,0 +1,56 @@
+[
+    {
+      "id": 1,
+      "title": "¿Cómo se administran mis activos?",
+      "content": "Cada fondo se rebalancea mensualmente de manera automática, segun las reglas establecidas en las metodologías de inversión. ",
+      "link": {
+        "text": "Ver Metodología CPM de Índices Cripto",
+        "url": "/indices" 
+      }
+    },
+    {
+      "id": 2,
+      "title": "¿Cuál es el monto mínimo para invertir?",
+      "content": "No hay monto minimo de inversión, ni de permanencia."
+    },
+    {
+      "id": 3,
+      "title": "¿Cuál es la rentabilidad esperada?",
+      "content": "La rentabilidad depende del comportamiento del mercado. Los fondos de CPM no ofrecen una renta fija sino que es variable."
+    },
+    {
+      "id": 4,
+      "title": "¿Cuál es la diferencia con comprar criptos por mi cuenta?",
+      "content": "Profesional, estándares, análisis y ajustes periódicos."
+    },
+    {
+      "id": 5,
+      "title": "¿Cómo sé la evolución de mi inversión?",
+      "content": "Podés visualizar el rendimiento de tus inversiones en el panel de control de tu cuenta CPM, ingresando con tu usuario y contraseña."
+    },
+    {
+      "id": 6,
+      "title": "¿Hay ganancias aseguradas?",
+      "content": "No. Al ingresar en el fondo, estás adquiriendo una parte de un fondo que se encuentra diversificado en activos de renta variable."
+    },
+    {
+      "id": 7,
+      "title": "¿Cuándo se rebalancean los fondos?",
+      "content": "Cripto es un mercado de rápido movimiento. Para garantizar que los índices se mantengan al día con los cambios en el ecosistema, CPM utiliza reglas claras y predecibles sobre el rebalanceo. Podés encontrar más información sobre cómo reequilibramos nuestros Fondos aquí: ",
+      "link": {
+        "text": "Metodología CPM de Índices Cripto",
+        "url": "/indices" 
+      }
+    },
+    {
+      "id": 8,
+      "title": "¿Cómo se mantienen los criptoactivos seguros?",
+      "content": "La custodia es un elemento crítico a la hora de gestionar inversiones en criptoactivos. CPM utiliza como custodio externo a Binance, plataforma que mantiene las mejores prácticas de seguridad de la industria."
+    },
+    {
+      "id": 9,
+      "title": "¿Cuál es la comisión por administración?",
+      "content": "Nuestros fondos cobran una tarifa de administración unificada que incluye cargos de custodia de los activos y tarifas y gastos habituales del administrador. No hay comisión de rendimiento. La comisión de gestión puede oscilar entre el 1% y el 3% de los activos bajo custodia, según el fondo."
+    }
+  ]
+  
