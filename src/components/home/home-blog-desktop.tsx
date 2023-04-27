@@ -7,18 +7,10 @@ import { Avatar, Box, Card, CardContent, Chip, Link, Typography, Grid, Button } 
 import { getInitials } from '../../utils/get-initials';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-// import type { FC } from "react";
-// import PropTypes from "prop-types";
-
-// interface HomeBlogDesktopProps {
-//     next?: () => void;
-//     forward?: () => void;
-
-// }
 
 export const HomeBlogDesktop = () => {
     const [posts, setPosts] = useState<Post[]>([]);
-    // const { next, forward } = props;
+    const [startIndex, setStartIndex] = useState(0)
     const getPosts = useCallback(async () => {
         try {
             const result = await blogApi.getPosts();
@@ -32,37 +24,62 @@ export const HomeBlogDesktop = () => {
         getPosts();
     }, [getPosts]);
 
+    const handleNext = () => {
+        if (startIndex < posts.length - 3) {
+            setStartIndex(startIndex + 1)
+        }
+    }
 
+    const handleBack = () => {
+        if (startIndex > 0) {
+            setStartIndex(startIndex - 1)
+        }
+    }
 
     return (
-
-        <Grid
-            container
-            spacing={3}
-            justifyContent="center"
-            mb={3}
-        >
-            <Button
-                sx={{
-                    height: "52px",
-                    top: 200,
-                    color: "white",
-
-                }}
-            // onClick={forward}
+        <>
+            <Box marginLeft={'100px'} marginBottom={5}>
+                <Typography align="left"
+                    variant="h1">
+                    Blog e investigación
+                </Typography>
+                <Typography
+                    align="left"
+                    variant="subtitle2"
+                    sx={{ py: 1 }}
+                >
+                    Qué está pasando en el mundo cripto y por qué es importante. Conocé mas sobre las últimas investigaciones del equipo de CPM.
+                </Typography>
+            </Box>
+            <Grid
+                container
+                spacing={3}
+                justifyContent="center"
+                mb={3}
             >
-
-                <ArrowBackIcon
-                    fontSize='large'
+                <Button
                     sx={{
-                        border: "thin solid white",
-                        borderRadius: "50%"
-                    }}
+                        height: "52px",
+                        top: 200,
+                        color: "white",
 
-                />
-            </Button>
-            {posts.map((content) => {
-                return (
+                    }}
+                    onClick={handleBack}
+                    disabled={startIndex === 0}
+                >
+
+                    <ArrowBackIcon
+                        fontSize='large'
+                        sx={{
+                            border: "thin solid white",
+                            borderRadius: "50%"
+                        }}
+
+                    />
+                </Button>
+
+                {posts.slice(startIndex, startIndex + 3).map((content) => (
+
                     <Grid
                         item
                         xs={3}
@@ -73,7 +90,6 @@ export const HomeBlogDesktop = () => {
                                 backgroundColor: "#1c1c1c",
                                 border: "thin white solid",
                             }}
-
                         >
                             <NextLink
                                 href="/blog/1"
@@ -89,7 +105,6 @@ export const HomeBlogDesktop = () => {
                                         maxWidth: "100%",
                                         overflow: "hidden",
                                         width: "100%",
-
                                     }}
                                 />
                             </NextLink>
@@ -120,7 +135,7 @@ export const HomeBlogDesktop = () => {
                                     }}
                                     variant="body1"
                                 >
-                                    {content.shortDescription}
+                                    {content.shortDescription.length > 300 ? `${content.shortDescription.substring(0, 300)}...` : content.shortDescription}
                                 </Typography>
                                 <Box
                                     sx={{
@@ -164,32 +179,27 @@ export const HomeBlogDesktop = () => {
                             </CardContent>
                         </Card>
                     </Grid>
-                )
-            })}
-            <Button
-                sx={{
-                    height: "52px",
-                    top: 200,
-                    color: "white",
-
-                }}
-            // onClick={next}
-            >
-
-                <ArrowForwardIcon
-                    fontSize='large'
+                ))}
+                <Button
                     sx={{
-                        border: "thin solid white",
-                        borderRadius: "50%"
+                        height: "52px",
+                        top: 200,
+                        color: "white",
                     }}
-                />
-            </Button>
-        </Grid>
+                    onClick={handleNext}
+                    disabled={startIndex === posts.length - 3}
+                >
+
+                    <ArrowForwardIcon
+                        fontSize='large'
+                        sx={{
+                            border: "thin solid white",
+                            borderRadius: "50%"
+                        }}
+                    />
+                </Button>
+            </Grid>
+        </>
     );
 };
 
-// HomeBlogDesktop.propTypes = {
-//     next: PropTypes.func,
-//     forward: PropTypes.func,
-
-// } 
