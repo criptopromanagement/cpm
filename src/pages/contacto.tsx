@@ -21,8 +21,11 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
 import apiClientWithoutToken from "src/services/api-client-without-token";
 import GoBack from "src/components/widgets/goBack";
+import { useSelector } from "react-redux";
+import { RootState } from "src/store";
 
 const Contacto: NextPage = () => {
+  const isMobile = useSelector((state: RootState) => state.isMobile.isMobile);
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
   const [openSucces, setOpenSucces] = useState(false);
   const [openError, setOpenError] = useState(false);
@@ -110,7 +113,10 @@ const Contacto: NextPage = () => {
             </Typography>
           </Box>
         <Container maxWidth="xl">
-        <Grid container justifyContent="center" spacing={2}>
+        <Grid 
+          container
+          justifyContent="center"
+          spacing={2}>
           <Grid
             item xs={12}
             md={6}
@@ -130,11 +136,7 @@ const Contacto: NextPage = () => {
               Enviando...
                         </Typography>
             ) : (
-              <Box
-                sx={{
-                  width: "100%",
-                }}
-              >
+              <Box>
                 <Collapse in={openSucces}>
                   <Alert
                     severity="success"
@@ -151,16 +153,15 @@ const Contacto: NextPage = () => {
                     sx={{
                       mb: 2,
                       mt: 2,
-                      ml: 2.5,
+                      ml: isMobile? 2.5 : 17.5,
                       mr: 2.5,
                       backgroundColor: "rgba(0, 255, 51, 0.2)",
                       border: "1px solid #00FF33",
+                      width: isMobile? "90%" : "65%"
                     }}
                   >
                     <Typography color="inherit">
-                      ¡Gracias por envíar tu mensaje!
-                      <br />
-                      Te responderemos muy pronto.
+                      ¡Gracias por envíar tu mensaje! Te responderemos muy pronto.
                     </Typography>
                   </Alert>
                 </Collapse>
@@ -171,11 +172,7 @@ const Contacto: NextPage = () => {
             {loading ? (
               ""
             ) : (
-              <Box
-                sx={{
-                  width: "100%",
-                }}
-              >
+              <Box>
                 <Collapse in={openError}>
                   <Alert
                     severity="error"
@@ -211,11 +208,14 @@ const Contacto: NextPage = () => {
               </Box>
             )}
             <form
+              // className="formulario"
               onSubmit={formik.handleSubmit}
               noValidate
               style={{
                 paddingLeft: "20px",
                 paddingRight: "20px",
+                width: isMobile? "100%" : "70%",
+                margin: "0 auto", 
               }}
             >
               <TextField
@@ -262,7 +262,6 @@ const Contacto: NextPage = () => {
                 }}
                 size="large"
                 variant="contained"
-                fullWidth
                 type="submit"
                 disabled={formik.isSubmitting}
               >
