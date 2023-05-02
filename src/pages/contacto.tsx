@@ -78,7 +78,11 @@ const Contacto: NextPage = () => {
       <Head>
         <title>CPM | Contacto</title>
       </Head>
-
+      <MainNavbar onOpenSidebar={handleOpenSideBar} />
+            <MainSidebar
+              onClose={(): void => setIsSidebarOpen(false)}
+              open={isSidebarOpen}
+            />
       <Box
         component="main"
         sx={{
@@ -107,7 +111,10 @@ const Contacto: NextPage = () => {
             </Typography>
             <Typography
               variant="h2"
-              sx={{ ml: { xs: '2.5rem', sm: "2.5rem", md: 0 } }}
+              sx={{ 
+                ml: { xs: '2.5rem', sm: "2.5rem", md: 0 },
+                mb: { xs: '1rem', md: "2rem" }
+              }}
             >
               ¿Cómo podemos ayudarte?
             </Typography>
@@ -122,12 +129,18 @@ const Contacto: NextPage = () => {
             md={6}
             textAlign="center"
             sx={{mb: 5}}>
-            <MainNavbar onOpenSidebar={handleOpenSideBar} />
-            <MainSidebar
-              onClose={(): void => setIsSidebarOpen(false)}
-              open={isSidebarOpen}
-            />
             {/* Alert de mensaje Enviado */}
+            <form
+              // className="formulario"
+              onSubmit={formik.handleSubmit}
+              noValidate
+              style={{
+                paddingLeft: "20px",
+                paddingRight: "20px",
+                width: isMobile? "100%" : "70%",
+                margin: "0 auto", 
+              }}
+            >
             {loading ? (
                           <Typography
                           variant="body1"
@@ -151,13 +164,8 @@ const Contacto: NextPage = () => {
                       </IconButton>
                     }
                     sx={{
-                      mb: 2,
-                      mt: 2,
-                      ml: isMobile? 2.5 : 17.5,
-                      mr: 2.5,
                       backgroundColor: "rgba(0, 255, 51, 0.2)",
                       border: "1px solid #00FF33",
-                      width: isMobile? "90%" : "65%"
                     }}
                   >
                     <Typography color="inherit">
@@ -207,17 +215,6 @@ const Contacto: NextPage = () => {
                 </Collapse>
               </Box>
             )}
-            <form
-              // className="formulario"
-              onSubmit={formik.handleSubmit}
-              noValidate
-              style={{
-                paddingLeft: "20px",
-                paddingRight: "20px",
-                width: isMobile? "100%" : "70%",
-                margin: "0 auto", 
-              }}
-            >
               <TextField
                 onChange={formik.handleChange}
                 error={formik.touched.name && Boolean(formik.errors.name)}
