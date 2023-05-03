@@ -7,10 +7,24 @@ import { Avatar, Box, Card, CardContent, Chip, Link, Typography, Grid, Button } 
 import { getInitials } from '../../utils/get-initials';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { styled } from '@mui/material/styles';
+
+const HomeBlogCard = styled(Card)`
+  ${({ theme }) => `
+    transition: ${theme.transitions.create(['transform'], {
+    duration: theme.transitions.duration.standard
+})};
+  &:hover {
+      transform: scale(1.1);
+      
+  }
+  `}
+`;
 
 export const HomeBlogDesktop = () => {
     const [posts, setPosts] = useState<Post[]>([]);
-    const [startIndex, setStartIndex] = useState(0)
+    const [startIndex, setStartIndex] = useState(0);
+    const postsInfinito = [...posts, ...posts, ...posts]
     const getPosts = useCallback(async () => {
         try {
             const result = await blogApi.getPosts();
@@ -25,16 +39,26 @@ export const HomeBlogDesktop = () => {
     }, [getPosts]);
 
     const handleNext = () => {
-        if (startIndex < posts.length - 3) {
-            setStartIndex(startIndex + 1)
-        }
-    }
+        setStartIndex((prevIndex) => {
+            if (prevIndex === postsInfinito.length - 3) {
+                return 0;
+            } else {
+                return prevIndex + 1;
+            }
+        });
+    };
 
     const handleBack = () => {
-        if (startIndex > 0) {
-            setStartIndex(startIndex - 1)
-        }
-    }
+        setStartIndex((prevIndex) => {
+            if (prevIndex === 0) {
+                return postsInfinito.length - 3;
+            } else {
+                return prevIndex - 1;
+            }
+        });
+    };
+
+
 
     return (
         <>
@@ -65,7 +89,6 @@ export const HomeBlogDesktop = () => {
 
                     }}
                     onClick={handleBack}
-                    disabled={startIndex === 0}
                 >
 
                     <ArrowBackIcon
@@ -78,14 +101,15 @@ export const HomeBlogDesktop = () => {
                     />
                 </Button>
 
-                {posts.slice(startIndex, startIndex + 3).map((content) => (
+                {postsInfinito.slice(startIndex, startIndex + 3).map((content, index) => (
 
                     <Grid
                         item
                         xs={3}
-                        key={content.id}
+                        key={index}
+                        padding="12px"
                     >
-                        <Card
+                        <HomeBlogCard
                             sx={{
                                 backgroundColor: "#1c1c1c",
                                 border: "thin white solid",
@@ -135,7 +159,7 @@ export const HomeBlogDesktop = () => {
                                     }}
                                     variant="body1"
                                 >
-                                    {content.shortDescription.length > 300 ? `${content.shortDescription.substring(0, 300)}...` : content.shortDescription}
+                                    {content.shortDescription.length > 250 ? `${content.shortDescription.substring(0, 300)}...` : content.shortDescription}
                                 </Typography>
                                 <Box
                                     sx={{
@@ -160,7 +184,7 @@ export const HomeBlogDesktop = () => {
                                         <Typography variant="subtitle2">
                                             By
                                             {' '}
-                                            {content.author.name}
+                                            {content.author.name.length > 12 ? `${content.author.name.substring(0, 12)}...` : content.author.name}
                                             {' '}
                                             •
                                             {' '}
@@ -177,7 +201,8 @@ export const HomeBlogDesktop = () => {
                                     </Typography>
                                 </Box>
                             </CardContent>
-                        </Card>
+
+                        </HomeBlogCard>
                     </Grid>
                 ))}
                 <Button
@@ -185,11 +210,10 @@ export const HomeBlogDesktop = () => {
                         height: "52px",
                         top: 200,
                         color: "white",
+                        marginLeft: "16px"
                     }}
                     onClick={handleNext}
-                    disabled={startIndex === posts.length - 3}
                 >
-
                     <ArrowForwardIcon
                         fontSize='large'
                         sx={{
