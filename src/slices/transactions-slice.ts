@@ -40,10 +40,39 @@ export const getTransactions = createAsyncThunk(
   "transactions/getTransactions",
   async () => {
     try {
+      const currency = "$";
+      const criptoCurrency = "USDT";
       const response = await ApiClient.get("/orders?per_page=5&page=1");
-      console.log(response.data.data);
-      return response.data.data as Transaction[];
-    } catch (error) {}
+      const data = response.data.data.map((transaction: Transaction) => {
+        const { type, amount, fund, createdAt } = transaction;
+        const text =
+          transaction.type === "buy"
+            ? `Invertiste`
+            : type === "inversion"
+              ? `Invertiste`
+              : `Retiraste`;
+
+        const formatedAmount = `${currency} ${amount.toFixed(2)}`.replace(".", ",");
+        const formatedAmountCrypto = `${amount.toFixed(2)} ${criptoCurrency}`.replace(".", ",");
+        const transactionTypeDescription =
+          type === "buy"
+            ? `+ ${formatedAmountCrypto}`
+            : type === "inversion"
+              ? `+ ${formatedAmountCrypto}`
+              : `- ${formatedAmountCrypto}`;
+
+        const to = fund ? fund.name : '';
+        const created = new Date(createdAt);
+        const formatedDate = created.toLocaleDateString("es-ES", {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+        });
+
+        return ({ ...transaction, formatedDate, formatedAmount, transactionTypeDescription, to, text })
+      })
+      return data as Transaction[];
+    } catch (error) { }
   }
 );
 

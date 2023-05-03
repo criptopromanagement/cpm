@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "src/store";
 
 export const HomePlans: FC = (props) => {
-  const isMobile = useSelector((state: RootState) => state.isMobile.isMobile);
+  const isMobile = useSelector((state: RootState) => state.mobile.isMobile);
 
   const plans: Plan[] = [
     {

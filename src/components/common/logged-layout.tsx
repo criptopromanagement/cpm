@@ -8,6 +8,7 @@ import { ConfirmationLogoutModal } from "../logout";
 import { ModalMyInfo } from "../account/MyData";
 import { useDispatch, useSelector } from "src/store";
 import { closeLogoutModal } from "src/slices/logout-modal-slice";
+import { Container } from "@mui/material";
 interface MainLayoutProps {
   children?: ReactNode;
   head: string;
@@ -46,7 +47,9 @@ export const LoggedLayout: FC<MainLayoutProps> = ({
         open={openUserMenu}
       />
       <LoggedNavbar />
-      {children}
+      <Container maxWidth="xl" sx={{ mt: 2 }}>
+        {children}
+      </Container>
       <ModalMyInfo open={openModal} handleClose={handleCloseModal}>
         <ConfirmationLogoutModal handleCloseModal={handleCloseModal} />
       </ModalMyInfo>

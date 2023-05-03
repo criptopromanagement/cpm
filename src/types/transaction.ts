@@ -8,4 +8,9 @@ export interface Transaction {
   createdAt: Date;
   updatedAt: Date;
   id: string;
+  formatedDate: string;
+  formatedAmount: string;
+  transactionTypeDescription: string;
+  to: string;
+  text: string;
 }
