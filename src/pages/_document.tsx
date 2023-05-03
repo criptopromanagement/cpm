@@ -19,6 +19,10 @@ class CustomDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto+Slab|Roboto:300,400,500,700&display=optional"
           />
           <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          />
+          <link
             rel="apple-touch-icon"
             sizes="180x180"
             href="/apple-touch-icon.png"
@@ -55,13 +59,13 @@ CustomDocument.getInitialProps = async (ctx) => {
   ctx.renderPage = () =>
     originalRenderPage({
       enhanceApp: (App) => (props) =>
-        (
-          <App
-            // @ts-ignore
-            emotionCache={cache}
-            {...props}
-          />
-        ),
+      (
+        <App
+          // @ts-ignore
+          emotionCache={cache}
+          {...props}
+        />
+      ),
     });
 
   const initialProps = await Document.getInitialProps(ctx);

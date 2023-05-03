@@ -1,16 +1,23 @@
 import { Avatar, Grid, ListItemIcon, ListItemText, MenuItem, MenuList, Typography, } from '@mui/material'
-import React from 'react'
-import { useSelector } from 'src/store'
-import BarChartIcon from '@mui/icons-material/BarChart';
-import AccountBalanceOutlinedIcon from '@mui/icons-material/AccountBalanceOutlined';
-import HttpsOutlinedIcon from '@mui/icons-material/HttpsOutlined';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import React, { FC } from 'react'
+import { useDispatch, useSelector } from 'src/store'
 import OutputIcon from '@mui/icons-material/Output';
 import { styled } from '@mui/system';
+import { NavigationItem } from './navigation-item';
+import { NavigationItem as NavigationItemType } from 'src/types/left-bar';
+import { openLogoutModal } from 'src/slices/logout-modal-slice';
+interface Props {
+    navigationList: NavigationItemType[]
+}
 
-export const LeftBar = () => {
+export const LeftBar: FC<Props> = ({ navigationList }) => {
     const { userData } = useSelector((state) => state.user)
     const { user } = userData
+    const dispatch = useDispatch();
+    const handleOpenLogoutModal = () => {
+        dispatch(openLogoutModal());
+    };
+
     return (
         <Grid
             container
@@ -56,39 +63,13 @@ export const LeftBar = () => {
                 sx={{ backgroundColor: '#DADADA', borderRadius: 1, }}
             >
                 <StyledMenu>
-                    <MenuItem>
-                        <ListItemIcon>
-                            <BarChartIcon />
-                        </ListItemIcon>
-                        <ListItemText>
-                            <Typography variant="subtitle1">Portafolio</Typography>
-                        </ListItemText>
-                    </MenuItem>
-                    <MenuItem>
-                        <ListItemIcon>
-                            <AccountCircleIcon />
-                        </ListItemIcon>
-                        <ListItemText>
-                            <Typography variant="subtitle1">Mis datos</Typography>
-                        </ListItemText>
-                    </MenuItem>
-                    <MenuItem>
-                        <ListItemIcon>
-                            < AccountBalanceOutlinedIcon />
-                        </ListItemIcon>
-                        <ListItemText>
-                            <Typography variant="subtitle1">Mis cuentas</Typography>
-                        </ListItemText>
-                    </MenuItem>
-                    <MenuItem>
-                        <ListItemIcon>
-                            <HttpsOutlinedIcon />
-                        </ListItemIcon>
-                        <ListItemText>
-                            <Typography variant="subtitle1">Seguridad</Typography>
-                        </ListItemText>
-                    </MenuItem>
-                    <MenuItem sx={{ marginTop: 25 }}>
+                    {navigationList.map((item) => {
+                        const active = window.location.pathname.includes(item.to)
+                        return (
+                            <NavigationItem key={item.to} active={active} navigationItem={item} />
+                        )
+                    })}
+                    <MenuItem sx={{ marginTop: 25, }} onClick={handleOpenLogoutModal}>
                         <ListItemIcon>
                             <OutputIcon />
                         </ListItemIcon>
@@ -107,10 +88,8 @@ const StyledMenu = styled(MenuList)({
     paddingBottom: 20,
     paddingTop: 5,
     "& > li": {
-        backgroundColor: "#6DEC86",
         "& > div": {
             color: "inherit"
         }
     }
-
 })
