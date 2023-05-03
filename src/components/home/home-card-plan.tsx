@@ -23,7 +23,7 @@ const BlogPostCardMediaWrapper = styled("div")({
 });
 
 export const CardPlan: FC<Props> = ({ plan }: Props) => {
-  const isMobile = useSelector((state: RootState) => state.isMobile.isMobile);
+  const isMobile = useSelector((state: RootState) => state.mobile.isMobile);
   return (
     <div>
       {isMobile ? (
