@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "src/store";
 
 export const HomeBlog = () => {
-    const isMobile = useSelector((state: RootState) => state.isMobile.isMobile);
+    const isMobile = useSelector((state: RootState) => state.mobile.isMobile);
 
     return (
         isMobile ? (
