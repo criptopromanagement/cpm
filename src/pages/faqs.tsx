@@ -10,7 +10,7 @@ import Link from "next/link";
 
 const Faqs: NextPage = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
-  const theme = useTheme(); // <--- Aquí agregas esta línea
+  const theme = useTheme();
 
 
   const handleOpenSideBar = () => {
