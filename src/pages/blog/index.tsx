@@ -21,6 +21,11 @@ const BlogPostList: NextPage = () => {
     const [posts, setPosts] = useState<Post[]>([]);
     const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
 
+    const handleOpenSideBar = () => {
+        setIsSidebarOpen(!isSidebarOpen)
+    }
+
+
     useEffect(() => {
         gtm.push({ event: 'page_view' });
     }, []);
@@ -41,10 +46,6 @@ const BlogPostList: NextPage = () => {
         getPosts();
     }, [getPosts]);
 
-    const handleOpenSideBar = () => {
-        setIsSidebarOpen(!isSidebarOpen)
-    }
-
 
     return (
         <>
@@ -61,7 +62,7 @@ const BlogPostList: NextPage = () => {
                 }}
             >
                 <Container maxWidth="lg">
-                    <MainNavbar handleOpenSideBar={handleOpenSideBar} open={isSidebarOpen} />
+                    <MainNavbar onOpenSidebar={handleOpenSideBar} />
                     <MainSidebar
                         onClose={(): void => setIsSidebarOpen(false)}
                         open={isSidebarOpen}
