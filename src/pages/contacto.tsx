@@ -25,7 +25,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "src/store";
 
 const Contacto: NextPage = () => {
-  const isMobile = useSelector((state: RootState) => state.isMobile.isMobile);
+  const isMobile = useSelector((state: RootState) => state.mobile.isMobile);
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
   const [openSucces, setOpenSucces] = useState(false);
   const [openError, setOpenError] = useState(false);
@@ -124,9 +124,7 @@ const Contacto: NextPage = () => {
           container
           justifyContent="center"
           spacing={2}>
-          <Grid
-            item xs={12}
-            md={6}
+          <Grid item xs={12} md={6}
             textAlign="center"
             sx={{mb: 5}}>
             {/* Alert de mensaje Enviado */}
