@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "src/store";
 export const AccordionComponent = () => {
 
-  const isMobile = useSelector((state: RootState) => state.isMobile.isMobile);
+  const isMobile = useSelector((state: RootState) => state.mobile.isMobile);
 
 
   const containerStyle = {

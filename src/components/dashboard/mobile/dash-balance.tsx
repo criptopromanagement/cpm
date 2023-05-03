@@ -11,7 +11,7 @@ import {
 import { alpha, useTheme } from "@mui/material/styles";
 import { Chart } from "./chart";
 
-import { MaterialUISwitch } from "../widgets/toggle";
+import { MaterialUISwitch } from "../../widgets/toggle";
 import { LineChart } from "./line-chart";
 
 const BarChart: FC = () => {

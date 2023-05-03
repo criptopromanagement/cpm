@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import React, { FC } from "react";
-import { MaterialUISwitch } from "../widgets/toggle";
+import { MaterialUISwitch } from "../../widgets/toggle";
 import Stack from "@mui/material/Stack";
 import { useSelector } from "src/store";
 interface Props {

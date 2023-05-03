@@ -1,12 +1,12 @@
 import type { FC } from "react";
 import NextLink from "next/link";
-import { Box, Button, Container, Typography, useMediaQuery, Grid } from "@mui/material";
+import { Box, Button, Container, Typography, Grid } from "@mui/material";
 import { useSelector } from 'react-redux';
 import { RootState } from 'src/store';
 
 export const HomeHero: FC = (props) => {
 
-const isMobile = useSelector((state:RootState) => state.isMobile.isMobile);
+const isMobile = useSelector((state:RootState) => state.mobile.isMobile);
 
   return (
     <>

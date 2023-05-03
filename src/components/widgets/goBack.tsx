@@ -7,11 +7,11 @@ import { Theme } from "@mui/system";
 const GoBack: React.FC = () => {
   const router: NextRouter = useRouter();
   const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'))
-
+  
   const handleBackClick: React.MouseEventHandler<HTMLButtonElement> = () => {
     router.back();
   };
-console.log(isMobile, "ismobile")
+
   return (
     <>
       {isMobile && (
