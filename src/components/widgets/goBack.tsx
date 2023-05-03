@@ -7,8 +7,8 @@ import { RootState } from "src/store";
 
 const GoBack: React.FC = () => {
   const router: NextRouter = useRouter();
-  const isMobile = useSelector((state: RootState) => state.isMobile.isMobile);
-
+  const isMobile = useSelector((state: RootState) => state.mobile.isMobile);
+  
   const handleBackClick: React.MouseEventHandler<HTMLButtonElement> = () => {
     router.back();
   };
