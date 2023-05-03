@@ -1,18 +1,17 @@
 import React from "react";
 import { useRouter, NextRouter } from "next/router";
-import { Button } from "@mui/material";
+import { Button, useMediaQuery } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import { useSelector } from "react-redux";
-import { RootState } from "src/store";
+import { Theme } from "@mui/system";
 
 const GoBack: React.FC = () => {
   const router: NextRouter = useRouter();
-  const isMobile = useSelector((state: RootState) => state.isMobile.isMobile);
+  const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'))
 
   const handleBackClick: React.MouseEventHandler<HTMLButtonElement> = () => {
     router.back();
   };
-
+console.log(isMobile, "ismobile")
   return (
     <>
       {isMobile && (
