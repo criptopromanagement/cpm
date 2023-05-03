@@ -17,7 +17,6 @@ import {
   Typography,
   Avatar,
 } from "@mui/material";
-import { Logo } from "../logo";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
@@ -26,8 +25,9 @@ import HelpIcon from "@mui/icons-material/Help";
 import CollectionsBookmarkIcon from "@mui/icons-material/CollectionsBookmark";
 import LogoutIcon from "@mui/icons-material/Logout";
 import CloseIcon from "@mui/icons-material/Close";
-import { useSelector } from "../../store/index";
 import Link from "next/link";
+import { Logo } from "src/components/logo";
+import { useSelector } from "src/store";
 
 interface MainNavbarProps {
   onOpenSidebar?: () => void;
