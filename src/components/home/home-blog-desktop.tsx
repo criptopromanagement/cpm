@@ -7,19 +7,7 @@ import { Avatar, Box, Card, CardContent, Chip, Link, Typography, Grid, Button } 
 import { getInitials } from '../../utils/get-initials';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { styled } from '@mui/material/styles';
 
-const HomeBlogCard = styled(Card)`
-  ${({ theme }) => `
-    transition: ${theme.transitions.create(['transform'], {
-    duration: theme.transitions.duration.standard
-})};
-  &:hover {
-      transform: scale(1.1);
-      
-  }
-  `}
-`;
 
 export const HomeBlogDesktop = () => {
     const [posts, setPosts] = useState<Post[]>([]);
@@ -33,10 +21,6 @@ export const HomeBlogDesktop = () => {
             console.error(err);
         }
     }, []);
-
-    useEffect(() => {
-        getPosts();
-    }, [getPosts]);
 
     const handleNext = () => {
         setStartIndex((prevIndex) => {
@@ -59,6 +43,9 @@ export const HomeBlogDesktop = () => {
     };
 
 
+    useEffect(() => {
+        getPosts();
+    }, [getPosts]);
 
     return (
         <>
@@ -109,11 +96,17 @@ export const HomeBlogDesktop = () => {
                         key={index}
                         padding="12px"
                     >
-                        <HomeBlogCard
+                        <Card
+                            elevation={0}
                             sx={{
                                 backgroundColor: "#1c1c1c",
-                                border: "thin white solid",
                             }}
+                            style={
+                                {
+                                    border: index === 1 ? "thin white solid" : "thin #1c1c1c solid",
+                                    scale: index === 1 ? "1.1" : "1"
+                                }
+                            }
                         >
                             <NextLink
                                 href="/blog/1"
@@ -159,7 +152,7 @@ export const HomeBlogDesktop = () => {
                                     }}
                                     variant="body1"
                                 >
-                                    {content.shortDescription.length > 250 ? `${content.shortDescription.substring(0, 300)}...` : content.shortDescription}
+                                    {content.shortDescription.length > 250 ? `${content.shortDescription.substring(0, 250)}...` : content.shortDescription}
                                 </Typography>
                                 <Box
                                     sx={{
@@ -201,8 +194,7 @@ export const HomeBlogDesktop = () => {
                                     </Typography>
                                 </Box>
                             </CardContent>
-
-                        </HomeBlogCard>
+                        </Card>
                     </Grid>
                 ))}
                 <Button
@@ -226,4 +218,3 @@ export const HomeBlogDesktop = () => {
         </>
     );
 };
-
