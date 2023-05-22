@@ -13,7 +13,7 @@ import NextLink from "next/link";
 import { useSelector } from "react-redux";
 import { RootState } from "src/store";
 import { FC } from "react";
-import Performance from "src/pages/indices/performance";
+import Performance from "src/components/indices/performance";
 interface Props {
   plan: Plan
 }
