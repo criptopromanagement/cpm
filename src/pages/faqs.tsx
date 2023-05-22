@@ -7,6 +7,7 @@ import { MainNavbar } from "../components/main-navbar";
 import { useState } from "react";
 import { MainSidebar } from "src/components/main-sidebar";
 import Link from "next/link";
+import { Footer } from "src/components/footer";
 
 const Faqs: NextPage = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
@@ -28,7 +29,7 @@ const Faqs: NextPage = () => {
           pt: 8,
         }}
       >
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" sx={{marginBottom: "6rem"}}>
           <MainNavbar onOpenSidebar={handleOpenSideBar} />
           <MainSidebar
             onClose={(): void => setIsSidebarOpen(false)}
@@ -62,6 +63,7 @@ const Faqs: NextPage = () => {
           </Box>
           <AccordionComponent /> 
         </Container>
+        <Footer />
       </Box>
     </>
   );
