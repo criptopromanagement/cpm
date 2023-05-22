@@ -8,6 +8,7 @@ import { useState } from "react";
 import { MainSidebar } from "src/components/main-sidebar";
 import Link from "next/link";
 import { Footer } from "src/components/footer";
+import GoBack from "src/components/widgets/goBack";
 
 const Faqs: NextPage = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
@@ -48,7 +49,8 @@ const Faqs: NextPage = () => {
             },
           }}>
             <Typography variant="h1" sx={{ mt: 3, mb: "2rem" }}>
-              &lt;Preguntas frecuentes
+            <GoBack />
+              Preguntas frecuentes
             </Typography>
             <Typography color="textSecondary" variant="subtitle1">
             Consultá las dudas más frecuentes de nuestros usuarios.

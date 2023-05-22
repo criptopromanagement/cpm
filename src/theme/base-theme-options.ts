@@ -289,7 +289,7 @@ export const baseThemeOptions: ThemeOptions = {
     },
     h1: {
       fontWeight: 700,
-      fontSize: '2.6875rem',
+      fontSize: '2.500rem',
       letterSpacing: '1.5px',
       lineHeight: 1.288
     },
