@@ -68,7 +68,7 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
             }}
           >
             <NextLink
-              href="/packs"
+              href="/indices"
               passHref
             >
               <Link
@@ -77,7 +77,7 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
                 variant="subtitle2"
 
               >
-                Packs
+                Índices
               </Link>
             </NextLink>
 
