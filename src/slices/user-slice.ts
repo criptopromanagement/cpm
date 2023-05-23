@@ -10,7 +10,6 @@ interface UserState {
 export const getUser = createAsyncThunk("user/getUser", async () => {
   try {
     const response = await ApiClient.get("/users");
-    console.log(response.data);
     return response.data as UserDetail;
   } catch (error) {}
 });
