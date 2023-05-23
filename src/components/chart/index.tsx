@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import {
   LineChart,
   Line,
@@ -9,65 +8,77 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { getPerformance } from "src/slices/performance-slice";
-import { RootState, useDispatch } from "src/store";
+
+const data = [
+  {
+    name: "Abr",
+    CPM: -10,
+  },
+  {
+    name: "May",
+    CPM: 20,
+  },
+  {
+    name: "Jun",
+    CPM: -20,
+  },
+  {
+    name: "Jul",
+    CPM: 0,
+  },
+  {
+    name: "Ago",
+    CPM: 10,
+  },
+  {
+    name: "Sep",
+    CPM: 30,
+  },
+  {
+    name: "Oct",
+    CPM: 10,
+  },
+  {
+    name: "Nov",
+    CPM: 0,
+  },
+  {
+    name: "Dic",
+    CPM: -20,
+  },
+  {
+    name: "Ene",
+    CPM: 22,
+  },
+  {
+    name: "Feb",
+    CPM: -10,
+  },
+  {
+    name: "Mar",
+    CPM: 10,
+  },
+];
 
 const Chart = () => {
-  const { isLoading, performanceData } = useSelector(
-    (state: RootState) => state.performance
-  );
-
-  interface ChartData {
-    Fecha: string;
-    Performance: number;
-  }
-
-  const [chartData, setChartData] = useState<ChartData[]>([]);
-
-  const data = chartData.slice(1, 10);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getPerformance());
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (performanceData) {
-      const transformedData = performanceData.map((obj) => ({
-        Fecha: obj.label.toString(),
-        Performance: parseFloat(obj.perform.toFixed(2)),
-      }));
-      setChartData(transformedData);
-    }
-  }, [performanceData]);
-
   return (
-    <ResponsiveContainer width="95%" height={200}>
-      {isLoading ? (
-        <h1>Cargando</h1>
-      ) : (
-        <LineChart 
-          width={200} 
-          height={20} 
-          data={data}>
-          <XAxis dataKey="Fecha" padding={{ left: 30, right: 30 }} />
-          <YAxis />
-          <Tooltip
-            contentStyle={{ backgroundColor: "#1C1C1C" }}
-            itemStyle={{ color: "#00FF33" }}
-          />{" "}
-          <Legend />
-          <Line
-            type="linear"
-            dataKey="Performance"
-            stroke="#FFF"
-            fill="#00FF33"
-            activeDot={{ r: 8, fill: "#00FF33" }}
-            dot={{ r: 6, fill: "#00FF33" }}
-          />
-        </LineChart>
-      )}
+    <ResponsiveContainer width="95%" height={400}>
+      <LineChart 
+        width={500}
+        height={300}
+        data={data}
+        >
+        <XAxis dataKey="name" padding={{ left: 30, right: 30 }} />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Line
+          type="monotone"
+          dataKey="CPM"
+          stroke="#00FF33"
+          activeDot={{ r: 8 }}
+        />
+      </LineChart>
     </ResponsiveContainer>
   );
 };
