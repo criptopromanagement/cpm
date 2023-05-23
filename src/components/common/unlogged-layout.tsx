@@ -1,6 +1,5 @@
-import { FC, ReactNode, useState } from "react";
+import { FC, useState } from "react";
 import PropTypes from "prop-types";
-import { styled } from "@mui/material/styles";
 import { LoggedNavbar } from "./logged-navbar";
 import { LoggedNavbarDesktop } from "./logged-navbar-desktop";
 import Head from "next/head";
@@ -10,17 +9,12 @@ import { useDispatch, useSelector } from "src/store";
 import { closeLogoutModal } from "src/slices/logout-modal-slice";
 import { Container } from "@mui/material";
 import { LayoutProps } from "src/types";
+import { LayoutRoot } from "./layout-root";
+import { MainSidebar } from "../main-sidebar";
+import { MainNavbar } from "../main-navbar";
+import { Footer } from "../footer";
 
-const MainLayoutRoot = styled("div")(({ theme }) => ({
-  backgroundColor: theme.palette.background.default,
-  height: "100%",
-  paddingTop: 64,
-}));
-
-export const LoggedLayout: FC<LayoutProps> = ({
-  children = "CPM",
-  head,
-}) => {
+export const UnloggedLayout: FC<LayoutProps> = ({ children = "CPM", head }) => {
   const { openModal } = useSelector((state) => state.logoutModal);
   const dispatch = useDispatch();
   const handleCloseModal = () => {
@@ -29,12 +23,13 @@ export const LoggedLayout: FC<LayoutProps> = ({
 
   const [openUserMenu, setOpenUserMenu] = useState<boolean>(false);
 
-  const handleOpenSideBar = () => {
-    setOpenUserMenu(!openUserMenu)
-  }
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
 
+  const handleOpenSideBar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
   return (
-    <MainLayoutRoot>
+    <LayoutRoot>
       <Head>
         <title>{head}</title>
       </Head>
@@ -43,17 +38,23 @@ export const LoggedLayout: FC<LayoutProps> = ({
         onOpenUserMenu={handleOpenSideBar}
         open={openUserMenu}
       />
+      <MainSidebar
+        onClose={(): void => setIsSidebarOpen(false)}
+        open={isSidebarOpen}
+      />
+      <MainNavbar onOpenSidebar={handleOpenSideBar} />
       <LoggedNavbar />
-      <Container maxWidth="xl" sx={{ mt: 2 }}>
+      <Container maxWidth="xl" sx={{ mt: 2, mb: 8 }}>
         {children}
       </Container>
       <ModalMyInfo open={openModal} handleClose={handleCloseModal}>
         <ConfirmationLogoutModal handleCloseModal={handleCloseModal} />
       </ModalMyInfo>
-    </MainLayoutRoot>
+      <Footer />
+    </LayoutRoot>
   );
 };
 
-LoggedLayout.propTypes = {
+UnloggedLayout.propTypes = {
   children: PropTypes.node,
 };
