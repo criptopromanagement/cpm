@@ -2,7 +2,7 @@ import { PerformanceDetail } from "./performance-detail";
 
 export interface Performance {
     performance: PerformanceDetail | null;
-    date: string;
+    label: Date;
     perform: number;
     time: number;
     token: string;

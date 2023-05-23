@@ -18,7 +18,7 @@ const Chart = () => {
   );
 
   interface ChartData {
-    name: string;
+    Fecha: string;
     Performance: number;
   }
 
@@ -35,8 +35,8 @@ const Chart = () => {
   useEffect(() => {
     if (performanceData) {
       const transformedData = performanceData.map((obj) => ({
-        name: obj.time.toString(),
-        Performance: obj.perform,
+        Fecha: obj.label.toString(),
+        Performance: parseFloat(obj.perform.toFixed(2)),
       }));
       setChartData(transformedData);
     }
@@ -51,7 +51,7 @@ const Chart = () => {
           width={200} 
           height={20} 
           data={data}>
-          <XAxis dataKey="name" padding={{ left: 30, right: 30 }} />
+          <XAxis dataKey="Fecha" padding={{ left: 30, right: 30 }} />
           <YAxis />
           <Tooltip
             contentStyle={{ backgroundColor: "#1C1C1C" }}
