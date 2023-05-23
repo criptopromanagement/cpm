@@ -1,8 +1,8 @@
 import { Grid } from '@mui/material'
 import React from 'react'
 import { DashContent } from './dash-content'
-import { LeftBar } from './left-bar'
 import { NavigationItem } from 'src/types/left-bar'
+import { LeftBar } from 'src/components/common/left-bar'
 
 export const DesktopDashboard = () => {
     const navigationList: NavigationItem[] = [
@@ -30,7 +30,7 @@ export const DesktopDashboard = () => {
     return (
         <Grid container spacing={2}>
             <Grid item md={3} lg={2} container justifyContent="flex-start" alignItems="flex-start">
-                <LeftBar navigationList={navigationList} />
+                <LeftBar navigationList={navigationList} showUser showIcons />
             </Grid>
             <Grid item md={9} lg={10} container justifyContent="flex-start" alignItems="flex-start">
                 <DashContent />
