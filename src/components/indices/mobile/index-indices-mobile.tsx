@@ -9,6 +9,7 @@ import Terms from "./terms";
 import Documents from "./documents";
 import Performance from "../performance";
 import { MainSidebar } from "src/components/main-sidebar";
+import GoBack from "src/components/widgets/goBack";
 
 const MobileIndices = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
@@ -39,7 +40,8 @@ const MobileIndices = () => {
                         variant="h1"
                         sx={{ mt: 3, mb: 1 }}
                     >
-                        &lt;	Índices fondo CPM
+                    <GoBack/>
+                    	Índices fondo CPM
                     </Typography>
                     <Typography
                         color="textSecondary"
