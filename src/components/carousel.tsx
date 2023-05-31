@@ -15,7 +15,7 @@ const carouselItemStyles = {
 
     active: {
         border: "thin white solid",
-        scale: "1.001"
+        scale: "1.1",
     }
 
 };
@@ -72,7 +72,7 @@ export const Carousel: FC<{ posts: Post[] }> = ({ posts }) => {
                     {(() => {
                         const slides: JSX.Element[] = []
                         const numSlides = Math.ceil(postsInfinito.length / 3)
-                        let startIndex = activeIndex * 3
+                        let startIndex = activeIndex
 
                         for (let i = 0; i < numSlides; i++) {
                             slides.push(
@@ -80,7 +80,8 @@ export const Carousel: FC<{ posts: Post[] }> = ({ posts }) => {
                                     container
                                     spacing={3}
                                     justifyContent="center"
-                                    mb={3}
+                                    mb={5}
+                                    mt={2}
                                 >
                                     {postsInfinito.slice(startIndex, startIndex + 3).map((post, index) => (
                                         <Grid

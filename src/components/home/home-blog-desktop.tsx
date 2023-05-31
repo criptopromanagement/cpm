@@ -40,7 +40,7 @@ export const HomeBlogDesktop = () => {
                     Qué está pasando en el mundo cripto y por qué es importante. Conocé mas sobre las últimas investigaciones del equipo de CPM.
                 </Typography>
             </Box>
-            <Carousel posts={[...posts, ...posts, ...posts]} />
+            <Carousel posts={[...posts, ...posts]} />
 
         </>
     );
