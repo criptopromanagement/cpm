@@ -8,15 +8,14 @@ import {
   Grid,
 } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { useSelector } from "src/store";
+import { useDispatch, useSelector } from "src/store";
 import { Account } from "src/types/user-data/account";
 import { useState } from "react";
 import { AccountList } from "./account-list";
-import { ModalMyInfo } from "../../ModalMyInfo";
+import { ModalMyInfo } from "../../../../common/modal/modal-my-info";
 import { AddAccountForm } from "./add-account-form";
 import { DeleteAccountModal } from "./delete-account-modal";
 import { errorNotification } from "src/slices/my-account-notificacion-slice";
-import { useDispatch } from "../../../../store/index";
 import { Typography } from "@mui/material";
 
 export const MyAccounts = () => {

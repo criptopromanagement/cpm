@@ -12,7 +12,7 @@ const RowBodyTransaction = styled(TableRow)(({ theme }) => ({
 const TableHeadTransaction = styled(TableHead)(({ theme }) => ({
     backgroundColor: "transparent",
     "& > tr": {
-        "& > th:first-child": {
+        "& > th:first-of-type": {
             borderTopLeftRadius: 10
         },
         "& > th:last-child": {

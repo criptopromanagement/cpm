@@ -11,12 +11,12 @@ import {
 import EditIcon from "@mui/icons-material/Edit";
 import { Button } from "@mui/material";
 import { FC, useState } from "react";
-import { ModalMyInfo } from "./ModalMyInfo";
-import { FormChangeFirstName } from "./FormChangeFirstName";
-import { FormChangeMail } from "./FormChangeMail";
-import { FormChangeAddress } from "./FormChangeAddress";
+import { ModalMyInfo } from "./modal-my-info";
+import { FormChangeFirstName } from "./form-change-first-name";
+import { FormChangeMail } from "./form-change-mail";
+import { FormChangeAddress } from "./form-change-address";
 import { UserDetail } from "src/types/user-data";
-import { MyAccountNotification } from "../MyAccountNotification";
+import { MyAccountNotification } from "../../../common/notification/my-account-notification";
 
 interface Props {
   user: UserDetail | null;

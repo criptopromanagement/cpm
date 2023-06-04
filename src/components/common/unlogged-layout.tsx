@@ -4,7 +4,7 @@ import { LoggedNavbar } from "./logged-navbar";
 import { LoggedNavbarDesktop } from "./logged-navbar-desktop";
 import Head from "next/head";
 import { ConfirmationLogoutModal } from "../logout";
-import { ModalMyInfo } from "../account/MyData";
+import { ModalMyInfo } from "../account/mobile/my-data";
 import { useDispatch, useSelector } from "src/store";
 import { closeLogoutModal } from "src/slices/logout-modal-slice";
 import { Container } from "@mui/material";

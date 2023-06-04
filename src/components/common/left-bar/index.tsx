@@ -11,17 +11,38 @@ import React, { FC } from "react";
 import { useDispatch, useSelector } from "src/store";
 import OutputIcon from "@mui/icons-material/Output";
 import { styled } from "@mui/system";
-import { NavigationItem } from "./navigation-item";
 import { NavigationItem as NavigationItemType } from "src/types/left-bar";
 import { openLogoutModal } from "src/slices/logout-modal-slice";
+import { NavigationItem } from "./navigation-item";
 interface Props {
-  navigationList: NavigationItemType[];
+  navigationList?: NavigationItemType[];
   showUser?: boolean;
   showIcons?: boolean;
 }
-
+const navigationDefaultList: NavigationItemType[] = [
+  {
+    icon: "bar_chart",
+    text: "Portafolio",
+    to: "dashboard",
+  },
+  {
+    icon: "account_circle",
+    text: "Mis datos",
+    to: "my-data",
+  },
+  {
+    icon: "account_balance",
+    text: "Mis cuentas",
+    to: "my-accounts",
+  },
+  {
+    icon: "lock",
+    text: "Seguridad",
+    to: "security",
+  },
+];
 export const LeftBar: FC<Props> = ({
-  navigationList,
+  navigationList = navigationDefaultList,
   showUser = false,
   showIcons = false,
 }) => {
