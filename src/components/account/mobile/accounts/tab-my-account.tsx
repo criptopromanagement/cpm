@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import { MyAccountNotification } from "../MyAccountNotification";
+import { MyAccountNotification } from "../../../common/notification/my-account-notification";
 import { MyAccounts } from "./my-accounts";
 
 export const TabMyAccount = () => {
