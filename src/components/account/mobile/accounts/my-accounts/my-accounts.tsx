@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "src/store";
 import { Account } from "src/types/user-data/account";
 import { useState } from "react";
 import { AccountList } from "./account-list";
-import { ModalMyInfo } from "../../../../common/modal/modal-my-info";
+import { CenteredModal } from "../../../../common/modal/centered-modal";
 import { AddAccountForm } from "./add-account-form";
 import { DeleteAccountModal } from "./delete-account-modal";
 import { errorNotification } from "src/slices/my-account-notificacion-slice";
@@ -103,15 +103,18 @@ export const MyAccounts = () => {
           </CardActions>
         </Card>
       </Grid>
-      <ModalMyInfo open={openModal} handleClose={closeModal}>
+      <CenteredModal open={openModal} handleClose={closeModal}>
         <AddAccountForm closeModal={closeModal} />
-      </ModalMyInfo>
-      <ModalMyInfo open={openDeleteAccountModal} handleClose={closeDeleteModal}>
+      </CenteredModal>
+      <CenteredModal
+        open={openDeleteAccountModal}
+        handleClose={closeDeleteModal}
+      >
         <DeleteAccountModal
           handleCloseModal={closeDeleteModal}
           deleteAccount={deleteAccount}
         />
-      </ModalMyInfo>
+      </CenteredModal>
     </>
   );
 };

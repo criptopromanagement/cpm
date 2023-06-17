@@ -1,11 +1,11 @@
-import { Grid, Modal, Box, useMediaQuery, useTheme } from "@mui/material";
+import { Grid, Modal, useMediaQuery, useTheme } from "@mui/material";
 import { FC } from "react";
 
 interface Props {
   open: boolean;
   handleClose: () => void;
 }
-export const ModalMyInfo: FC<Props> = ({ open, handleClose, children }) => {
+export const CenteredModal: FC<Props> = ({ open, handleClose, children }) => {
   const theme = useTheme();
   const md = useMediaQuery(theme.breakpoints.up("md"));
   return (

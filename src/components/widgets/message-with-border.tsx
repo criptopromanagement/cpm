@@ -12,7 +12,7 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import React, { FC, ReactNode } from "react";
 interface ButtonProps {
-  handleCloseModal: () => void;
+  handleCloseModal?: () => void;
 }
 
 const CloseButton = ({ handleCloseModal }: ButtonProps) => (
@@ -25,15 +25,19 @@ const CloseButton = ({ handleCloseModal }: ButtonProps) => (
 
 interface Props {
   title?: ReactNode | null;
-  close: () => void;
+  close?: () => void;
   content?: ReactNode | null;
   actions?: ReactNode | null;
+  closeActionVisible?: boolean;
+  boxShadow?: number;
 }
 export const MessageWithBorder: FC<Props> = ({
   title = null,
   close,
   content = null,
   actions = null,
+  closeActionVisible = true,
+  boxShadow = 24,
 }) => {
   const theme = useTheme();
   return (
@@ -46,16 +50,19 @@ export const MessageWithBorder: FC<Props> = ({
       lg={12}
       p={2}
       rowSpacing={2}
-      boxShadow={24}
+      boxShadow={boxShadow}
     >
       <Grid item xs={12} sm={12} md={12} lg={12}>
         <Card sx={{ borderTop: `3px solid ${theme.palette.primary.main}` }}>
           <CardHeader
             title={title}
-            sx={{ paddingBottom: 0 }}
-            action={<CloseButton handleCloseModal={close} />}
+            action={
+              closeActionVisible && <CloseButton handleCloseModal={close} />
+            }
           />
-          <CardContent>{content}</CardContent>
+          {content && (
+            <CardContent sx={{ paddingTop: 0 }}>{content}</CardContent>
+          )}
           {actions && <CardActions>{actions}</CardActions>}
         </Card>
       </Grid>

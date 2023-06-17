@@ -1,0 +1,1 @@
+export { FinishRegister } from "./finish-register"

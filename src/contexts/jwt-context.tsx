@@ -186,17 +186,17 @@ export const AuthProvider: FC<AuthProviderProps> = (props) => {
       password,
     });
 
-    if (registerResponse) {
-      const { token, user } = await authApi.login({ email, password });
-      localStorage.setItem("accessToken", token);
+    // if (registerResponse) {
+    //   const { token, user } = await authApi.login({ email, password });
+    //   localStorage.setItem("accessToken", token);
 
-      dispatch({
-        type: ActionType.REGISTER,
-        payload: {
-          user: { user, token: token },
-        },
-      });
-    }
+    //   dispatch({
+    //     type: ActionType.REGISTER,
+    //     payload: {
+    //       user: { user, token: token },
+    //     },
+    //   });
+    // }
   };
 
   return (

@@ -14,8 +14,10 @@ import {
 } from "@mui/material";
 import { useAuth } from "../../hooks/use-auth";
 import { useMounted } from "../../hooks/use-mounted";
-
-export const JWTRegister: FC = (props) => {
+interface Props {
+  registered: (email: string) => void;
+}
+export const JWTRegister: FC<Props> = ({ registered }) => {
   const isMounted = useMounted();
   const router = useRouter();
   const { register } = useAuth();
@@ -25,7 +27,7 @@ export const JWTRegister: FC = (props) => {
       password: "",
       name: " ",
       passwordConfirmation: "",
-      policy: false,
+      policy: true,
       submit: null,
     },
     validationSchema: Yup.object({
@@ -52,12 +54,12 @@ export const JWTRegister: FC = (props) => {
     onSubmit: async (values, helpers): Promise<void> => {
       try {
         await register(values.name, values.email, values.password);
-
-        if (isMounted()) {
-          const returnUrl =
-            (router.query.returnUrl as string | undefined) || "/dashboard";
-          router.push(returnUrl).catch(console.error);
-        }
+        registered(values.email);
+        // if (isMounted()) {
+        //   const returnUrl =
+        //     (router.query.returnUrl as string | undefined) || "/dashboard";
+        //   router.push(returnUrl).catch(console.error);
+        // }
       } catch (err) {
         console.error(err);
 
@@ -71,7 +73,7 @@ export const JWTRegister: FC = (props) => {
   });
 
   return (
-    <form noValidate onSubmit={formik.handleSubmit} {...props}>
+    <form noValidate onSubmit={formik.handleSubmit}>
       {formik.errors.submit && (
         <Box sx={{ mt: 3 }}>
           <Alert severity="error" variant="outlined">
@@ -155,7 +157,7 @@ export const JWTRegister: FC = (props) => {
           type="submit"
           variant="contained"
         >
-          Register
+          Confirmar
         </Button>
       </Box>
     </form>
