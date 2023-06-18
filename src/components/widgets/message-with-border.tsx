@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import React, { FC, ReactNode } from "react";
+import { SxProps, Theme } from "@mui/system";
 interface ButtonProps {
   handleCloseModal?: () => void;
 }
@@ -30,6 +31,7 @@ interface Props {
   actions?: ReactNode | null;
   closeActionVisible?: boolean;
   boxShadow?: number;
+  sx?: SxProps<Theme>;
 }
 export const MessageWithBorder: FC<Props> = ({
   title = null,
@@ -38,6 +40,7 @@ export const MessageWithBorder: FC<Props> = ({
   actions = null,
   closeActionVisible = true,
   boxShadow = 24,
+  sx = {},
 }) => {
   const theme = useTheme();
   return (
@@ -53,7 +56,9 @@ export const MessageWithBorder: FC<Props> = ({
       boxShadow={boxShadow}
     >
       <Grid item xs={12} sm={12} md={12} lg={12}>
-        <Card sx={{ borderTop: `3px solid ${theme.palette.primary.main}` }}>
+        <Card
+          sx={{ borderTop: `3px solid ${theme.palette.primary.main}`, ...sx }}
+        >
           <CardHeader
             title={title}
             action={

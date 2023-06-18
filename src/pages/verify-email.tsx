@@ -29,7 +29,7 @@ const VerifyEmail: NextPage<Props> = ({ token }) => {
           if (isMounted()) {
             const returnUrl =
               (router.query.returnUrl as string | undefined) ||
-              "/dashboard?verified=true";
+              "/dashboard?initVerification=1";
             router.push(returnUrl).catch(console.error);
           }
         }, 2000);

@@ -11,6 +11,8 @@ import { closeLogoutModal } from "src/slices/logout-modal-slice";
 import { Container, Grid } from "@mui/material";
 import { LayoutProps } from "src/types";
 import { LeftBar } from "./left-bar";
+import { ModalIsVerified } from "../verified";
+import { Stepper } from "../account/validation/stepper";
 
 const MainLayoutRoot = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
@@ -18,16 +20,25 @@ const MainLayoutRoot = styled("div")(({ theme }) => ({
   paddingTop: 64,
 }));
 
-export const LoggedLayout: FC<LayoutProps> = ({ children = "CPM", head }) => {
+export const LoggedLayout: FC<LayoutProps> = ({
+  children = "CPM",
+  head,
+  initVerification = "0",
+}) => {
   const { openModal } = useSelector((state) => state.logoutModal);
   const { isMobile } = useSelector((state) => state.mobile);
+  const [openUserMenu, setOpenUserMenu] = useState<boolean>(false);
+  const [openVerification, setOpenVerification] = useState(
+    initVerification === "1"
+  );
   const dispatch = useDispatch();
   const handleCloseModal = () => {
     dispatch(closeLogoutModal());
   };
 
-  const [openUserMenu, setOpenUserMenu] = useState<boolean>(false);
-
+  const handleCloseVerification = () => {
+    setOpenVerification(false);
+  };
   const handleOpenSideBar = () => {
     setOpenUserMenu(!openUserMenu);
   };
@@ -72,10 +83,10 @@ export const LoggedLayout: FC<LayoutProps> = ({ children = "CPM", head }) => {
       <ModalMyInfo open={openModal} handleClose={handleCloseModal}>
         <ConfirmationLogoutModal handleCloseModal={handleCloseModal} />
       </ModalMyInfo>
+      <ModalIsVerified
+        open={openVerification}
+        handleClose={handleCloseVerification}
+      />
     </MainLayoutRoot>
   );
-};
-
-LoggedLayout.propTypes = {
-  children: PropTypes.node,
 };

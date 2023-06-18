@@ -6,8 +6,10 @@ import { useDispatch, useSelector } from "src/store";
 import { MobileDashboard } from "src/components/dashboard/mobile";
 import { DesktopDashboard } from "src/components/dashboard/desktop";
 import { getTransactions } from "src/slices/transactions-slice";
-
-const Dashboard: NextPage = () => {
+interface Props {
+  initVerification?: string;
+}
+const Dashboard: NextPage<Props> = () => {
   const dispatch = useDispatch();
   const { user, mobile } = useSelector((state) => state);
   const { isMobile } = mobile;
@@ -17,10 +19,20 @@ const Dashboard: NextPage = () => {
 
   return isMobile ? <MobileDashboard /> : <DesktopDashboard />;
 };
-Dashboard.getLayout = (page) => (
-  <AuthGuard>
-    <LoggedLayout head="Dashboard | CPM">{page}</LoggedLayout>
-  </AuthGuard>
-);
+Dashboard.getInitialProps = async ({ query }) => {
+  const initVerification: string = query?.initVerification?.toString() ?? "0";
+  return { initVerification };
+};
+Dashboard.getLayout = (page) => {
+  const initVerification =
+    page.props?.children?.props?.initVerification.toString() ?? "0";
+  return (
+    <AuthGuard>
+      <LoggedLayout head="Dashboard | CPM" initVerification={initVerification}>
+        {page}
+      </LoggedLayout>
+    </AuthGuard>
+  );
+};
 
 export default Dashboard;

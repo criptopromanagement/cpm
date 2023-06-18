@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { Box, Container, IconButton, Paper, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { StepperForm } from "./stepper-forms";
@@ -7,14 +7,13 @@ export const Stepper: FC = (props) => {
   return (
     <Box
       sx={{
-        backgroundColor: "background.default",
         minHeight: "100%",
         p: { xs: 0.5, lg: 3 },
       }}
     >
       <Container maxWidth="sm">
         <Paper
-        elevation={5}
+          elevation={5}
           sx={{
             position: "relative",
             backgroundColor: "background.default",

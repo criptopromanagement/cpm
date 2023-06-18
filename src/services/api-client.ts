@@ -3,9 +3,7 @@ import axios from "axios";
 axios.defaults.baseURL = "https://cpm-api-vejr.onrender.com/api";
 
 axios.interceptors.request.use((config) => {
-  console.log(config.headers?.cpm_user_app_token, config.headers, "token")
   const accessToken = config.headers?.cpm_user_app_token ?? window.localStorage.getItem("accessToken") ?? "";
-  console.log(accessToken, "accesToken")
   config.headers = {
     "Content-Type": "application/json",
     cpm_user_app_token: accessToken ?? "",

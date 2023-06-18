@@ -1,0 +1,1 @@
+export { ModalIsVerified } from "./modal-is-verified"
