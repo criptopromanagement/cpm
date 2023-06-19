@@ -120,7 +120,7 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
                 </ListItemText>
               </MenuItem>
               <Divider />
-              <Link href="/account?tab=0">
+              <Link href="/my-data?tab=0">
                 <MenuItem>
                   <ListItemIcon>
                     <AccountCircleIcon fontSize="small" />
@@ -128,20 +128,20 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
                   <ListItemText>Mis datos</ListItemText>
                 </MenuItem>
               </Link>
-              <Link href="/account?tab=1">
-                <MenuItem>
-                  <ListItemIcon>
-                    <LockOutlinedIcon fontSize="small" />
-                  </ListItemIcon>
-                  <ListItemText>Seguridad</ListItemText>
-                </MenuItem>
-              </Link>
-              <Link href="/account?tab=2">
+              <Link href="/my-accounts?tab=1">
                 <MenuItem>
                   <ListItemIcon>
                     <AccountBalanceIcon fontSize="small" />
                   </ListItemIcon>
                   <ListItemText>Mis cuentas</ListItemText>
+                </MenuItem>
+              </Link>
+              <Link href="/security?tab=2">
+                <MenuItem>
+                  <ListItemIcon>
+                    <LockOutlinedIcon fontSize="small" />
+                  </ListItemIcon>
+                  <ListItemText>Seguridad</ListItemText>
                 </MenuItem>
               </Link>
               <Divider />

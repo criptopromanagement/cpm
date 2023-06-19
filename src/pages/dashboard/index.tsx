@@ -11,12 +11,11 @@ const Dashboard: NextPage = () => {
   const dispatch = useDispatch();
   const { user, mobile } = useSelector((state) => state);
   const { isMobile } = mobile;
-
   useEffect(() => {
     dispatch(getTransactions());
   }, [dispatch]);
 
-  return isMobile ? <MobileDashboard /> : <DesktopDashboard />
+  return isMobile ? <MobileDashboard /> : <DesktopDashboard />;
 };
 Dashboard.getLayout = (page) => (
   <AuthGuard>

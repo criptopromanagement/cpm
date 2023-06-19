@@ -18,7 +18,7 @@ interface Props {
   plan: Plan
 }
 const BlogPostCardMediaWrapper = styled("div")({
-  paddingTop: "calc(100% * 4 / 4)",
+  paddingTop: "calc(50% * 4 / 4)",
   position: "relative",
 });
 
@@ -35,7 +35,8 @@ export const CardPlan: FC<Props> = ({ plan }: Props) => {
           <Card
             sx={{
               height: "100%",
-              p: 2,
+              backgroundColor: "#1c1c1c",
+              border: "thin white solid"
             }}
           >
             <BlogPostCardMediaWrapper>
@@ -49,7 +50,7 @@ export const CardPlan: FC<Props> = ({ plan }: Props) => {
                 }}
               />
             </BlogPostCardMediaWrapper>
-            <Box sx={{ mt: 2 }}>
+            <Box sx={{ mt: 2, p: 2 }}>
               <Typography variant="h5">{plan.title}</Typography>
               <Typography
                 color="textSecondary"
@@ -77,7 +78,7 @@ export const CardPlan: FC<Props> = ({ plan }: Props) => {
                 {plan.subdescription}
               </Typography>
             </Box>
-            <Box sx={{ height: '100%' }}>
+            <Box sx={{ height: '100%', p: 2 }}>
               <Typography
                 variant="h5"
                 sx={{ mt: 3, mb: 2 }}
@@ -89,7 +90,7 @@ export const CardPlan: FC<Props> = ({ plan }: Props) => {
             <Stack
               direction={{ xs: 'column', sm: 'row' }}
               spacing={2}
-              pt={2}
+              p={2}
               justifyContent="space-between"
               alignItems="stretch"
             >

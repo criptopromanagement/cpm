@@ -1,6 +1,5 @@
-import { FC, ReactNode, useState } from "react";
+import { FC, useState } from "react";
 import PropTypes from "prop-types";
-import { styled } from "@mui/material/styles";
 import { LoggedNavbar } from "./logged-navbar";
 import { LoggedNavbarDesktop } from "./logged-navbar-desktop";
 import Head from "next/head";
@@ -8,19 +7,15 @@ import { ConfirmationLogoutModal } from "../logout";
 import { ModalMyInfo } from "../account/mobile/my-data";
 import { useDispatch, useSelector } from "src/store";
 import { closeLogoutModal } from "src/slices/logout-modal-slice";
-import { Container, Grid } from "@mui/material";
+import { Container } from "@mui/material";
 import { LayoutProps } from "src/types";
-import { LeftBar } from "./left-bar";
+import { LayoutRoot } from "./layout-root";
+import { MainSidebar } from "../main-sidebar";
+import { MainNavbar } from "../main-navbar";
+import { Footer } from "../footer";
 
-const MainLayoutRoot = styled("div")(({ theme }) => ({
-  backgroundColor: theme.palette.background.default,
-  height: "100%",
-  paddingTop: 64,
-}));
-
-export const LoggedLayout: FC<LayoutProps> = ({ children = "CPM", head }) => {
+export const UnloggedLayout: FC<LayoutProps> = ({ children = "CPM", head }) => {
   const { openModal } = useSelector((state) => state.logoutModal);
-  const { isMobile } = useSelector((state) => state.mobile);
   const dispatch = useDispatch();
   const handleCloseModal = () => {
     dispatch(closeLogoutModal());
@@ -28,12 +23,13 @@ export const LoggedLayout: FC<LayoutProps> = ({ children = "CPM", head }) => {
 
   const [openUserMenu, setOpenUserMenu] = useState<boolean>(false);
 
-  const handleOpenSideBar = () => {
-    setOpenUserMenu(!openUserMenu);
-  };
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
 
+  const handleOpenSideBar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
   return (
-    <MainLayoutRoot>
+    <LayoutRoot>
       <Head>
         <title>{head}</title>
       </Head>
@@ -42,40 +38,23 @@ export const LoggedLayout: FC<LayoutProps> = ({ children = "CPM", head }) => {
         onOpenUserMenu={handleOpenSideBar}
         open={openUserMenu}
       />
+      <MainSidebar
+        onClose={(): void => setIsSidebarOpen(false)}
+        open={isSidebarOpen}
+      />
+      <MainNavbar onOpenSidebar={handleOpenSideBar} />
       <LoggedNavbar />
-      <Container maxWidth="xl" sx={{ mt: 2 }}>
-        <Grid container spacing={2}>
-          {!isMobile && (
-            <Grid
-              item
-              md={3}
-              lg={2}
-              container
-              justifyContent="flex-start"
-              alignItems="flex-start"
-            >
-              <LeftBar showUser showIcons />
-            </Grid>
-          )}
-          <Grid
-            item
-            md={9}
-            lg={10}
-            container
-            justifyContent="flex-start"
-            alignItems="flex-start"
-          >
-            {children}
-          </Grid>
-        </Grid>
+      <Container maxWidth="xl" sx={{ mt: 2, mb: 8 }}>
+        {children}
       </Container>
       <ModalMyInfo open={openModal} handleClose={handleCloseModal}>
         <ConfirmationLogoutModal handleCloseModal={handleCloseModal} />
       </ModalMyInfo>
-    </MainLayoutRoot>
+      <Footer />
+    </LayoutRoot>
   );
 };
 
-LoggedLayout.propTypes = {
+UnloggedLayout.propTypes = {
   children: PropTypes.node,
 };

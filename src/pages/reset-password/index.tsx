@@ -1,11 +1,11 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
 import type { NextPage } from "next";
 import React from "react";
-import { MyAccountNotification } from "src/components/account";
-import { FormChangePassword } from "src/components/account/Security";
 import { MainLayout } from "src/components/main-layout";
 import { FormResetPassword } from "src/components/reset-password";
 import Router from "next/router";
+import { MyAccountNotification } from "src/components/common/notification/my-account-notification";
+import { FormChangePassword } from "src/components/account/mobile/security";
 
 interface Props {
   resetPasswordToken: string;
