@@ -48,49 +48,30 @@ export const HomeBlogMobile = () => {
   };
 
   return (
-
     <>
-      <Box
-        marginLeft={2}
-      >
-        <Typography
-          align="left"
-          variant="h1">
+      <Box marginLeft={2}>
+        <Typography align="left" variant="h1">
           Blog e investigación
         </Typography>
-        <Typography
-          align="left"
-          variant="subtitle2"
-          sx={{ py: 1 }}
-        >
+        <Typography align="left" variant="subtitle2" sx={{ py: 1 }}>
           Qué está pasando en el mundo cripto y por qué es importante. Conocé mas sobre las últimas investigaciones del equipo de CPM.
         </Typography>
       </Box>
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 5,
-          pt: 3,
-          pb: 3,
-        }}
-      >
+      <Box component="main" sx={{ flexGrow: 5, pt: 3, pb: 3 }}>
         <Container maxWidth="lg">
           <Grid container md={4} xs={12} justifyContent="center">
-            <Card
-              sx={{
-                height: "100%",
-                p: 2,
-              }}
-            >
+            <Card sx={{ height: "100%", p: 2 }}>
               <AutoPlaySwipeableViews
                 axis={theme.direction === "rtl" ? "x-reverse" : "x"}
                 index={activeStep}
                 onChangeIndex={handleStepChange}
                 enableMouseEvents
+                interval={5000} // Añadido para ajustar el intervalo de cambio de imágenes
+                slideStyle={{ width: "100%" }} // Añadido para mejorar el rendimiento
               >
-                {images.map((images) => (
-                  <div key={images.title}>
-                    {Math.abs(activeStep) <= 2 ? (
+                {images.map((image, index) => (
+                  <div key={index}>
+                    {Math.abs(activeStep - index) <= 2 && ( // Añadido para mostrar solo las imágenes cercanas al paso activo
                       <Box
                         component="img"
                         sx={{
@@ -100,10 +81,10 @@ export const HomeBlogMobile = () => {
                           overflow: "hidden",
                           width: "100%",
                         }}
-                        src={images.imgPath}
-                        alt={images.title}
+                        src={image.imgPath}
+                        alt={image.title}
                       />
-                    ) : null}
+                    )}
                   </div>
                 ))}
               </AutoPlaySwipeableViews>
@@ -174,6 +155,4 @@ export const HomeBlogMobile = () => {
       </Box>
     </>
   );
-}
-
-
+};
