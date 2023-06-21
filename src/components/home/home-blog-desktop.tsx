@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import type { Post } from 'src/types/blog';
 import { blogApi } from 'src/__next-api__/blog-api';
 import { Box, Typography, } from '@mui/material';
 import { Carousel } from '../carousel';
-
 export const HomeBlogDesktop = () => {
     const [posts, setPosts] = useState<Post[]>([]);
 
@@ -11,19 +10,16 @@ export const HomeBlogDesktop = () => {
         try {
             const result = await blogApi.getPosts();
             setPosts(result)
-
         } catch (err) {
             console.error(err);
         }
     }, []);
 
-
-
     useEffect(() => {
         getPosts();
     }, [getPosts]);
 
-
+    const memoizedPosts = useMemo(() => [...posts, ...posts], [posts]);
 
     return (
         <>
@@ -40,8 +36,7 @@ export const HomeBlogDesktop = () => {
                     Qué está pasando en el mundo cripto y por qué es importante. Conocé mas sobre las últimas investigaciones del equipo de CPM.
                 </Typography>
             </Box>
-            <Carousel posts={[...posts, ...posts]} />
-
+            <Carousel posts={memoizedPosts} />
         </>
     );
 };
