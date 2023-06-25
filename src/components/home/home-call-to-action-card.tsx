@@ -1,7 +1,6 @@
 import React from "react";
 import {
     Button,
-    Card,
     CardMedia,
     Grid,
     Typography
@@ -20,11 +19,6 @@ const BlogPostCardMediaWrapper = styled("div")({
     position: "relative"
 });
 
-const BlogPostCardDesktopWrapper = styled("div")({
-    paddingTop: "calc(25% * 1 / 1)",
-    position: "relative",
-
-});
 export const HomeCallCard = ({ plan }: Props) => {
     const isMobile = useSelector((state: RootState) => state.mobile.isMobile);
     return (
@@ -37,11 +31,6 @@ export const HomeCallCard = ({ plan }: Props) => {
                     md={4}
                     xs={12}
                 >
-                    {/* <Card
-                        sx={{
-                            borderRadius: "unset",
-                        }}
-                    > */}
                     <BlogPostCardMediaWrapper>
                         <CardMedia
                             image={plan.cover}
@@ -64,9 +53,7 @@ export const HomeCallCard = ({ plan }: Props) => {
                                 textOverflow: "ellipsis",
                                 WebkitBoxOrient: "vertical",
                                 WebkitLineClamp: 2,
-
                             }}
-
                             style={{
                                 fontWeight: "650",
                                 bottom: "150px",
@@ -76,7 +63,6 @@ export const HomeCallCard = ({ plan }: Props) => {
                         >
                             {plan.description}
                         </Typography>
-
                         <NextLink
                             href={plan.investmentLink}
                             passHref
@@ -95,7 +81,6 @@ export const HomeCallCard = ({ plan }: Props) => {
                             </Button>
                         </NextLink>
                     </BlogPostCardMediaWrapper>
-                    {/* </Card> */}
                 </Grid >
 
             ) : (
@@ -105,51 +90,45 @@ export const HomeCallCard = ({ plan }: Props) => {
                     md={12}
                     xs={12}
                 >
-
-                    <BlogPostCardDesktopWrapper>
+                    <BlogPostCardMediaWrapper>
                         <CardMedia
                             image={plan.cover}
                             sx={{
                                 height: "100%",
                                 width: "100%",
                                 position: "absolute",
-                                top: 0
+                                top: 0,
                             }}
                         />
                         <Typography
                             color="textSecondary"
-                            marginLeft="72px"
+                            marginLeft="50px"
                             position="relative"
                             sx={{
-
+                                height: 72,
                                 overflow: "hidden",
                                 textOverflow: "ellipsis",
                                 WebkitBoxOrient: "vertical",
                                 WebkitLineClamp: 2,
-
                             }}
-
                             style={{
                                 fontWeight: "650",
-                                bottom: "200px",
+                                bottom: "300px",
                                 color: "white"
                             }}
                             variant="body1"
                         >
                             {plan.description}
                         </Typography>
-
                         <NextLink
                             href={plan.investmentLink}
                             passHref
                         >
                             <Button
-
                                 style={{
-                                    width: "10%",
-                                    marginLeft: "150px",
-                                    bottom: "150px"
-
+                                    width: "15%",
+                                    marginLeft: '100px',
+                                    bottom: "300px"
                                 }}
                                 component="a"
                                 size="large"
@@ -158,8 +137,7 @@ export const HomeCallCard = ({ plan }: Props) => {
                                 Invertir
                             </Button>
                         </NextLink>
-                    </BlogPostCardDesktopWrapper>
-
+                    </BlogPostCardMediaWrapper>
                 </Grid >
             )}
         </>
