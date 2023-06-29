@@ -5,11 +5,12 @@ import { LoggedNavbar } from "./logged-navbar";
 import { LoggedNavbarDesktop } from "./logged-navbar-desktop";
 import Head from "next/head";
 import { ConfirmationLogoutModal } from "../logout";
-import { ModalMyInfo } from "../account/MyData";
+import { ModalMyInfo } from "../account/mobile/my-data";
 import { useDispatch, useSelector } from "src/store";
 import { closeLogoutModal } from "src/slices/logout-modal-slice";
-import { Container } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import { LayoutProps } from "src/types";
+import { LeftBar } from "./left-bar";
 
 const MainLayoutRoot = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
@@ -17,11 +18,9 @@ const MainLayoutRoot = styled("div")(({ theme }) => ({
   paddingTop: 64,
 }));
 
-export const LoggedLayout: FC<LayoutProps> = ({
-  children = "CPM",
-  head,
-}) => {
+export const LoggedLayout: FC<LayoutProps> = ({ children = "CPM", head }) => {
   const { openModal } = useSelector((state) => state.logoutModal);
+  const { isMobile } = useSelector((state) => state.mobile);
   const dispatch = useDispatch();
   const handleCloseModal = () => {
     dispatch(closeLogoutModal());
@@ -30,8 +29,8 @@ export const LoggedLayout: FC<LayoutProps> = ({
   const [openUserMenu, setOpenUserMenu] = useState<boolean>(false);
 
   const handleOpenSideBar = () => {
-    setOpenUserMenu(!openUserMenu)
-  }
+    setOpenUserMenu(!openUserMenu);
+  };
 
   return (
     <MainLayoutRoot>
@@ -45,7 +44,30 @@ export const LoggedLayout: FC<LayoutProps> = ({
       />
       <LoggedNavbar />
       <Container maxWidth="xl" sx={{ mt: 2 }}>
-        {children}
+        <Grid container spacing={2}>
+          {!isMobile && (
+            <Grid
+              item
+              md={3}
+              lg={2}
+              container
+              justifyContent="flex-start"
+              alignItems="flex-start"
+            >
+              <LeftBar showUser showIcons />
+            </Grid>
+          )}
+          <Grid
+            item
+            md={9}
+            lg={10}
+            container
+            justifyContent="flex-start"
+            alignItems="flex-start"
+          >
+            {children}
+          </Grid>
+        </Grid>
       </Container>
       <ModalMyInfo open={openModal} handleClose={handleCloseModal}>
         <ConfirmationLogoutModal handleCloseModal={handleCloseModal} />

@@ -5,6 +5,7 @@ import { HomeHero } from "../components/home/home-hero";
 import { HomePlans } from "../components/home/home-plans";
 import { HomeBlog } from "src/components/home/home-blog";
 import { HomeCallToAction } from "src/components/home/home-call-to-action";
+import Subscribe from "src/components/subscribe/subscribe";
 
 const Home: NextPage = () => {
   return (
@@ -16,6 +17,7 @@ const Home: NextPage = () => {
         <HomeHero />
         <HomePlans />
         <HomeBlog />
+        <Subscribe />
         <HomeCallToAction />
       </main>
     </>

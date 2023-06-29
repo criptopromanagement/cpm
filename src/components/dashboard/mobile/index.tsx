@@ -9,12 +9,12 @@ import { InvestMoney } from './invest-money';
 import { MyTransactions } from './my-transactions';
 
 export const MobileDashboard = () => {
-    const { user: currentUser, mobile } = useSelector((state) => state);
+    const { user: currentUser } = useSelector((state) => state);
     const { userData } = currentUser;
     const [openDepositModal, setOpenDepositModal] = useState<boolean>(false);
     const [openInvestModal, setOpenInvestModal] = useState<boolean>(false);
     const { user } = userData;
-
+ 
     const handleOpenDepositModal = () => setOpenDepositModal(true);
     const handleCloseDepositModal = () => setOpenDepositModal(false);
     const handleOpenInvestModal = () => setOpenInvestModal(true);

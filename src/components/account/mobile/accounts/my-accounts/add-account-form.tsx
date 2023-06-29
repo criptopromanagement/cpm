@@ -8,14 +8,12 @@ import {
 } from "@mui/material";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import ApiClient from "../../../../services/api-client";
 import { useDispatch } from "react-redux";
-import { setUser } from "src/slices/user-slice";
 import {
   errorNotification,
   succesNotification,
 } from "src/slices/my-account-notificacion-slice";
-import { MyAccountNotification } from "../../MyAccountNotification";
+import { MyAccountNotification } from "src/components/common/notification/my-account-notification";
 
 interface Props {
   closeModal: () => void;

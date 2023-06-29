@@ -4,7 +4,7 @@ import { Container, Grid } from "@mui/material";
 import { Plan } from "src/types/plan";
 import { HomeCallCard } from "./home-call-to-action-card";
 
-export const HomeCallToAction: FC = (props) => {
+export const HomeCallToAction: FC = () => {
 
     const plans: Plan[] =
         [
@@ -29,7 +29,8 @@ export const HomeCallToAction: FC = (props) => {
             }}
         >
             <Container
-                maxWidth="lg"
+                maxWidth={false}
+                // maxWidth="lg"
                 style={{
                     padding: 0
                 }}
