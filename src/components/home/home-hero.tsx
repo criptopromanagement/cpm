@@ -62,14 +62,14 @@ const isMobile = useSelector((state:RootState) => state.mobile.isMobile);
               </Typography>
               <Typography
                 align="left"
-                variant="subtitle2"
+                variant="subtitle1"
                 sx={{ py: 1 }}
               >
                 Estrategia automatizada
               </Typography>
               <Typography
                 align="left"
-                variant="subtitle2"
+                variant="subtitle1"
                 sx={{ py: 1 }}
               >
                 Exposición diversificada
@@ -162,13 +162,12 @@ const isMobile = useSelector((state:RootState) => state.mobile.isMobile);
                 <Box
                   sx={{
                     justifyContent: "flex-end",
-                    pt: "calc(400 / 450 * 100%)",
                     "& img": {
                       height: "auto",
                       position: "absolute",
-                      top: 50,
-                      left: 550,
-                      right: 250
+                      top: 80,
+                      left: { md: 600, lg: 700, xl: 900 },
+                      right: 150
                     },
                   }}
                 >

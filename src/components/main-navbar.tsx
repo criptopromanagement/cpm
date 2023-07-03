@@ -20,7 +20,9 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
         borderBottomColor: 'divider',
         borderBottomStyle: 'solid',
         borderBottomWidth: 0,
-        color: 'text.secondary'
+        color: 'text.secondary',
+        paddingLeft: '12px',
+        paddingRight: '12px'
       }}
     >
       <Container maxWidth="xl">
