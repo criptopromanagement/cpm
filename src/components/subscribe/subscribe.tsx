@@ -1,5 +1,4 @@
 import { Container, Typography, TextField, Button, Box } from '@mui/material'
-import { maxWidth } from '@mui/system'
 import React from 'react'
 
 const Subscribe = () => {
