@@ -4,12 +4,12 @@ import React from 'react'
 const Subscribe = () => {
     
   return (
-    <Container>
+    <Container sx={{margin: '10rem 0 5rem 7.5rem'}}>
       <Typography variant='h3' align='center'>
       Suscribite y recibí información sobre las novedades de la industria cripto
       </Typography>
       <Box display='flex' justifyContent='center' alignItems='center' marginTop= '2rem' marginBottom={{xs: '2rem'}} paddingX= '2rem' flexDirection= {{ xs: 'column' , md: 'row'}}>
-      <TextField id="outlined-basic" label="Tu email" variant="outlined" fullWidth multiline rows={0.5} sx={{marginRight: '1rem'}} />
+      <TextField id="outlined-basic" label="Tu email" variant="outlined" fullWidth multiline rows={0.5} sx={{marginRight: '1rem', maxWidth: {xs: '100%', md: '20rem'}}} />
       <Button
                   component="a"
                   variant="contained"

@@ -61,13 +61,18 @@ export const HomePlans: FC = (props) => {
         </Box>
       </>
     ) : (
+      //desktop
       <>
-        <Box marginLeft={'100px'} marginBottom={5}>
+        <Box margin='10rem 0 5rem 7.5rem'>
           <Typography align="left"
             variant="h1">
             Fondos de
+          </Typography>
+          <Typography align="left"
+            variant="h1">
             inversión cripto
           </Typography>
+          
           <Typography
             align="left"
             variant="subtitle2"
