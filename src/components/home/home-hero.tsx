@@ -122,15 +122,16 @@ const isMobile = useSelector((state:RootState) => state.mobile.isMobile);
                 </Typography>
                 <Typography
                   align="left"
-                  variant="subtitle2"
+                  variant="subtitle1"
                   sx={{ py: 1 }}
                 >
                   Estrategia automatizada
                 </Typography>
                 <Typography
+                  paddingTop={0}
                   align="left"
-                  variant="subtitle2"
-                  sx={{ py: 1 }}
+                  variant="subtitle1"
+                  sx={{ py: 1 }} 
                 >
                   Exposición diversificada
                 </Typography>
@@ -165,13 +166,13 @@ const isMobile = useSelector((state:RootState) => state.mobile.isMobile);
                     "& img": {
                       height: "auto",
                       position: "absolute",
-                      top: 80,
+                      top: 150,
                       left: { md: 600, lg: 700, xl: 900 },
                       right: 150
                     },
                   }}
                 >
-                  <img
+                  <img 
                     alt="hero"
                     src="/static/home/hero.svg"
                   />
