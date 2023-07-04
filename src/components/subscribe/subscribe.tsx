@@ -4,7 +4,7 @@ import React from 'react'
 const Subscribe = () => {
     
   return (
-    <Container sx={{margin: '10rem 0 5rem 7.5rem'}}>
+    <Container>
       <Typography variant='h3' align='center'>
       Suscribite y recibí información sobre las novedades de la industria cripto
       </Typography>

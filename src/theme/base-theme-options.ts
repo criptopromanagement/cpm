@@ -266,9 +266,10 @@ export const baseThemeOptions: ThemeOptions = {
       lineHeight: 0.9375
     },
     subtitle1: {
-      fontSize: '0.8125rem',
+      fontSize: '1.018rem',
+      letterSpacing: '4px',
       fontWeight: 400,
-      lineHeight: 1.2188
+      lineHeight: '1.2188'
     },
     subtitle2: {
       fontSize: '0.975rem',
@@ -290,12 +291,12 @@ export const baseThemeOptions: ThemeOptions = {
     },
     h1: {
       fontWeight: 700,
-      fontSize: '2.6875rem',
-      letterSpacing: '3px',
+      fontSize: '4.375rem',
+      letterSpacing: '4px',
       lineHeight: 1.288
     },
     h2: {
-      fontWeight: 700,
+      fontWeight: 650,
       fontSize: '1.125rem',
       letterSpacing: '0.8px',
       lineHeight: 1.688
