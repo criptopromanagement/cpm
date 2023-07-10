@@ -51,7 +51,7 @@ export const DesktopIndices = () => {
             open={isSidebarOpen}
           />
           <Typography variant="h1" textAlign="center" mt="2rem" mb="1rem">
-            Índices Foundation
+            Índice Foundation
           </Typography>
           <Typography
             variant="h2"
@@ -61,7 +61,7 @@ export const DesktopIndices = () => {
             }}
           >
             Fondo de inversión en proyectos de plataformas de contratos
-            inteligentes seleccionados de manera diversificada.
+            inteligentes seleccionados de manera diversificada
           </Typography>
           <Button
             href="/login"
@@ -77,15 +77,19 @@ export const DesktopIndices = () => {
             Invertir
           </Button>
 
-          <Typography variant="subtitle2" mb="3rem">
+          <Typography variant="subtitle2" mb="0.5rem">
             La novedad del mercado cripto presenta desafíos a la hora de evaluar
-            y elegir proyectos particulares para invertir. A través de los
+            y elegir proyectos particulares para invertir.
+          </Typography>
+
+          <Typography variant="subtitle2" mb="6rem">
+            A través de los
             fondos, que replican los índices CPM, se facilita a los inversores
-            el proceso de decisión de inversión.
+            el proceso de decisión de inversión
           </Typography>
 
           <Box>
-            <Grid container spacing={2}>
+            <Grid container spacing={4}>
               <Grid item xs={6}>
                 {isCompositionLoading ? (
                   <CompositionSkeleton />
