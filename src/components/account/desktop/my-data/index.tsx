@@ -60,11 +60,8 @@ export const MyDataFormDesktop = () => {
             try {
                 setLoading(true)
                 const newData = await request.patch("/users", JSON.stringify(values, null, 2))
-                alert(newData)
-                console.log(user)
-                console.log(newData)
-                console.log("status=>", newData.status)
-                if (newData.status === 201) {
+
+                if (newData.status === 200) {
                     setLoading(false);
                     setOpenSucces(true);
                 } else {
