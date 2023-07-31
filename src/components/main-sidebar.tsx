@@ -77,7 +77,7 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
           <CloseIcon />
         </IconButton>
         <NextLink
-          href="/indices"
+          href="/indice"
           passHref
         >
           <MainSidebarLink
@@ -85,7 +85,7 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
             underline="none"
             variant="subtitle2"
           >
-            Índices
+            Índice
           </MainSidebarLink>
         </NextLink>
         <NextLink
@@ -113,30 +113,6 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
           </MainSidebarLink>
         </NextLink>
         <NextLink
-          href="/contacto"
-          passHref
-        >
-          <MainSidebarLink
-            color="textPrimary"
-            underline="none"
-            variant="subtitle2"
-          >
-            Contacto
-          </MainSidebarLink>
-        </NextLink>
-        <NextLink
-          href="/ayuda"
-          passHref
-        >
-          <MainSidebarLink
-            color="textPrimary"
-            underline="none"
-            variant="subtitle2"
-          >
-            Ayuda
-          </MainSidebarLink>
-        </NextLink>
-        <NextLink
           href="/terminos"
           passHref
         >
@@ -146,6 +122,18 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
             variant="subtitle2"
           >
             Términos
+          </MainSidebarLink>
+        </NextLink>
+        <NextLink
+          href="/contacto"
+          passHref
+        >
+          <MainSidebarLink
+            color="textPrimary"
+            underline="none"
+            variant="subtitle2"
+          >
+            Contacto
           </MainSidebarLink>
         </NextLink>
         <Button

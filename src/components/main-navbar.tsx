@@ -70,7 +70,7 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
             }}
           >
             <NextLink
-              href="/indices"
+              href="/indice"
               passHref
             >
               <Link
@@ -79,7 +79,7 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
                 variant="subtitle2"
 
               >
-                Índices
+                Índice
               </Link>
             </NextLink>
 
@@ -108,6 +108,20 @@ export const MainNavbar: FC<MainNavbarProps> = (props) => {
                 variant="subtitle2"
               >
                 FAQs
+              </Link>
+            </NextLink>
+            <NextLink
+              href="/terminos"
+              passHref
+            >
+              <Link
+                color="textSecondary"
+                component="a"
+                sx={{ ml: 2 }}
+                underline="none"
+                variant="subtitle2"
+              >
+                Términos
               </Link>
             </NextLink>
             <NextLink
