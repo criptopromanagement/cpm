@@ -24,13 +24,16 @@ export const Composition: FC<CompositionProps> = ({ composition }) => {
           <TableBody>
             {composition.map((content) => (
               <TableRow key={content._id}>
-                <TableCell width={50}>
+                <TableCell width={50}
+                sx={{
+                  paddingLeft: "48px"
+                }}>
                   <img src={content.img} style={{ width: 45, height: 45 }} alt={content.symbol} />
                 </TableCell>
                 <TableCell
                   align="left"
                   sx={{
-                    fontSize: "14px",
+                    fontSize: "14px"
                   }}
                 >
                   {content.name}
@@ -40,7 +43,7 @@ export const Composition: FC<CompositionProps> = ({ composition }) => {
                     color="success"
                     label={`${content.percent}%`}
                     sx={{
-                      marginRight: "24px",
+                      marginRight: "40px",
                     }}
                   />
                 </TableCell>

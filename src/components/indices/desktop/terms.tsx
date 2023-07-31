@@ -11,16 +11,16 @@ function createData(
 }
 
 const rows = [
-    createData('Reporte', 'MENSUAL'),
-    createData('Permanencia minima', '3 MESES'),
-    createData('Permanencia recomendada', '3 - 5 AÑOS'),
-    createData('Lanzamiento', '08/2020'),
-    createData('Ingresos', 'DIARIOS'),
-    createData('Plazo de rescate', '72HS'),
-    createData('Comisión por rentabilidad', '10%'),
-    createData('Honorarios de custodia', 'N/A'),
-    createData('Aporte mínimo', '200 USDT'),
-    createData("Volatilidad", "ALTA")
+    createData('Categoria', 'FONDO CRIPTO'),
+    createData('Plazo mínimo', 'NO HAY'),
+    createData('Plazo máximo', '99 AÑOS'),
+    createData('Lanzamiento', '17/03/2023'),
+    createData('Suscripciones', 'SEMANAL (MIER 16H ARG)'),
+    createData('Plazo de rescate', '48 HORAS'),
+    createData('Comisión por rescate', '0% / 0.5%'),
+    createData('Comisión por rentabilidad', '0%'),
+    createData('Comisión por administración', '2,75% ANUAL'),
+    createData('Aporte mínimo', '50.000 AR$')
 ];
 
 export const Terms = () => {
@@ -37,7 +37,6 @@ export const Terms = () => {
                 sx={{
                     border: "2px #F5FAFF solid",
                     borderRadius: "18px"
-
                 }}
             >
                 <Table >
@@ -51,7 +50,8 @@ export const Terms = () => {
                             >
                                 <TableCell
                                     sx={{
-                                        fontSize: "14px"
+                                        fontSize: "14px",
+                                        paddingLeft: "48px"
                                     }}
                                 >
                                     {row.title}
