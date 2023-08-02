@@ -28,49 +28,53 @@ const isMobile = useSelector((state:RootState) => state.mobile.isMobile);
               }}
             >
               <Box
-                sx={{
-                  position: "relative",
-                  pt: "calc(400 / 450 * 100%)",
-                  "& img": {
-                    height: "auto",
-                    position: "absolute",
-                    top: 0,
-                    width: "100%",
-                  },
-                }}
-              >
+                  sx={{
+                    justifyContent: "flex-end",
+                    "& img": {
+                      maxWidth: "95%",
+                      height: "auto",
+                      position: "absolute",
+                      top: 215,
+                    },
+                  }}
+                >
                 <img
                   alt="hero"
-                  src="/static/home/hero.svg"
+                  src="/images/home-heroimg.svg"
                 />
               </Box>
             </Box>
             <Container
               maxWidth="md"
-              sx={{
-                alignItems: "center",
-                display: "flex",
-                flexDirection: "column",
-              }}
             >
               <Typography
                 align="left"
                 variant="h1"
+                letterSpacing="3px"
               >
-                Fondos cripto indexados
+                Fondos cripto
 
               </Typography>
               <Typography
                 align="left"
-                variant="subtitle1"
-                sx={{ py: 1 }}
+                variant="h1"
+                paddingBottom={2}
+                letterSpacing="3px"
+              >
+              indexados
+
+              </Typography>
+              <Typography
+                align="left"
+                variant="subtitle2"
+                sx={{ py: 0 }}
               >
                 Estrategia automatizada
               </Typography>
               <Typography
                 align="left"
-                variant="subtitle1"
-                sx={{ py: 1 }}
+                variant="subtitle2"
+                sx={{ paddingBottom: 25, paddingTop: 1 }}
               >
                 Exposición diversificada
               </Typography>
@@ -79,21 +83,23 @@ const isMobile = useSelector((state:RootState) => state.mobile.isMobile);
                 passHref
               >
                 <Button
-                  sx={{ maxWidth: "350px" }}
+                  sx={{ maxWidth: "350px", marginTop: 6 }}
                   component="a"
                   size="large"
                   fullWidth
                   variant="contained"
+                  
                 >
                   Invertir
                 </Button>
               </NextLink>
             </Container>
+            
           </Box>
 
         ) : (
           // desktop
-          <div style={{ padding: 100 }}>
+          <div style={{ padding: 80 }}>
             <Grid item
               xs={12}
               sm={12}
@@ -117,6 +123,7 @@ const isMobile = useSelector((state:RootState) => state.mobile.isMobile);
                 <Typography
                   align="left"
                   variant="h1"
+                  paddingBottom={2}
                 >
                   indexados
                 </Typography>
@@ -131,7 +138,7 @@ const isMobile = useSelector((state:RootState) => state.mobile.isMobile);
                   paddingTop={0}
                   align="left"
                   variant="subtitle1"
-                  sx={{ py: 1 }} 
+                  sx={{ paddingTop: 0 }} 
                 >
                   Exposición diversificada
                 </Typography>
@@ -166,15 +173,15 @@ const isMobile = useSelector((state:RootState) => state.mobile.isMobile);
                     "& img": {
                       height: "auto",
                       position: "absolute",
-                      top: 150,
-                      left: { md: 600, lg: 700, xl: 900 },
+                      top: 70,
+                      left: { md: 600, lg: 350, xl: 900 },
                       right: 150
                     },
                   }}
                 >
                   <img 
                     alt="hero"
-                    src="/static/home/hero.svg"
+                    src="/images/home-heroimg.svg"
                   />
                 </Box>
               </Container>
