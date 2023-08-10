@@ -57,7 +57,7 @@ export const HomeBlogMobile = () => {
       <Box component="main" sx={{ flexGrow: 5, pt: 3, pb: 3 }}>
         <Container maxWidth="lg">
           <Grid container md={4} xs={12} justifyContent="center" >
-            <Card sx={{ height: "100%", p: 2, backgroundColor: "#1C1C1C" }}>
+            <Card elevation={0} sx={{ height: "100%", p: 2, backgroundColor: "#1C1C1C" }}>
               <Box
                 sx={{
                   border: "1px white solid",
