@@ -51,23 +51,23 @@ export const MyDataFormDesktop = () => {
 
 
     const validationSchema = Yup.object({
-        username: Yup.string().required("Debes completar este campo"),
+        username: Yup.string(),
 
         email: Yup.string()
-            .email("Debes ingresar un email valido")
-            .required("Email es requerido"),
+            .email("Debes ingresar un email valido"),
 
-        adress: Yup.string().required("Debes completar este campo"),
 
-        zip_code: Yup.string().required("Debes completar este campo"),
+        address: Yup.string(),
+
+        zip_code: Yup.string()
     });
 
     const formik = useFormik({
         initialValues: {
-            username: "",
-            email: "",
-            adress: "",
-            zip_code: ""
+            username: user?.username,
+            email: user?.email,
+            address: user?.address,
+            zip_code: user?.zip_code
         },
         validationSchema: validationSchema,
 
@@ -80,6 +80,7 @@ export const MyDataFormDesktop = () => {
                 if (newData.status === 200) {
                     setLoading(false);
                     setOpenSucces(true);
+                    console.log(newData)
                 } else {
                     setLoading(false);
                     setOpenError(true);
@@ -265,8 +266,7 @@ export const MyDataFormDesktop = () => {
                         </Typography>
 
                         <TextField
-                            // value={user?.username ? user.username : "Jane Doe"}
-                            value={formik.values.username ? formik.values.username : "Jane Doe"}
+                            placeholder={user?.username ? user.username : "Jane Doe"}
                             style={FormStyle.rightForm}
                             name="username"
                             id="username"
@@ -283,8 +283,9 @@ export const MyDataFormDesktop = () => {
                             Email
                         </Typography>
                         <TextField
-                            value={user?.email ? user.email : "janedoe@gmail.com"}
+                            placeholder={user?.email ? user.email : "janedoe@gmail.com"}
                             style={FormStyle.rightForm}
+                            name="email"
                             id="email"
                             disabled={!disabled.mailLabel}
                             onChange={formik.handleChange}
@@ -300,13 +301,14 @@ export const MyDataFormDesktop = () => {
                             Domicilio
                         </Typography>
                         <TextField
-                            value={user?.address ? user.address : "Avenida San Martin 100"}
+                            placeholder={user?.address ? user.address : "Avenida San Martin 100"}
                             style={FormStyle.rightForm}
-                            id="adress"
+                            name="address"
+                            id="address"
                             disabled={!disabled.addressLabel}
                             onChange={formik.handleChange}
-                            error={formik.touched.adress && Boolean(formik.errors.adress)}
-                            helperText={formik.touched.adress && formik.errors.adress}
+                            error={formik.touched.address && Boolean(formik.errors.address)}
+                            helperText={formik.touched.address && formik.errors.address}
                             InputProps={{
                                 endAdornment: <Button onClick={() => enabled("addressLabel")}><img src="/static/account/pen.svg" style={{ color: "rgba(0,255,51,1" }} /></Button>
                             }}
@@ -317,8 +319,9 @@ export const MyDataFormDesktop = () => {
                         </Typography>
 
                         <TextField
-                            value={user?.zip_code ? user.zip_code : "1722"}
+                            placeholder={user?.zip_code ? user.zip_code : "1722"}
                             style={FormStyle.rightForm}
+                            name="zip_code"
                             id="zip_code"
                             disabled={!disabled.zipLabel}
                             onChange={formik.handleChange}
