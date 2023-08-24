@@ -11,7 +11,7 @@ export const getUser = createAsyncThunk("user/getUser", async () => {
   try {
     const response = await ApiClient.get("/users");
     return response.data as UserDetail;
-  } catch (error) {}
+  } catch (error) { }
 });
 
 const userInitialState: UserState = {
@@ -26,6 +26,7 @@ const userInitialState: UserState = {
       createdAt: "",
       updatedAt: "",
       address: "",
+      zip_code: "",
       country: "",
       firstname: "",
       lastname: "",
