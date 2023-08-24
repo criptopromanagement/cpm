@@ -24,24 +24,24 @@ const sections = [
     title: "Menu",
     links: [
       {
-        title: "Packs",
-        href: "#",
+        title: "Índice",
+        href: "/indice",
       },
       {
         title: "Blog",
         href: "/blog",
       },
       {
-        title: "Ayuda",
-        href: "#",
-      },
-      {
-        title: "Contacto",
-        href: "#",
+        title: "Faqs",
+        href: "/faqs",
       },
       {
         title: "Términos",
-        href: "#",
+        href: "/terminos",
+      },
+      {
+        title: "Contacto",
+        href: "/contacto",
       },
     ],
   },
