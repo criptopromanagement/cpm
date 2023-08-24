@@ -9,6 +9,7 @@ export interface UserDetail {
   createdAt: Date | string;
   updatedAt: Date | string;
   address: string;
+  zip_code: string;
   country: string;
   firstname: string;
   lastname: string;
