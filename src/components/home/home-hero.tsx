@@ -6,7 +6,7 @@ import { RootState } from 'src/store';
 
 export const HomeHero: FC = (props) => {
 
-const isMobile = useSelector((state:RootState) => state.mobile.isMobile);
+  const isMobile = useSelector((state: RootState) => state.mobile.isMobile);
 
   return (
     <>
@@ -28,16 +28,16 @@ const isMobile = useSelector((state:RootState) => state.mobile.isMobile);
               }}
             >
               <Box
-                  sx={{
-                    justifyContent: "flex-end",
-                    "& img": {
-                      maxWidth: "95%",
-                      height: "auto",
-                      position: "absolute",
-                      top: 215,
-                    },
-                  }}
-                >
+                sx={{
+                  justifyContent: "flex-end",
+                  "& img": {
+                    maxWidth: "95%",
+                    height: "auto",
+                    position: "absolute",
+                    top: 215,
+                  },
+                }}
+              >
                 <img
                   alt="hero"
                   src="/images/home-heroimg.svg"
@@ -61,7 +61,7 @@ const isMobile = useSelector((state:RootState) => state.mobile.isMobile);
                 paddingBottom={2}
                 letterSpacing="3px"
               >
-              indexados
+                indexados
 
               </Typography>
               <Typography
@@ -82,21 +82,19 @@ const isMobile = useSelector((state:RootState) => state.mobile.isMobile);
                 href="/dashboard"
                 passHref
               >
-                <Button
-                  sx={{ maxWidth: "350px", marginTop: 6 }}
-                  component="a"
-                  size="large"
-                  fullWidth
-                  variant="contained"
-                  
-                >
-                  Invertir
-                </Button>
+                <Box textAlign="center">
+                  <Button
+                    sx={{ maxWidth: "350px", marginTop: 6 }}
+                    component="a"
+                    size="large"
+                    variant="contained"
+                  >
+                    Invertir
+                  </Button>
+                </Box>
               </NextLink>
             </Container>
-            
           </Box>
-
         ) : (
           // desktop
           <div style={{ padding: 80 }}>
@@ -138,7 +136,7 @@ const isMobile = useSelector((state:RootState) => state.mobile.isMobile);
                   paddingTop={0}
                   align="left"
                   variant="subtitle1"
-                  sx={{ paddingTop: 0 }} 
+                  sx={{ paddingTop: 0 }}
                 >
                   Exposición diversificada
                 </Typography>
@@ -179,7 +177,7 @@ const isMobile = useSelector((state:RootState) => state.mobile.isMobile);
                     },
                   }}
                 >
-                  <img 
+                  <img
                     alt="hero"
                     src="/images/home-heroimg.svg"
                   />
