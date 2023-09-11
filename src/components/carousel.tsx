@@ -92,7 +92,7 @@ export const Carousel: FC<{ posts: Post[] }> = ({ posts }) => {
                       ...(postIndex === 1 ? carouselItemStyles.active : {}),
                     }}
                   >
-                    <NextLink href="/blog/1" passHref>
+                    <NextLink href={`/blog/${post.id}`} passHref>
                       <Box
                         component="img"
                         src={post.cover}
@@ -110,7 +110,7 @@ export const Carousel: FC<{ posts: Post[] }> = ({ posts }) => {
                       <Box sx={{ mb: 2 }}>
                         <Chip label={post.category} />
                       </Box>
-                      <NextLink href="/blog/1" passHref>
+                      <NextLink href={`/blog/${post.id}`} passHref>
                         <Link
                           color="textPrimary"
                           component="a"
