@@ -125,7 +125,7 @@ export const CardPlan: FC<Props> = ({ plan }: Props) => {
         </Grid>
       ) :
         (
-          <Box sx={{ flexDirection: "column", border: "2px solid white", borderRadius: "16px" }}>
+          <Box sx={{ flexDirection: "column", border: "2px solid white", borderRadius: "16px", marginBottom: "24px" }}>
             <Grid container width={{ md: "800px", lg: "1000px", xl: "1400px" }}
             >
               <Grid
@@ -137,7 +137,7 @@ export const CardPlan: FC<Props> = ({ plan }: Props) => {
                   <CardMedia
                     image={plan.cover}
                     sx={{
-                      height: "100%",
+                      height: "196%",
                       position: "absolute",
                       top: 0,
                       width: "100%",
@@ -190,6 +190,7 @@ export const CardPlan: FC<Props> = ({ plan }: Props) => {
                   mr={3}
                   justifyContent="space-between"
                   alignItems="stretch"
+                  marginBottom={"28px"}
                 >
                   <NextLink
                     href={plan.informationLink}
