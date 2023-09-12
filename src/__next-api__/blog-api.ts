@@ -7,7 +7,7 @@ class BlogApi {
   getPosts(): Promise<Post[]> {
     const posts: Post[] = [
       {
-        id: '24b76cac9a128cd949747080',
+        id: 'finanzas-descentralizadas',
         author: {
           avatar: '/static/mock-images/avatars/avatar-jie_yan_song.png',
           name: 'Mauricio Luduenia'
@@ -20,7 +20,7 @@ class BlogApi {
         title: 'Finanzas Descentralizadas'
       },
       {
-        id: 'a9c19d0caf2ca91020aacd1f',
+        id: 'ethereum-una-computadora-mundial',
         author: {
           avatar: '/static/mock-images/avatars/avatar-omar_darboe.png',
           name: 'CPM'
