@@ -40,7 +40,7 @@ export const MyTransactions: FC = () => {
                     </TableRow>
                 </TableHeadTransaction>
                 <TableBody>
-                    {transactions.map(({ id, formatedDate, formatedAmount, status, transactionTypeDescription }) => (
+                    {transactions && transactions.map(({ id, formatedDate, formatedAmount, status, transactionTypeDescription }) => (
                         <RowBodyTransaction key={id}>
                             <TableCell align="center">{formatedDate}</TableCell>
                             <TableCell align="center">{transactionTypeDescription}</TableCell>

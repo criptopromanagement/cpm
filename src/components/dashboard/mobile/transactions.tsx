@@ -27,7 +27,7 @@ export const Transactions: FC<TransactionsProps> = ({ transactions, showLoader }
           <TransactionSkeleton />
         </>
       )}
-      {transactions.map(({ id, type, text, formatedAmount, formatedDate, transactionTypeDescription, to }) => {
+      {transactions && transactions.map(({ id, type, text, formatedAmount, formatedDate, transactionTypeDescription, to }) => {
 
 
         return (
