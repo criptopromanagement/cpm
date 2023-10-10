@@ -17,10 +17,13 @@ import Performance from "../indices/performance";
 interface Props {
   plan: Plan
 }
-const BlogPostCardMediaWrapper = styled("div")({
-  paddingTop: "calc(50% * 4 / 4)",
+interface MediaWrapperProps {
+  isMobile: boolean;
+}
+const BlogPostCardMediaWrapper = styled("div")<MediaWrapperProps>(({ isMobile }) => ({
+  height: isMobile ? "300px" : "100%",
   position: "relative",
-});
+}));
 
 export const CardPlan: FC<Props> = ({ plan }: Props) => {
   const isMobile = useSelector((state: RootState) => state.mobile.isMobile);
@@ -39,15 +42,20 @@ export const CardPlan: FC<Props> = ({ plan }: Props) => {
               border: "thin white solid"
             }}
           >
-            <BlogPostCardMediaWrapper>
+            <BlogPostCardMediaWrapper isMobile={isMobile}>
               <CardMedia
                 image={plan.cover}
                 sx={{
                   height: "100%",
                   position: "absolute",
-                  top: 0,
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
                   width: "100%",
-                }}
+                  borderRadius: "16px 0 0 16px",
+                  objectFit: "cover",
+                  objectPosition: "center center"
+              }}
               />
             </BlogPostCardMediaWrapper>
             <Box sx={{ mt: 2, p: 2 }}>
@@ -133,14 +141,14 @@ export const CardPlan: FC<Props> = ({ plan }: Props) => {
                 md={6}
                 xs={12}
               >
-                <BlogPostCardMediaWrapper>
+                <BlogPostCardMediaWrapper isMobile={isMobile}>
                   <CardMedia
                     image={plan.cover}
                     sx={{
-                      height: "196%",
+                      height: "100%",
                       position: "absolute",
-                      top: 0,
                       width: "100%",
+                      objectFit: "cover",
                       borderRadius: "16px 0 0 16px",
                     }}
                   />

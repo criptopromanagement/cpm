@@ -45,14 +45,14 @@ const Chart = () => {
   return (
     <ResponsiveContainer width="95%" height={200}>
       {isLoading ? (
-        <h1>Cargando</h1>
+        <p>Cargando</p>
       ) : (
         <LineChart 
           width={200} 
           height={20} 
           data={data}>
           <XAxis dataKey="Fecha" padding={{ left: 30, right: 30 }} />
-          <YAxis />
+          <YAxis domain={[ 870, 880]} padding={{ top: 10, bottom: 10}} />
           <Tooltip
             contentStyle={{ backgroundColor: "#1C1C1C" }}
             itemStyle={{ color: "#00FF33" }}

@@ -38,10 +38,15 @@ export const getPerformance = createAsyncThunk(
   "performance/getPerformance",
   async () => {
     try {
+      const today = new Date();
+      const nineDaysAgo = new Date(today);
+      nineDaysAgo.setDate(today.getDate() - 9);
+      const from = nineDaysAgo.getTime();
+      const until = today.getTime();
       const response = await ApiClient.get(
-        "/funds/6426e7f3921236ca19a06e1e/perform?type=daily&from=1681066801020&until=1683572401114"
+        `/funds/651d1716982a77b57c58af97/perform?type=daily&from=${from}&until=${until}`
       );
-      const data: Performance[] = response.data as Performance[];
+      const data: Performance[] = response.data.reverse() as Performance[];
       return data;
     } catch (error) {
       console.log(error, "error");
