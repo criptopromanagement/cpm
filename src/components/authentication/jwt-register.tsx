@@ -139,7 +139,7 @@ export const JWTRegister: FC = (props) => {
         />
         <Typography color="textSecondary" variant="body2">
           Acepto los{" "}
-          <Link component="a" href="#">
+          <Link component="a" href="https://www.cpm.la/terminos">
             Terminos y Condiciones
           </Link>
         </Typography>
