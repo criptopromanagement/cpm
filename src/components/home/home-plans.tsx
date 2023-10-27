@@ -17,8 +17,8 @@ export const HomePlans: FC = (props) => {
       description:
         "Índice que reúne a las 10 plataformas de contratos inteligentes mas importantes y mejor consolidadas del sector.",
       subdescription: "Ponderado según la capitalización de mercado y rebalanceado mensualmente.",
-      informationLink: "",
-      investmentLink: "",
+      informationLink: "/indice",
+      investmentLink: "/dashboard",
     },
   ];
   return (
