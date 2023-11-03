@@ -1,24 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-
-interface AccessLog {
-  id: number;
-  createdAt: string;
-  ip: string;
-  device: string;
-}
-
-interface AccessLogResponse {
-  data: AccessLog[];
-  page: number;
-  per_page: number;
-}
-
-interface AccessLogsState {
-  accessLogs: AccessLogResponse | null;
-  isLoading: boolean;
-  error: string | null;
-}
+import { AccessLogResponse, AccessLogsState } from "src/types/user-data/logs";
 
 const accessLogsInitialState: AccessLogsState = {
   accessLogs: null,
