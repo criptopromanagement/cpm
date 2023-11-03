@@ -11,6 +11,10 @@ import {
 } from "@mui/material";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import { styled } from "@mui/material/styles";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { fetchAccessLogs } from "src/slices/logs-slice";
+import { RootState, useDispatch } from "src/store";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -29,19 +33,18 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     color: theme.palette.grey[500],
   },
 }));
-const data = [
-  {
-    fechaHora: "20/04/2022 04:20 AM",
-    ip: "95.130.17.84",
-    dispositivo: "Chrome Mac OS 10.15.7",
-  },
-  {
-    fechaHora: "05/01/2022 00:23 PM",
-    ip: "95.130.17.84",
-    dispositivo: "Chrome Mac OS 10.15.7",
-  },
-];
+
 export const LoginHistory = () => {
+  const dispatch = useDispatch();
+
+  const { accessLogs, isLoading, error } = useSelector(
+    (state: RootState) => state.accessLogs
+  );
+
+  useEffect(() => {
+    dispatch(fetchAccessLogs());
+  }, [dispatch])
+
   return (
     <Grid item md={12} xs={12}>
       <Card>
@@ -57,13 +60,20 @@ export const LoginHistory = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {data.map((r) => (
-                  <TableRow key={r.fechaHora}>
-                    <StyledTableCell>{r.fechaHora}</StyledTableCell>
-                    <StyledTableCell>{r.ip}</StyledTableCell>
-                    <StyledTableCell>{r.dispositivo}</StyledTableCell>
+                {Array.isArray(accessLogs?.data) ? (
+                  accessLogs?.data?.map(r => (
+                    <TableRow key={r.id}>
+                      <StyledTableCell>{r.createdAt}</StyledTableCell>
+                      <StyledTableCell>{r.ip}</StyledTableCell>
+                      <StyledTableCell>{r.device}</StyledTableCell>
+                    </TableRow>
+                  ))
+                ) : (
+                  <TableRow>
+                    <StyledTableCell colSpan={3}>No hay registros de acceso.</StyledTableCell>
                   </TableRow>
-                ))}
+                )}
+
               </TableBody>
             </Table>
           </TableContainer>
