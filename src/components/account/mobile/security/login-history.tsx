@@ -50,6 +50,11 @@ export const LoginHistory = () => {
       <Card>
         <CardHeader title="Historial de ingresos" />
         <CardContent style={{ padding: 0 }}>
+        {isLoading ? (
+            <div>Cargando...</div>
+          ) : error ? (
+            <div>Error: {error}</div>
+          ) : (
           <TableContainer>
             <Table>
               <TableHead>
@@ -77,6 +82,7 @@ export const LoginHistory = () => {
               </TableBody>
             </Table>
           </TableContainer>
+          )}
         </CardContent>
       </Card>
     </Grid>
