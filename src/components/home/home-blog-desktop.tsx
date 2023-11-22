@@ -25,7 +25,7 @@ export const HomeBlogDesktop = () => {
         <>
             <Box margin='8rem 0 5rem 7.5rem'>
                 <Typography align="left"
-                    variant="h1">
+                    variant="h2">
                     Blog e investigación
                 </Typography>
                 <Typography
