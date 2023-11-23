@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import { Box } from "@mui/system";
-import { Container, Grid, Button, Typography } from "@mui/material";
+import { Grid, Button, Typography } from "@mui/material";
 import { Plan } from "src/types/plan";
 import { HomeCallCard } from "./home-call-to-action-card";
 import { useSelector } from "react-redux";
@@ -9,47 +9,33 @@ import { RootState } from "src/store";
 export const HomeCallToAction: FC = () => {
     const isMobile = useSelector((state: RootState) => state.mobile.isMobile);
 
-    const plans: Plan[] =
-        [
-            {
-                id: "2",
-                description:
-                    "Registrate y empezá a invertir en la industria cripto.",
-                subdescription: "",
-                cover: "/static/home/contact.svg",
-                title: "",
-                informationLink: "",
-                investmentLink: "",
-
-            }
-        ]
-
     return (
         isMobile ? (
-        <Container
-            maxWidth={false}
-                // maxWidth="lg"
-                style={{
-                    padding: 0
-                }}
-         >
-                <Grid
-                    container
-                    justifyContent="center"
-                    spacing={5}
-                >
-                    {plans.map((plan) => (
-                        <HomeCallCard key={plan.id} plan={plan} />
-                    ))}
-            <Box
-            component="main"
-            sx={{
-                flexGrow: 5,
-            }}
-            >
-            </Box>
-                 </Grid>
-        </Container>
+        <Box>
+            <div style={{ display:'flex', alignItems:'center', textAlign:'center', justifyContent:'center' }} >
+            <Grid>
+                <Typography align="center"
+                            variant="subtitle2"
+                            sx={{ padding:"36pt", marginTop:"20pt" }}>
+                            Registrate y empezá a invertir en la industria cripto
+                </Typography>
+                <Button
+          sx= {{ width: 'fit-content',  padding: '4pt 24pt 4pt 24pt', marginTop: '-26pt' }}
+                      component="a"
+                      size="large"
+                      variant="contained"
+                    >
+                      Invertir
+            </Button>
+            </Grid> 
+            </div>
+            <div style={{ flex: 1, alignItems: 'bottom', marginBottom: '-3pt', marginTop:'-44pt' }}>
+        <img
+        alt="home-cta-mobile"
+        src="/images/home-cta-mobile.svg"
+      />
+        </div>
+        </Box>
         ) : (
         //desktop
         <Box margin='12rem 0 -0.2rem 7.5rem'>
