@@ -2,10 +2,9 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import type { NextPage } from "next";
 import React from "react";
 import { MainLayout } from "src/components/main-layout";
-import { FormResetPassword } from "src/components/reset-password";
 import Router from "next/router";
 import { MyAccountNotification } from "src/components/common/notification/my-account-notification";
-import { FormChangePassword } from "src/components/account/mobile/security";
+import { FormResetPassword } from "src/components/account/mobile/security";
 
 interface Props {
   resetPasswordToken: string;
@@ -37,7 +36,7 @@ const ResetPassword: NextPage<Props> = ({ resetPasswordToken }) => {
                 Reinicia tu contraseña para volver a acceder
               </Typography>
 
-              <FormChangePassword
+              <FormResetPassword
                 token={resetPasswordToken}
                 redirect={redirect}
               />
