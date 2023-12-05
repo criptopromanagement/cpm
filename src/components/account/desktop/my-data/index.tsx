@@ -20,14 +20,12 @@ const FormStyle = {
     }
 }
 
-
 interface InputsEnabled {
     userLabel: boolean;
     mailLabel: boolean;
     addressLabel: boolean;
     zipLabel: boolean;
 }
-
 
 export const MyDataFormDesktop = () => {
     const { userData } = useSelector((state) => state.user);
@@ -55,7 +53,6 @@ export const MyDataFormDesktop = () => {
 
         email: Yup.string()
             .email("Debes ingresar un email valido"),
-
 
         address: Yup.string(),
 
