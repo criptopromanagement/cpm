@@ -7,7 +7,7 @@ export interface User {
   country: string,
   phoneNumber: string,
   legalId: string,
-  address:string,
+  address: string,
   sex: string,
   tiendacrypto_id: number,
   createdAt: Date,

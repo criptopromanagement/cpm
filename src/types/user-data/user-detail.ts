@@ -1,5 +1,14 @@
 import { Account } from "./account";
 
+export interface Address {
+  street: string;
+  number: number;
+  floor?: number;
+  department?: string;
+  zip_code: number,
+  country: "",
+  state: "",
+}
 export interface UserDetail {
   email: string;
   active: boolean;
@@ -8,9 +17,7 @@ export interface UserDetail {
   accounts: Account[];
   createdAt: Date | string;
   updatedAt: Date | string;
-  address: string;
-  zip_code: string;
-  country: string;
+  address: Address;
   firstname: string;
   lastname: string;
   legalId: string;
