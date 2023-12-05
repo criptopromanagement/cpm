@@ -26,15 +26,11 @@ export const FormChangePassword: FC<Props> = ({ token, redirect }) => {
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
-      password_old: "",
       password: "",
       password_confirm: "",
       submit: null,
     },
     validationSchema: Yup.object({
-      password_old: Yup.string().required(
-        "Debes ingresar la contraseña actual"
-      ),
       password: Yup.string()
         .min(8, "La constraseña es muy corta")
         .required("Debes ingresar la nueva contraseña")
@@ -93,18 +89,6 @@ export const FormChangePassword: FC<Props> = ({ token, redirect }) => {
           md={9}
           lg={9}
         >
-          <Grid item xs={12} sm={12} md={12} lg={12}>
-            <PasswordField
-              error={formik.errors.password_old}
-              handleBlur={formik.handleBlur}
-              value={formik.values.password_old}
-              label="Contraseña actual"
-              handleChange={formik.handleChange}
-              name="password_old"
-              touched={formik.touched.password_old}
-              placeholder="Ingresa tu contraseña actual"
-            />
-          </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>
             <PasswordField
               error={formik.errors.password}
