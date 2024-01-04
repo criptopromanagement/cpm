@@ -156,10 +156,9 @@ export const HomeHero: FC = (props) => {
                   passHref
                 >
                   <Button
-                    sx={{ maxWidth: "150px" }}
+                    sx={{ width: 'fit-content', paddingLeft: '40pt', paddingRight: '40pt' }}
                     component="a"
                     size="large"
-                    fullWidth
                     variant="contained"
                   >
                     Invertir
