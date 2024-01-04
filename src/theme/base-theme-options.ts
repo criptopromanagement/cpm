@@ -291,20 +291,21 @@ export const baseThemeOptions: ThemeOptions = {
       lineHeight: 1.66
     },
     h1: {
-      fontWeight: 700,
+      fontWeight: 650,
       fontSize: '4.375rem',
       letterSpacing: '4px',
       lineHeight: 1.288
     },
     h2: {
-      fontWeight: 650,
-      fontSize: '1.125rem',
-      letterSpacing: '0.8px',
-      lineHeight: 1.688
+      fontWeight: 600,
+      fontSize: '3.125rem',
+      letterSpacing: '3px',
+      lineHeight: 1.4
     },
     h3: {
-      fontWeight: 600,
-      fontSize: '1rem',
+      fontWeight: 500,
+      fontSize: '2rem',
+      letterSpacing: '1px',
       lineHeight: 1.5
     },
     h4: {
