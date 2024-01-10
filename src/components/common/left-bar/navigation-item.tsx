@@ -21,7 +21,14 @@ export const NavigationItem: FC<Props> = ({
   const { icon, text } = navigationItem;
   return (
     <Link href={navigationItem.to}>
-      <MenuItem sx={{ backgroundColor: active ? "#6DEC86" : "transparent" }}>
+      <MenuItem sx={{
+        backgroundColor: active ? '#6DEC86' : 'transparent',
+        '&:hover': {
+          '.MuiTypography-root': {
+            fontWeight: 'bold',
+          }
+        }
+      }}>
         {showIcons && (
           <ListItemIcon>
             <Icon>{icon}</Icon>

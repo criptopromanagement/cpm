@@ -17,17 +17,11 @@ export const DashContent = () => {
             lg={12}
         >
             <Grid item md={9} lg={9}>
-                <Typography variant="h1">Portafolio</Typography>
-            </Grid>
-            <Grid item md={3} lg={3}>
-                <Typography variant="h5">Boton</Typography>
-            </Grid>
-            <Grid item md={12} lg={12}>
-                <Typography variant="body1">Invertiste 215,10 USDT en Foundation. Te avisaremos cuando se acrediten</Typography>
+                <Typography variant="h2">Portfolio</Typography>
             </Grid>
             <Grid item md={5} lg={5} container spacing={3}>
                 <Grid item xs={12} sm={12} md={12} lg={12}>
-                    <Typography variant="h2">Disponible en cuenta</Typography>
+                    <Typography variant="h3">Disponible en cuenta</Typography>
                 </Grid>
                 <Grid item xs={12} sm={12} md={12} lg={12}>
                     <Box sx={{
@@ -47,7 +41,7 @@ export const DashContent = () => {
             </Grid>
             <Grid item md={7} lg={7} container spacing={3}>
                 <Grid item xs={12} sm={12} md={12} lg={12}>
-                    <Typography variant="h2">Invertido en fondo</Typography>
+                    <Typography variant="h3">Invertido en fondo</Typography>
                 </Grid>
                 <Grid item xs={12} sm={12} md={12} lg={12}>
                     <Box sx={{
@@ -70,13 +64,13 @@ export const DashContent = () => {
             </Grid>
             <Grid item md={5} lg={5} container spacing={3}>
                 <Grid item xs={12} sm={12} md={12} lg={12}>
-                    <Typography variant="h2">Fondo de inversión</Typography>
+                    <Typography variant="h3">Fondo de inversión</Typography>
                 </Grid>
                 <Grid item xs={12} sm={12} md={12} lg={12}>
                     <Card sx={{ border: "1px solid #DADADA", paddingTop: 0, paddingBottom: 4, paddingLeft: 0, paddingRight: 0, borderRadius: 2, backgroundColor: "transparent" }}>
                         <CardMedia
                             sx={{ height: 250 }}
-                            image="/static/home/hero.svg"
+                            image="/static/home/foundation.svg"
                             title="hero"
                         />
                         <CardContent sx={{ paddingBottom: 0, paddingTop: 5, paddingLeft: 6, paddingRight: 6 }}>
@@ -97,14 +91,14 @@ export const DashContent = () => {
                                     spacing={3}
                                 >
                                     <Grid item md={8} lg={8}>
-                                        <Typography variant="h1" component="span">Foundation</Typography>
+                                        <Typography variant="h4" component="span">Foundation</Typography>
                                     </Grid>
                                     <Grid item md={2} lg={2}>
-                                        <Typography variant="h3" component="span">3,8%</Typography>
+                                        <Typography variant="body1" component="span">3,8%</Typography>
                                     </Grid>
                                 </Grid>
                                 <Grid item md={10}>
-                                    <Typography variant="h4">Composición:</Typography>
+                                    <Typography variant="body1">Composición:</Typography>
                                 </Grid>
                                 <Grid item md={2}>
                                     <img src='/static/crypto-imgs/crypto-1.svg' style={{ width: 60, height: 60 }} />
@@ -143,7 +137,7 @@ export const DashContent = () => {
             </Grid>
             <Grid item md={7} lg={7} container spacing={3}>
                 <Grid item xs={12} sm={12} md={12} lg={12}>
-                    <Typography variant="h2">Últimos movimientos</Typography>
+                    <Typography variant="h3">Últimos movimientos</Typography>
                 </Grid>
                 <Grid item xs={12} sm={12} md={12} lg={12}>
                     <Box sx={{ border: "1px solid #DADADA", borderTopLeftRadius: 10, borderTopRightRadius: 10 }}>
