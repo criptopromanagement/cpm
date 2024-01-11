@@ -1,5 +1,6 @@
 import {
   Avatar,
+  Divider,
   Grid,
   ListItemIcon,
   ListItemText,
@@ -22,7 +23,7 @@ interface Props {
 const navigationDefaultList: NavigationItemType[] = [
   {
     icon: "bar_chart",
-    text: "Portafolio",
+    text: "Portfolio",
     to: "dashboard",
   },
   {
@@ -74,21 +75,37 @@ export const LeftBar: FC<Props> = ({
           justifyContent="center"
           alignItems="center"
           rowSpacing={5}
-          paddingBottom={6}
-          sx={{ backgroundColor: "#DADADA", borderRadius: 1 }}
-        >
-          <Grid item md={12} lg={12} sm={12}>
+          marginTop={3}
+          sx={{
+            backgroundColor: "#DADADA",
+            borderTopLeftRadius: '.8rem',
+            borderTopRightRadius: '.8rem',
+          }}        >
+          <Grid
+            item md={12}
+            lg={12}
+            sm={12}
+          >
             <Avatar
               alt={user?.firstname}
               src={user?.avatar}
               sx={{ width: 100, height: 100, border: "3px solid black" }}
             />
           </Grid>
-          <Grid item md={12} lg={12}>
-            <Typography variant="h2" textAlign="center" color="black">
+          <Grid
+            item
+            md={12}
+            lg={12}
+          >
+            <Typography
+              variant="h3"
+              textAlign="center"
+              color="black"
+            >
               {user?.full_name}
             </Typography>
           </Grid>
+          <Divider sx={{ width: '100%', bgcolor: 'grey.500', my: 1 }} />
         </Grid>
       )}
       <Grid
@@ -101,10 +118,10 @@ export const LeftBar: FC<Props> = ({
         direction="column"
         justifyContent="space-between"
         alignItems="stretch"
-        mt={0.5}
         sx={{
           backgroundColor: "#DADADA",
-          borderRadius: 1,
+          borderBottomLeftRadius: '.5rem',
+          borderBottomRightRadius: '.5rem',
           height: `${showUser ? 55 : 80}vh`,
         }}
       >
