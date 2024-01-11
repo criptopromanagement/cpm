@@ -20,7 +20,7 @@ const Login: NextPage = () => {
     <>
       <Head>
         <title>
-          Login | Material Kit Pro
+          Login | CPM
         </title>
       </Head>
       <Box
