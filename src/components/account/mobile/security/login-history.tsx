@@ -18,14 +18,14 @@ import { RootState, useDispatch } from "src/store";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: "#343333",
-    color: theme.palette.primary.main,
-    fontSize: 14,
+    backgroundColor: "#ffffff",
+    color: "#1c1c1c",
+    fontSize: 13,
     textTransform: "none",
     textAlign: "center",
     paddingLeft: 0,
     paddingRight: 0,
-    fontWeight: 300,
+    fontWeight: 400,
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 13,
@@ -46,9 +46,9 @@ export const LoginHistory = () => {
   }, [dispatch])
 
   return (
-    <Grid item md={12} xs={12}>
+    <Grid md={12} xs={12} margin='16px 0px 16px 32px'>
       <Card>
-        <CardHeader title="Historial de ingresos" />
+        <CardHeader style={{ paddingLeft:'40px'}} title="Historial de ingresos" />
         <CardContent style={{ padding: 0 }}>
         {isLoading ? (
             <div>Cargando...</div>
@@ -59,7 +59,7 @@ export const LoginHistory = () => {
             <Table>
               <TableHead>
                 <TableRow>
-                  <StyledTableCell>Fecha y hora</StyledTableCell>
+                  <StyledTableCell style={{ paddingLeft:'16px'}}>Fecha y hora</StyledTableCell>
                   <StyledTableCell>Dirección IP</StyledTableCell>
                   <StyledTableCell>Dispositivo</StyledTableCell>
                 </TableRow>
@@ -68,9 +68,9 @@ export const LoginHistory = () => {
                 {Array.isArray(accessLogs?.data) ? (
                   accessLogs?.data?.map(r => (
                     <TableRow key={r.id}>
-                      <StyledTableCell>{r.createdAt}</StyledTableCell>
+                      <StyledTableCell style={{ paddingLeft:'16px'}}>{r.createdAt}</StyledTableCell>
                       <StyledTableCell>{r.ip}</StyledTableCell>
-                      <StyledTableCell>{r.device}</StyledTableCell>
+                      <StyledTableCell>{r.device.substring(0,80)}</StyledTableCell>
                     </TableRow>
                   ))
                 ) : (

@@ -56,6 +56,7 @@ export const MainSidebar: FC<MainSidebarProps> = (props) => {
       open={!lgUp && open}
       PaperProps={{
         sx: {
+          border: '0px solid #1c1c1c',
           width: '100%',
           backgroundColor: 'background.default'
         }

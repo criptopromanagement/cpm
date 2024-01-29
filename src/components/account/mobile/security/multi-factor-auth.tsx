@@ -51,19 +51,18 @@ export const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 export const MultiFactorAuth = () => {
   return (
-    <Grid container item xs={12} sm={12}>
+    <Grid container xs={12} sm={12}>
       <Grid
-        container
+        container spacing={0} margin='16px 0 16px 32px' border='2px solid white' borderRadius='16px' padding='32px 48px 40px 42px'
         item
         component={Paper}
-        padding={2}
         direction="row"
   justifyContent="space-between"
   alignItems="flex-start"
       >
         <Grid item md={8} lg={8}>
-          <Typography variant="h2">Multi factor</Typography>
-          <Typography variant="h2">de autenticación</Typography>
+          <Typography variant="subtitle1">Multi factor</Typography>
+          <Typography variant="subtitle1">de autenticación</Typography>
         </Grid>
         <Grid item md={2} lg={2} />
         <Grid item md={2} lg={2}>

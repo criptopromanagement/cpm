@@ -55,6 +55,7 @@ export const LoggedNavbarDesktop: FC<LoggedNavbarDesktopProps> = (props) => {
         <AppBar
             elevation={0}
             sx={{
+                border: '0px solid #1c1c1c',
                 backgroundColor: 'background.default',
                 borderBottomColor: 'divider',
                 borderBottomStyle: 'solid',

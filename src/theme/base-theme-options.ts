@@ -183,7 +183,8 @@ export const baseThemeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           backgroundImage: 'none',
-          backgroundColor: '#474444',
+          backgroundColor: '#1c1c1c',
+          border: '2px solid #F5FAFF',
           borderRadius: '16px'
         }
       }
