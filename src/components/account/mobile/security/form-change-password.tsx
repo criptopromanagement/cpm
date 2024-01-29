@@ -73,6 +73,7 @@ export const FormChangePassword: FC<Props> = ({ token, redirect }) => {
     },
   });
   return (
+<<<<<<< HEAD
     <Grid container item xs={12} sm={12}>
       <Grid container item component={Paper} padding={2}>
         <Grid item xs={12} sm={12} md={3} lg={3}>
@@ -138,6 +139,47 @@ export const FormChangePassword: FC<Props> = ({ token, redirect }) => {
             </Button>
           </Grid>
         </Grid>
+=======
+    <Grid container xs={12} sm={12} spacing={0} margin='16px 0 16px 32px' border='2px solid white' borderRadius='16px' padding='24px 48px 40px 24px'>
+      <Grid item xs={12} sm={12} md={6} lg={6}>
+        <Box style={{ padding: '20px', textAlign: 'left' }}>
+          <Typography variant="h5">Cambiar contraseña</Typography>
+        </Box>
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <Box style={{ textAlign: 'right' }}>
+          <PasswordField
+            error={formik.errors.password_old}
+            handleBlur={formik.handleBlur}
+            value={formik.values.password_old}
+            label="Contraseña actual"
+            handleChange={formik.handleChange}
+            name="password_old"
+            touched={formik.touched.password_old}
+            placeholder="Ingresa tu contraseña actual"
+          />
+          <PasswordField
+            error={formik.errors.password}
+            handleBlur={formik.handleBlur}
+            value={formik.values.password}
+            label="Nueva contraseña"
+            handleChange={formik.handleChange}
+            name="password"
+            touched={formik.touched.password}
+            placeholder="Ingresa tu nueva contraseña"
+          />
+          <PasswordField
+            error={formik.errors.password_confirm}
+            handleBlur={formik.handleBlur}
+            value={formik.values.password_confirm}
+            label="Confirma tu contraseña nueva"
+            handleChange={formik.handleChange}
+            name="password_confirm"
+            touched={formik.touched.password_confirm}
+            placeholder="Confirma tu nueva contraseña"
+          />
+        </Box>
+>>>>>>> 82a5dc5 (correcciones ui nuevo diseno figma)
       </Grid>
     </Grid>
   );
