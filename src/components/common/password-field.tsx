@@ -35,6 +35,7 @@ export const PasswordField: FC<Props> = ({
   placeholder,
 }) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
+
   return (
     <FormControl fullWidth variant="outlined" margin="normal">
       <InputLabel
@@ -44,6 +45,7 @@ export const PasswordField: FC<Props> = ({
         {label}
       </InputLabel>
       <OutlinedInput
+        style={{ width: "100%" }}
         error={Boolean(touched && error)}
         fullWidth
         name={name}

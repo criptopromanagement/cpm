@@ -16,7 +16,7 @@ const MyAccounts: NextPage<Props> = ({ tab }) => {
         <Typography variant="h4">Mis cuentas</Typography>
       </Grid>
       <Grid container item xs={12} md={12} sm={12} lg={12}>
-        {isMobile ? <TabsAccountMobile tab={tab} /> : <h1>desktop</h1>}
+        {isMobile ? <TabsAccountMobile tab={tab} /> : <h2>desktop</h2>}
       </Grid>
     </Grid>
   );
