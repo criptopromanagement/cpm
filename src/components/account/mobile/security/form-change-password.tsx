@@ -12,7 +12,7 @@ interface Props {
   redirect?: () => void;
 }
 
-const FormChangePassword: React.FC<Props> = ({ token, redirect }) => {
+export const FormChangePassword: React.FC<Props> = ({ token, redirect }) => {
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -108,5 +108,3 @@ const FormChangePassword: React.FC<Props> = ({ token, redirect }) => {
     </Grid>
   );
 };
-
-export default FormChangePassword;
