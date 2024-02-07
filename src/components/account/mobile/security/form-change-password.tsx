@@ -91,18 +91,6 @@ export const FormChangePassword: FC<Props> = ({ token, redirect }) => {
         >
           <Grid item xs={12} sm={12} md={12} lg={12}>
             <PasswordField
-              error={formik.errors.password_old}
-              handleBlur={formik.handleBlur}
-              value={formik.values.password_old}
-              label="Contraseña actual"
-              handleChange={formik.handleChange}
-              name="password_old"
-              touched={formik.touched.password_old}
-              placeholder="Ingresa tu contraseña actual"
-            />
-          </Grid>
-          <Grid item xs={12} sm={12} md={12} lg={12}>
-            <PasswordField
               error={formik.errors.password}
               handleBlur={formik.handleBlur}
               value={formik.values.password}
