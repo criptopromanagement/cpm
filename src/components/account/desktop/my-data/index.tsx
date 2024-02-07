@@ -20,14 +20,12 @@ const FormStyle = {
     }
 }
 
-
 interface InputsEnabled {
     userLabel: boolean;
     mailLabel: boolean;
     addressLabel: boolean;
     zipLabel: boolean;
 }
-
 
 export const MyDataFormDesktop = () => {
     const { userData } = useSelector((state) => state.user);
@@ -56,7 +54,6 @@ export const MyDataFormDesktop = () => {
         email: Yup.string()
             .email("Debes ingresar un email valido"),
 
-
         address: Yup.string(),
 
         zip_code: Yup.string()
@@ -66,13 +63,21 @@ export const MyDataFormDesktop = () => {
         initialValues: {
             username: user?.username,
             email: user?.email,
-            address: user?.address,
-            zip_code: user?.zip_code
+            address: {
+                street: user?.address?.street || '',
+                number: user?.address?.number || '',
+                department: user?.address?.department || '',
+                floor: user?.address?.floor || '',
+                zip_code: user?.address?.zip_code || '',
+                country: user?.address?.country || '',
+                state: user?.address?.state || ''
+            },
         },
         validationSchema: validationSchema,
 
 
         onSubmit: async (values) => {
+            console.log(values)
             try {
                 setLoading(true)
                 const newData = await request.patch("/users", JSON.stringify(values, null, 2))
@@ -86,6 +91,7 @@ export const MyDataFormDesktop = () => {
                     setOpenError(true);
                 }
             } catch (error) {
+                console.log("patch error user")
                 console.log("ERROR=>", error)
             }
 
@@ -233,7 +239,7 @@ export const MyDataFormDesktop = () => {
                     <Typography>
                         Nacionalidad
                     </Typography>
-                    <TextField style={FormStyle.leftForm} value={user?.country} disabled />
+                    <TextField style={FormStyle.leftForm} value={user?.address?.country} disabled />
 
                     <Typography>
                         CUIL
@@ -301,7 +307,9 @@ export const MyDataFormDesktop = () => {
                             Domicilio
                         </Typography>
                         <TextField
-                            placeholder={user?.address ? user.address : "Avenida San Martin 100"}
+                            placeholder={user?.address 
+                                ? `${user.address.street} ${user.address.number} ${user.address.floor} ${user.address.department}` 
+                                : "Avenida San Martin 100"}
                             style={FormStyle.rightForm}
                             name="address"
                             id="address"
@@ -319,14 +327,14 @@ export const MyDataFormDesktop = () => {
                         </Typography>
 
                         <TextField
-                            placeholder={user?.zip_code ? user.zip_code : "1722"}
+                            placeholder={user?.address?.zip_code ? user.address?.zip_code.toString() : '1722'}
                             style={FormStyle.rightForm}
                             name="zip_code"
                             id="zip_code"
                             disabled={!disabled.zipLabel}
                             onChange={formik.handleChange}
-                            error={formik.touched.zip_code && Boolean(formik.errors.zip_code)}
-                            helperText={formik.touched.zip_code && formik.errors.zip_code}
+                            // error={formik.touched.zip_code && Boolean(formik.errors.zip_code)}
+                            // helperText={formik.touched.zip_code && formik.errors.zip_code}
                             InputProps={{
                                 endAdornment: <Button onClick={() => enabled("zipLabel")}><img src="/static/account/pen.svg" style={{ color: "rgba(0,255,51,1" }} /></Button>
                             }}

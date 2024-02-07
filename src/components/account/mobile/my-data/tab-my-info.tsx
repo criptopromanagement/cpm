@@ -118,7 +118,7 @@ export const TabMyInfo: FC<Props> = ({ user }) => {
                 </Grid>
                 <Grid item>
                   <Typography>Nacionalidad</Typography>
-                  <Typography>{user?.country}</Typography>
+                  <Typography>{user?.address?.country}</Typography>
                 </Grid>
                 <Grid item>
                   <Typography>CUIL</Typography>

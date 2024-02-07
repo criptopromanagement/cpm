@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import ApiClient from "../services/api-client";
-import { User, UserDetail } from "../types/user-data";
+import { Address, User, UserDetail } from "../types/user-data";
 
 interface UserState {
   userData: User;
@@ -25,9 +25,15 @@ const userInitialState: UserState = {
       accounts: [],
       createdAt: "",
       updatedAt: "",
-      address: "",
-      zip_code: "",
-      country: "",
+      address: {
+        street: "",
+        number: 0,
+        floor: 0,
+        zip_code: 0,
+        department: "",
+        country: "",
+        state: "",
+      },
       firstname: "",
       lastname: "",
       legalId: "",
