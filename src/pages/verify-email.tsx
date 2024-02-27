@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import request from 'src/services/api-client';
 import axios from 'axios';
+import { RootState, useSelector } from 'src/store';
 
 interface ApiResponse {
   success: boolean;
@@ -9,8 +10,10 @@ interface ApiResponse {
 }
 
 export default function VerifyEmailPage() {
+  const user = useSelector((state: RootState) => state.user.userData.user);
   const router = useRouter();
   const [verificationStatus, setVerificationStatus] = useState<string>('');
+  const userEmail = user?.email
 
   useEffect(() => {
     if (!router.isReady) return;
@@ -24,7 +27,9 @@ export default function VerifyEmailPage() {
 
     const verifyEmail = async (token: string) => {
       try {
-        const response = await request.postWithToken('/users/verify-email', JSON.stringify({ token }), token);
+        const body = JSON.stringify({ token, email: userEmail });
+
+        const response = await request.postWithToken('/users/verify-email', body, token);
 
         const data: ApiResponse = await response.data;
 
