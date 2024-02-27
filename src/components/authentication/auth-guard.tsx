@@ -3,12 +3,15 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { useAuth } from '../../hooks/use-auth';
+import { useSelector } from 'react-redux';
+import { RootState } from 'src/store';
 
 interface AuthGuardProps {
   children: ReactNode;
 }
 
 export const AuthGuard: FC<AuthGuardProps> = (props) => {
+  const user = useSelector((state: RootState) => state.user.userData.user);
   const { children } = props;
   const auth = useAuth();
   const router = useRouter();
@@ -25,7 +28,13 @@ export const AuthGuard: FC<AuthGuardProps> = (props) => {
           pathname: '/login',
           query: { returnUrl: router.asPath }
         }).catch(console.error);
-      } else {
+      } else if(!user?.active){
+        router.push({
+          pathname: '/email-verification',
+          query: { returnUrl: router.asPath }
+        }).catch(console.error);
+      }
+      else {
         setChecked(true);
       }
     },
