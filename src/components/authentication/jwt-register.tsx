@@ -55,7 +55,7 @@ export const JWTRegister: FC = (props) => {
 
         if (isMounted()) {
           const returnUrl =
-            (router.query.returnUrl as string | undefined) || "/dashboard";
+            (router.query.returnUrl as string | undefined) || "/email-verification";
           router.push(returnUrl).catch(console.error);
         }
       } catch (err) {
