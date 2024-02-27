@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-
+import request from 'src/services/api-client';
+import axios from 'axios';
 
 interface ApiResponse {
   success: boolean;
@@ -23,25 +24,22 @@ export default function VerifyEmailPage() {
 
     const verifyEmail = async (token: string) => {
       try {
-        const response = await fetch('/users/verify-email', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ token }),
-        });
+        const response = await request.postWithToken('/users/verify-email', JSON.stringify({ token }), token);
 
-        if (!response.ok) throw new Error('Falló la verificación del correo electrónico.');
-
-        const data: ApiResponse = await response.json();
+        const data: ApiResponse = await response.data;
 
         if (data.success) {
-            router.push('/dashboard');
-                } else {
+          router.push('/dashboard');
+        } else {
           setVerificationStatus(data.message || 'Error en la verificación. El token puede ser inválido o haber expirado.');
         }
       } catch (error) {
-        setVerificationStatus('Error al verificar el correo electrónico. Intenta de nuevo más tarde.');
+        if (axios.isAxiosError(error)) {
+          const message = error.response?.data.message || 'Error al verificar el correo electrónico. Intenta de nuevo más tarde.';
+          setVerificationStatus(message);
+        } else {
+          setVerificationStatus('Error al verificar el correo electrónico. Intenta de nuevo más tarde.');
+        }
       }
     };
 
