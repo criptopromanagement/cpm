@@ -108,15 +108,15 @@ export const MyDataFormDesktop = () => {
                         }}
                     >
                         <Typography
-                            variant="h1"
+                            variant="h2"
                         >
                             Mi cuenta
                         </Typography>
 
                         <Typography
-                            variant="h4"
+                            variant="h3"
                             style={{
-                                marginTop: "75px",
+                                marginTop: "24px",
                                 marginLeft: "5px"
 
                             }}
@@ -213,9 +213,9 @@ export const MyDataFormDesktop = () => {
                 container
                 spacing={5}
                 style={{
-                    border: "1px white solid",
-                    borderRadius: "15px",
-                    marginTop: "50px",
+                    border: "1.5px white solid",
+                    borderRadius: "18px",
+                    marginTop: "8px",
                     marginLeft: "20px"
                 }}
             >

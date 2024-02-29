@@ -61,8 +61,8 @@ export const MultiFactorAuth = () => {
   alignItems="flex-start"
       >
         <Grid item md={8} lg={8}>
-          <Typography variant="subtitle1">Multi factor</Typography>
-          <Typography variant="subtitle1">de autenticación</Typography>
+          <Typography variant="h3">Multi factor</Typography>
+          <Typography variant="h3">de autenticación</Typography>
         </Grid>
         <Grid item md={2} lg={2} />
         <Grid item md={2} lg={2}>
