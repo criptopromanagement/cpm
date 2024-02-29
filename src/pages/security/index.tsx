@@ -14,7 +14,7 @@ const Security: NextPage<Props> = ({ tab }) => {
   return (
     <Grid container justifyContent="flex-start" spacing={2}>
       <Grid item xs={12} md={12} sm={12} lg={12}>
-        <Typography variant="h4">Seguridad</Typography>
+        <Typography variant="h2">Seguridad</Typography>
       </Grid>
       <Grid container item xs={12} md={12} sm={12} lg={12}>
         {isMobile ? <TabsAccountMobile tab={tab} /> : <DesktopSecurity />}
