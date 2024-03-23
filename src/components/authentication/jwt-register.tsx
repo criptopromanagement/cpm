@@ -21,9 +21,10 @@ export const JWTRegister: FC = (props) => {
   const { register } = useAuth();
   const formik = useFormik({
     initialValues: {
+      firstname: " ",
+      lastname: "",
       email: "",
       password: "",
-      name: " ",
       passwordConfirmation: "",
       policy: false,
       submit: null,
@@ -51,7 +52,7 @@ export const JWTRegister: FC = (props) => {
     }),
     onSubmit: async (values, helpers): Promise<void> => {
       try {
-        await register(values.name, values.email, values.password);
+        await register(values.firstname, values.lastname, values.email, values.password);
 
         if (isMounted()) {
           const returnUrl =
@@ -79,6 +80,32 @@ export const JWTRegister: FC = (props) => {
           </Alert>
         </Box>
       )}
+            <TextField
+        error={Boolean(formik.touched.firstname && formik.errors.firstname)}
+        fullWidth
+        helperText={formik.touched.firstname && formik.errors.firstname}
+        label="Nombre"
+        margin="normal"
+        name="firstname"
+        onBlur={formik.handleBlur}
+        onChange={formik.handleChange}
+        type="firstname"
+        value={formik.values.firstname}
+        variant="outlined"
+      />
+            <TextField
+        error={Boolean(formik.touched.lastname && formik.errors.lastname)}
+        fullWidth
+        helperText={formik.touched.lastname && formik.errors.lastname}
+        label="Apellido"
+        margin="normal"
+        name="lastname"
+        onBlur={formik.handleBlur}
+        onChange={formik.handleChange}
+        type="lastname"
+        value={formik.values.lastname}
+        variant="outlined"
+      />
       <TextField
         error={Boolean(formik.touched.email && formik.errors.email)}
         fullWidth
