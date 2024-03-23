@@ -25,7 +25,8 @@ class AuthApi {
   }
 
   async register(userRegisterData: {
-    name: string;
+    firstname: string;
+    lastname: string;
     email: string;
     password: string;
   }): Promise<RegisterResponse> {

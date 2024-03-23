@@ -13,7 +13,6 @@ export default function VerifyEmailPage() {
   const user = useSelector((state: RootState) => state.user.userData.user);
   const router = useRouter();
   const [verificationStatus, setVerificationStatus] = useState<string>('');
-  const userEmail = user?.email
 
   useEffect(() => {
     if (!router.isReady) return;
@@ -27,7 +26,7 @@ export default function VerifyEmailPage() {
 
     const verifyEmail = async (token: string) => {
       try {
-        const body = JSON.stringify({ token, email: userEmail });
+        const body = JSON.stringify({ token });
 
         const response = await request.postWithToken('/users/verify-email', body, token);
 

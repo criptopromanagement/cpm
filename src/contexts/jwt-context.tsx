@@ -17,7 +17,7 @@ export interface AuthContextValue extends State {
   platform: "JWT";
   login: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
-  register: (email: string, name: string, password: string) => Promise<void>;
+  register: (firstname: string, lastname:string, email: string, password: string) => Promise<void>;
 }
 
 interface AuthProviderProps {
@@ -176,12 +176,14 @@ export const AuthProvider: FC<AuthProviderProps> = (props) => {
   };
 
   const register = async (
-    name: string,
+    firstname: string,
+    lastname: string,
     email: string,
     password: string
   ): Promise<void> => {
     const registerResponse: RegisterResponse = await authApi.register({
-      name,
+      firstname,
+      lastname,
       email,
       password,
     });
