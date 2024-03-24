@@ -19,7 +19,7 @@ const EmailVerificationPage = () => {
   };
 
   return (
-    <Container sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', bgcolor: 'primary.main', p: 0 }}>
+    <Container sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', bgcolor: 'primary.default', p: 0 }}>
       <Box sx={{ width: '100%', textAlign: 'center', color: 'common.white', p: 3 }}>
         <Typography variant="h5" component="h1" gutterBottom>
           Verifica tu email

@@ -4,8 +4,8 @@ import request from 'src/services/api-client';
 import axios from 'axios';
 import { RootState, useSelector } from 'src/store';
 
-interface ApiResponse {
-  success: boolean;
+interface ApiResponseType {
+  active: boolean;
   message?: string;
 }
 
@@ -30,9 +30,9 @@ export default function VerifyEmailPage() {
 
         const response = await request.postWithToken('/users/verify-email', body, token);
 
-        const data: ApiResponse = await response.data;
+        const data: ApiResponseType = await response.data;
 
-        if (data.success) {
+        if (data.active) {
           router.push('/dashboard');
         } else {
           setVerificationStatus(data.message || 'Error en la verificación. El token puede ser inválido o haber expirado.');
