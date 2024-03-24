@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import { useState, type FC } from "react";
 import { useRouter } from "next/router";
 import * as Yup from "yup";
 import { useFormik } from "formik";
@@ -11,14 +11,22 @@ import {
   Typography,
   Link,
   Alert,
+  FormControl,
+  InputLabel,
+  OutlinedInput,
+  InputAdornment,
+  IconButton,
 } from "@mui/material";
 import { useAuth } from "../../hooks/use-auth";
 import { useMounted } from "../../hooks/use-mounted";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import Visibility from "@mui/icons-material/Visibility";
 
 export const JWTRegister: FC = (props) => {
   const isMounted = useMounted();
   const router = useRouter();
   const { register } = useAuth();
+  const [showPassword, setShowPassword] = useState(false);
   const formik = useFormik({
     initialValues: {
       firstname: " ",
@@ -86,6 +94,7 @@ export const JWTRegister: FC = (props) => {
         helperText={formik.touched.firstname && formik.errors.firstname}
         label="Nombre"
         margin="normal"
+        placeholder="tu nombre"
         name="firstname"
         onBlur={formik.handleBlur}
         onChange={formik.handleChange}
@@ -99,6 +108,7 @@ export const JWTRegister: FC = (props) => {
         helperText={formik.touched.lastname && formik.errors.lastname}
         label="Apellido"
         margin="normal"
+        placeholder="tu apellido"
         name="lastname"
         onBlur={formik.handleBlur}
         onChange={formik.handleChange}
@@ -111,6 +121,7 @@ export const JWTRegister: FC = (props) => {
         fullWidth
         helperText={formik.touched.email && formik.errors.email}
         label="Email"
+        placeholder='tu email'
         margin="normal"
         name="email"
         onBlur={formik.handleBlur}
@@ -119,38 +130,90 @@ export const JWTRegister: FC = (props) => {
         value={formik.values.email}
         variant="outlined"
       />
-      <TextField
-        error={Boolean(formik.touched.password && formik.errors.password)}
-        fullWidth
-        helperText={formik.touched.password && formik.errors.password}
-        label="Contraseña"
+      <FormControl
+        fullWidth 
+        variant="outlined" 
         margin="normal"
-        name="password"
-        onBlur={formik.handleBlur}
-        onChange={formik.handleChange}
-        type="password"
-        value={formik.values.password}
-        variant="outlined"
-      />
-      <TextField
-        error={Boolean(
-          formik.touched.passwordConfirmation &&
-            formik.errors.passwordConfirmation
+      >
+          <InputLabel 
+              htmlFor="outlined-adornment-password"
+              error={Boolean(formik.touched.password && formik.errors.password)}
+            >
+              Contraseña
+            </InputLabel>
+          <OutlinedInput
+            error={Boolean(formik.touched.password && formik.errors.password)}
+            fullWidth
+            name="password"
+            label="Contraseña"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            type={showPassword? "text":"password"}
+            value={formik.values.password}
+            placeholder='tu contraseña'
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={() => setShowPassword(!showPassword)}
+                  edge="end"
+                >
+                  {!showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+          />
+        {!!Boolean(formik.touched.password && formik.errors.password) && (
+          <FormHelperText 
+            error 
+            id="accountId-error"
+          >
+          {formik.touched.password && formik.errors.password}
+          </FormHelperText>
         )}
-        fullWidth
-        helperText={
-          formik.touched.passwordConfirmation &&
-          formik.errors.passwordConfirmation
-        }
-        label="Confirma contraseña"
+      </FormControl>
+      <FormControl
+        fullWidth 
+        variant="outlined" 
         margin="normal"
-        name="passwordConfirmation"
-        onBlur={formik.handleBlur}
-        onChange={formik.handleChange}
-        type="password"
-        value={formik.values.passwordConfirmation}
-        variant="outlined"
-      />
+      >
+          <InputLabel 
+              htmlFor="outlined-adornment-password-confirmation"
+              error={Boolean(formik.touched.passwordConfirmation && formik.errors.passwordConfirmation)}
+            >
+              Confirma Contraseña
+            </InputLabel>
+          <OutlinedInput
+            error={Boolean(formik.touched.passwordConfirmation && formik.errors.passwordConfirmation)}
+            fullWidth
+            name="passwordConfirmation"
+            label="Confirma contraseña"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            type={showPassword? "text":"password"}
+            value={formik.values.passwordConfirmation}
+            placeholder='confirma tu contraseña'
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={() => setShowPassword(!showPassword)}
+                  edge="end"
+                >
+                  {!showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+          />
+        {!!Boolean(formik.touched.passwordConfirmation && formik.errors.passwordConfirmation) && (
+          <FormHelperText 
+            error 
+            id="accountId-error"
+          >
+          {formik.touched.passwordConfirmation && formik.errors.passwordConfirmation}
+          </FormHelperText>
+        )}
+      </FormControl>
       <Box
         sx={{
           alignItems: "center",
